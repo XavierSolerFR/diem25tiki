@@ -1,0 +1,102 @@
+// $Id: united.less 54998 2015-04-08 04:03:15Z lindonb $
+@import "../../../vendor/twitter/bootstrap/less/bootstrap.less";
+@import "../../base_files/less/bootswatch_overrides.less";
+// So far, just removes the CSS content theme-option-required warning.
+@import "bootswatch.less";
+
+// the Bootstrap variables.less file with theme-specific values replacing the defaults
+
+// defines the theme's CSS values that are outside of variables.less
+
+
+// Values/definitions for Tiki variables (outside of Bootstrap variables) such as tiki-selectors.less.
+@import "../../base_files/less/tiki-variables.less";
+@import "variables.less";
+
+@import "cards.less";
+
+@import "../../base_files/less/tiki-selectors.less";
+// Tiki non-Bootstrap CSS selectors related to color
+@import "../../base_files/less/tablesorter-custom.less";
+
+
+@import "../../base_files/less/tiki-selectors.less";
+@import "../../base_files/less/tiki-miscellaneous_global.less";
+@import "../../base_files/less/tiki-modules.less";
+@import "../../base_files/less/tiki-toolbars.less";
+@import "../../base_files/less/tiki-boxes_and_panels.less";
+@import "../../base_files/less/tiki-tabs_and_tables.less";
+
+@import "../../base_files/less/tiki-articles.less";
+@import "../../base_files/less/tiki-blogs.less";
+@import "../../base_files/less/tiki-forums.less";
+@import "../../base_files/less/tiki-comments.less";
+@import "../../base_files/less/tiki-image_galleries.less";
+@import "../../base_files/less/tiki-file_galleries.less";
+@import "../../base_files/less/tiki-trackers.less";
+@import "../../base_files/less/tiki-categories.less";
+@import "../../base_files/less/tiki-search.less";
+@import "../../base_files/less/tiki-sheets.less";
+@import "../../base_files/less/tiki-calendar.less";
+@import "../../base_files/less/tiki-translation.less";
+@import "../../base_files/less/tiki-tags.less";
+@import "../../base_files/less/tiki-minor_features.less";
+@import "../../base_files/less/tiki-mytiki.less";
+@import "../../base_files/less/tiki-admin.less";
+@import "../../base_files/less/tiki-modal_and_managestream.less";
+@import "../../base_files/less/tiki-maps.less";
+@import "../../base_files/less/tiki-cssmenus.less";
+@import "../../base_files/less/tiki-external_scripts_overrides.less";
+@import "../../base_files/less/tiki-bootstrap_overrides.less";
+@import "../../base_files/less/tablesorter-tiki.less";
+@import "../../base_files/less/tablesorter-custom.less";
+@import "../../base_files/less/tiki-bootstrap-chosen.less";
+@import "../../base_files/less/tiki-media-print.less";
+@import "../../base_files/less/tiki-wikipages_and_plugins.less";
+@import "../../base_files/less/tiki-multilike.less";
+
+#cookie_consent_div.banner{
+  top:90%;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.topbar .nav > li > a {
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.row {
+  margin-left:0;
+  margin-right:0;
+}
+
+#listarticles  article{
+  vertical-align: top;
+  margin-top: 0 px;
+  width:370 px;
+  max-width:370px;
+  margin : 0 px;
+  padding: 0 px
+}
+
+#listarticles div.articleimage {
+  width:100%;
+  max-width:360px;
+  height:360px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  box-sizing: border-box;
+  position: relative;
+  background-clip: padding-box;
+  overflow: hidden;
+}

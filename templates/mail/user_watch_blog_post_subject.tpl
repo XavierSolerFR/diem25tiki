@@ -1,0 +1,1 @@
+{* $Id: user_watch_blog_post_subject.tpl 58607 2016-05-17 10:34:28Z eromneg $ *}{tr}New {$prefs.mail_template_custom_text}blog post at %s{/tr}

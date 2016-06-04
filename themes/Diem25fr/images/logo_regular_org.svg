@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="189px" height="39px"
+	 viewBox="0 0 189 39" enable-background="new 0 0 189 39" xml:space="preserve">
+<title>Group 3</title>
+<desc>Created with Sketch.</desc>
+<g id="Page-1" sketch:type="MSPage">
+	<g id="Group-3" sketch:type="MSLayerGroup">
+		
+			<linearGradient id="Fill-1_1_" gradientUnits="userSpaceOnUse" x1="-30.2236" y1="148.1553" x2="-31.2236" y2="148.0562" gradientTransform="matrix(35.2136 0 0 -26.0458 1099.4972 3882.9048)">
+			<stop  offset="0" style="stop-color:#ED1D24"/>
+			<stop  offset="1" style="stop-color:#EC5022"/>
+		</linearGradient>
+		<path id="Fill-1" sketch:type="MSShapeGroup" fill="url(#Fill-1_1_)" d="M18.356,39l16.857-13.023L18.356,12.954V39z M0,39
+			l16.856-13.023L0,12.954V39z"/>
+		<path id="Fill-3" sketch:type="MSShapeGroup" fill="#292F3C" d="M66.864,19.25c0-7.881-6.556-14.422-14.645-14.422h-7.455v28.845
+			h7.455C60.308,33.673,66.864,27.132,66.864,19.25L66.864,19.25z M40.059,0.163h12.16c10.68,0,19.35,8.578,19.35,19.087
+			c0,10.51-8.67,19.088-19.35,19.088h-12.16V0.163z"/>
+		<path id="Fill-6" sketch:type="MSShapeGroup" fill="#292F3C" d="M76.307,13.781h4.546v24.557h-4.546V13.781z M75.566,6.757
+			c0-1.662,1.321-3.002,3.014-3.002c1.639,0,2.96,1.341,2.96,3.002c0,1.663-1.321,3.057-2.96,3.057
+			C76.888,9.814,75.566,8.42,75.566,6.757L75.566,6.757z"/>
+		<path id="Fill-8" sketch:type="MSShapeGroup" fill="#292F3C" d="M86.934,0.163h23.791v4.611H91.692v8.954h16.601V18.5H91.692
+			v15.12h18.556v4.719H86.934V0.163z"/>
+		<path id="Fill-9" sketch:type="MSShapeGroup" fill="#292F3C" d="M143.98,38.338V7.884l-12.002,16.62l-11.949-16.62v30.454h-4.705
+			V0.162h4.971l11.684,16.3l11.684-16.3h5.023v38.176H143.98z"/>
+		<path id="Fill-10" sketch:type="MSShapeGroup" fill="#292F3C" d="M155.107,38.337V34.31l9.894-11.735
+			c0.376-0.555,0.582-1.145,0.582-1.77c0-1.667-1.335-3.09-2.979-3.09c-1.267,0-2.396,0.902-2.808,2.152l-0.239,0.729l-4.382-0.937
+			l0.239-0.903c0.856-3.264,3.835-5.486,7.189-5.486c2.021,0,3.868,0.729,5.307,2.153c1.403,1.423,2.19,3.333,2.19,5.382
+			c0,1.597-0.513,3.159-1.438,4.479l-0.033,0.035l-7.053,8.436h8.523v4.583H155.107z"/>
+		<path id="Fill-11" sketch:type="MSShapeGroup" fill="#292F3C" d="M173.971,36.219c-0.309-0.277-0.65-0.659-0.959-1.111
+			l-0.514-0.729l3.767-2.708l0.479,0.694c0.787,1.111,2.02,1.841,3.354,1.841c2.19,0,4.073-1.876,4.073-4.028
+			c0-2.256-1.883-4.2-4.073-4.2c-0.616,0-1.232,0.208-1.814,0.521l-0.308,0.139l-4.177-1.18l3.149-11.875h11.469V18.2l-7.908-0.035
+			l-0.891,3.298h0.479c2.328,0,4.519,0.903,6.162,2.499c0.821,0.799,1.472,1.771,1.917,2.848c0.411,1.076,0.65,2.223,0.65,3.367
+			c0,2.257-0.924,4.41-2.567,6.041c-0.821,0.799-1.78,1.424-2.841,1.875c-1.027,0.383-2.157,0.521-3.321,0.521
+			C177.702,38.615,175.58,37.852,173.971,36.219"/>
+	</g>
+</g>
+</svg>

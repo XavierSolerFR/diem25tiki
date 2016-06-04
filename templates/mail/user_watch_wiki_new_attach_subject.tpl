@@ -1,0 +1,1 @@
+{* $Id: user_watch_wiki_new_attach_subject.tpl 58610 2016-05-17 14:28:41Z eromneg $ *}{tr}New {$prefs.mail_template_custom_text}attachment on %s, page{/tr} {$mail_page|sefurl}, {tr}by{/tr} {$mail_user|username}

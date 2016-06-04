@@ -1,0 +1,1 @@
+{* $Id: newsletter_welcome_subject.tpl 58602 2016-05-16 09:35:24Z eromneg $ *}{tr}Welcome to %s at %s{/tr}

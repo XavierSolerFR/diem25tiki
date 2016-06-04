@@ -1,0 +1,1 @@
+{* $Id: new_user_notification_subject.tpl 58601 2016-05-16 08:44:18Z eromneg $ *}{tr}New {$prefs.mail_template_custom_text}user registration{/tr} {tr}at{/tr} {$mail_site}

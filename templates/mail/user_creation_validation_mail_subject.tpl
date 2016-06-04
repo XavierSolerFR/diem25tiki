@@ -1,0 +1,1 @@
+{* $Id: user_creation_validation_mail_subject.tpl 58605 2016-05-16 13:25:32Z eromneg $ *}{* -*- coding:utf-8 -*- *}{tr}Your personal access to{/tr} {if !empty($prefs.sitetitle)}{$prefs.sitetitle} - {/if}{$mail_site}

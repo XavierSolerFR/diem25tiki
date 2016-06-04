@@ -1,0 +1,1 @@
+{* $Id: user_watch_forum_subject.tpl 58609 2016-05-17 14:13:02Z eromneg $ *}{if $new_topic}{tr}New {$prefs.mail_template_custom_text}forum topic in <{$mail_forum|truncate:20:"..."}> by {$mail_author|username}:{/tr}{else}	{tr}New {$prefs.mail_template_custom_text}forum post in <{$mail_forum|truncate:20:"..."}> by {$mail_author|username}:{/tr}{/if} {$mail_title|truncate:50:"..."}

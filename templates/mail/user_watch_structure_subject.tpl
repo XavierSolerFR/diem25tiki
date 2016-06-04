@@ -1,0 +1,1 @@
+{* $Id: user_watch_structure_subject.tpl 58610 2016-05-17 14:28:41Z eromneg $ *}{$prefs.mail_template_custom_text}{tr}Structure modified{/tr}

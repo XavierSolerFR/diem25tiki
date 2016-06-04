@@ -1,0 +1,1 @@
+{* $Id: submission_notification_subject.tpl 58604 2016-05-16 11:56:52Z eromneg $ *}{tr}New {$prefs.mail_template_custom_text}article submitted at %s{/tr}

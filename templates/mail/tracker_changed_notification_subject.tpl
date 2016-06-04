@@ -1,0 +1,1 @@
+{* $Id: tracker_changed_notification_subject.tpl 58604 2016-05-16 11:56:52Z eromneg $ *}{$prefs.mail_template_custom_text}"{tr}{$mail_trackerName}{/tr}" {tr}item{/tr} "{$mail_item_desc}" {tr}was modified at{/tr} {$server_name} {tr}by{/tr} "{if not empty($user)}{$user|username}{else}{tr}Anonymous{/tr}{/if}"

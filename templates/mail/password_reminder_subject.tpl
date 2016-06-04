@@ -1,0 +1,1 @@
+{* $Id: password_reminder_subject.tpl 58603 2016-05-16 11:16:41Z eromneg $ *}{tr}Your account information for %s{/tr}

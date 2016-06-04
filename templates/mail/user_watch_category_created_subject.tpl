@@ -1,0 +1,1 @@
+{* $Id: user_watch_category_created_subject.tpl 58608 2016-05-17 10:44:20Z eromneg $ *}{$prefs.mail_template_custom_text}{tr}Category{/tr} {$categoryName} {tr}created{/tr}
