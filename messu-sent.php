@@ -6,7 +6,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: messu-sent.php 57942 2016-03-17 19:25:28Z jyhem $
+// $Id: messu-sent.php 58792 2016-06-05 16:52:09Z jonnybradley $
 
 $section = 'user_messages';
 require_once ('tiki-setup.php');
@@ -62,7 +62,11 @@ if (isset($_REQUEST['filter'])) {
 }
 if (!isset($_REQUEST["priority"])) $_REQUEST["priority"] = '';
 if (!isset($_REQUEST["flag"])) $_REQUEST["flag"] = '';
-if (!isset($_REQUEST["flagval"])) $_REQUEST["flagval"] = '';
+if (!isset($_REQUEST["flagval"])) {
+	$_REQUEST["flagval"] = '';
+} else {
+	$_REQUEST["flagval"] = $_REQUEST["flagval"] === 'y' ? 'y' : 'n';
+}
 if (!isset($_REQUEST["sort_mode"])) {
 	$sort_mode = 'date_desc';
 } else {

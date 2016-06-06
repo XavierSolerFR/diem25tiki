@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: CleanVendors.php 58756 2016-06-01 16:23:39Z jonnybradley $
+// $Id: CleanVendors.php 58793 2016-06-05 17:29:41Z jonnybradley $
 
 namespace Tiki\Composer;
 use Composer\Script\Event;
@@ -58,6 +58,7 @@ class CleanVendors
 		$fs->remove($vendors . 'codemirror/codemirror/mode/tiki');
 		self::removeMultiple($vendors . 'cwspear/bootstrap-hover-dropdown', ['bootstrap-hover-dropdown.min.js', 'demo.html']);
 		$fs->remove($vendors . 'jcapture-applet/jcapture-applet/src');
+		$fs->remove($vendors . 'jcapture-applet/jcapture-applet/applet.php');
 		$fs->remove($vendors . 'jquery/jquery-s5/lib/dompdf/www');
 		self::removeMultiple($vendors . 'jquery/jquery-sheet', ['jquery-1.10.2.min.js', 'jquery-ui', 'parser.php', 'parser/formula/formula.php']);
 		self::removeMultiple($vendors . 'jquery/jquery-timepicker-addon',

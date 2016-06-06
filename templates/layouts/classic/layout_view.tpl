@@ -1,4 +1,4 @@
-{* $Id: layout_view.tpl 58006 2016-03-19 18:48:36Z jyhem $ *}<!DOCTYPE html>
+{* $Id: layout_view.tpl 58782 2016-06-04 08:30:23Z chibaguy $ *}<!DOCTYPE html>
 <html lang="{if !empty($pageLang)}{$pageLang}{else}{$prefs.language}{/if}"{if $prefs.feature_bidi eq 'y'} dir="rtl"{/if}{if !empty($page_id)} id="page_{$page_id}"{/if}>
 <head>
     {include file='header.tpl'}
@@ -44,9 +44,7 @@
                                 {modulelist zone=pagetop}
                             {/if}
                             {error_report}
-                            <div class="pull-right">
-                                {block name=quicknav}{/block}
-                            </div>
+                            {block name=quicknav}{/block}
                             {block name=title}{/block}
                             {block name=navigation}{/block}
                             {block name=content}{/block}
@@ -64,9 +62,7 @@
                                 {modulelist zone=pagetop}
                             {/if}
                             {error_report}
-                            <div class="pull-right">
-                                {block name=quicknav}{/block}
-                            </div>
+                            {block name=quicknav}{/block}
                             {block name=title}{/block}
                             {block name=navigation}{/block}
                             {block name=content}{/block}
@@ -86,9 +82,7 @@
                                 {modulelist zone=pagetop}
                             {/if}
                             {error_report}
-                            <div class="pull-right">
-                                {block name=quicknav}{/block}
-                            </div>
+                            {block name=quicknav}{/block}
                             {block name=title}{/block}
                             {block name=navigation}{/block}
                             {block name=content}{/block}
@@ -108,9 +102,7 @@
                                 {modulelist zone=pagetop}
                             {/if}
                             {error_report}
-                            <div class="pull-right">
-                                {block name=quicknav}{/block}
-                            </div>
+                            {block name=quicknav}{/block}
                             {block name=title}{/block}
                             {block name=navigation}{/block}
                             {block name=content}{/block}

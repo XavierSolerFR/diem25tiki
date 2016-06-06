@@ -1,4 +1,4 @@
-{* $Id: list_file_gallery.tpl 56143 2015-09-05 01:40:26Z jyhem $ *}
+{* $Id: list_file_gallery.tpl 58792 2016-06-05 16:52:09Z jonnybradley $ *}
 
 {if (isset($tree)
 	and count($tree) gt 0
@@ -77,7 +77,7 @@
 			<form name="fgalformid" id="fgalform" method="post" action="{if !empty($filegals_manager)}{query _type='relative' filegals_manager=$filegals_manager|escape}{else}{query _type='relative'}{/if}" enctype="multipart/form-data">
 				<input type="hidden" name="galleryId" value="{$gal_info.galleryId|escape}">
 				<input type="hidden" name="find" value="{$find|escape}">
-				{if !empty($smarty.request.show_details)}<input type="hidden" name="show_details" value="{$smarty.request.show_details}">{/if}
+				{if !empty($show_details)}<input type="hidden" name="show_details" value="{$show_details}">{/if}
 
 				{if $prefs.fgal_asynchronous_indexing eq 'y'}<input type="hidden" name="fast" value="y">{/if}
 				{if !empty($sort_mode)}<input type="hidden" name="sort_mode" value="{$sort_mode|escape}">{/if}

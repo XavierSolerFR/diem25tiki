@@ -1,4 +1,4 @@
-// $Id: tiki-selectors-for-options.less 58768 2016-06-02 15:46:22Z chibaguy $
+// $Id: tiki-selectors-for-options.less 58783 2016-06-04 13:57:04Z chibaguy $
 // This file is for additional LESS rules beyond what are in variables.less.
 // Image path example:
 // body {
@@ -23,9 +23,11 @@
 	background: @topbar_container_background;
 }
 
-.top_modules {
-	a {
-		color: #ffffff;
+.top_modules,
+.topbar {
+	a,
+	label {
+		color: @header-color;
 	}
 }
 

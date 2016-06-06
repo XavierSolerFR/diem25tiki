@@ -1,4 +1,4 @@
-// $Id: tiki-selectors.less 58768 2016-06-02 15:46:22Z chibaguy $
+// $Id: tiki-selectors.less 58783 2016-06-04 13:57:04Z chibaguy $
 // This file is for additional LESS rules beyond what are in variables.less.
 // Image path example:
 // body {
@@ -225,7 +225,8 @@ textarea,
 		padding-top: 2px;
 	}
 	.form-control,
-	.btn {
+	.btn,
+	label {
 		font-size: 12px;
 		height: 20px;
 		padding-top: 1px;
@@ -271,3 +272,5 @@ header.header {
 .popover {
 	color: @text-color;
 }
+
+label a:hover { text-decoration: none; }

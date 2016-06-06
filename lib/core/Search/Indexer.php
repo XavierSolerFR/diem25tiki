@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Indexer.php 57951 2016-03-17 19:32:04Z jyhem $
+// $Id: Indexer.php 58784 2016-06-04 16:40:13Z jonnybradley $
 
 class Search_Indexer
 {
@@ -79,9 +79,9 @@ class Search_Indexer
 
 	public function update(array $objectList)
 	{
-		$this->searchIndex->invalidateMultiple($objectList);
 
 		foreach ($objectList as $object) {
+			$this->searchIndex->invalidateMultiple(array($object));
 			$this->addDocument($object['object_type'], $object['object_id']);
 		}
 

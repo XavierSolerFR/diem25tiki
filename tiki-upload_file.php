@@ -6,7 +6,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-upload_file.php 58199 2016-04-06 14:31:34Z jonnybradley $
+// $Id: tiki-upload_file.php 58792 2016-06-05 16:52:09Z jonnybradley $
 
 $section = 'file_galleries';
 $isUpload = false;
@@ -229,7 +229,7 @@ if ( $prefs['javascript_enabled'] != 'y' or ! $isUpload ) {
 	$smarty->assign('mid', 'tiki-upload_file.tpl');
 	if ( ! empty( $_REQUEST['filegals_manager'] ) ) {
 		$smarty->assign('filegals_manager', $_REQUEST['filegals_manager']);
-		$smarty->assign('insertion_syntax', isset($_REQUEST['insertion_syntax']) ? $_REQUEST['insertion_syntax'] : '');
+		$smarty->assign('insertion_syntax', $jitRequest->insertion_syntax->word());
 		$smarty->display("tiki_full.tpl");
 	} else {
 		$smarty->display("tiki.tpl");

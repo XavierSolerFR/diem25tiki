@@ -9,7 +9,7 @@
  * @copyright (c) Copyright 2002-2016 by authors of the Tiki Wiki CMS Groupware Project. All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * @licence Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
  */
-// $Id: smarty.php 57948 2016-03-17 19:29:43Z jyhem $
+// $Id: smarty.php 58795 2016-06-05 18:18:37Z jonnybradley $
 
 // die if called directly.
 if (strpos($_SERVER['SCRIPT_NAME'], basename(__FILE__)) !== FALSE) {
@@ -477,9 +477,17 @@ class Smarty_Tiki extends Smarty
 				$this->addTemplateDir(TIKI_PATH . "/$theme_path/");
 				//if theme_admin is empty, use main theme and site_layout instead of site_layout_admin
 				if ($section != "admin" || empty($prefs['theme_admin'])) {
-					$this->addTemplateDir(TIKI_PATH . "/$theme_path/" . 'layouts/' . $prefs['site_layout'] . '/');
+					$layout = TIKI_PATH . "/$theme_path/" . 'layouts/' . $prefs['site_layout'] . '/';
+					if (! is_readable($layout)) {
+						$layout = TIKI_PATH . "/$theme_path/" . 'layouts/basic/';
+					}
+					$this->addTemplateDir($layout);
 				} else {
-					$this->addTemplateDir(TIKI_PATH . "/$theme_path/" . 'layouts/' . $prefs['site_layout_admin'] . '/');
+					$layout = TIKI_PATH . "/$theme_path/" . 'layouts/' . $prefs['site_layout_admin'] . '/';
+					if (! is_readable($layout)) {
+						$layout = TIKI_PATH . "/$theme_path/" . 'layouts/basic/';
+					}
+					$this->addTemplateDir($layout);
 				}
 				$this->addTemplateDir(TIKI_PATH . "/$theme_path/" . 'layouts/');
 
@@ -487,9 +495,17 @@ class Smarty_Tiki extends Smarty
 				$this->addTemplateDir(TIKI_PATH . "/$main_theme_path/");
 				//if theme_admin is empty, use main theme and site_layout instead of site_layout_admin
 				if ($section != "admin" || empty($prefs['theme_admin'])) {
-					$this->addTemplateDir(TIKI_PATH . "/$main_theme_path/" . 'layouts/' . $prefs['site_layout'] . '/');
+					$layout = TIKI_PATH . "/$main_theme_path/" . 'layouts/' . $prefs['site_layout'] . '/';
+					if (! is_readable($layout)) {
+						$layout = TIKI_PATH . "/$main_theme_path/" . 'layouts/basic/';
+					}
+					$this->addTemplateDir($layout);
 				} else {
-					$this->addTemplateDir(TIKI_PATH . "/$main_theme_path/" . 'layouts/' . $prefs['site_layout_admin'] . '/');
+					$layout = TIKI_PATH . "/$main_theme_path/" . 'layouts/' . $prefs['site_layout_admin'] . '/';
+					if (! is_readable($layout)) {
+						$layout = TIKI_PATH . "/$main_theme_path/" . 'layouts/basic/';
+					}
+					$this->addTemplateDir($layout);
 				}
 			}
 			// Tikidomain main template folder
@@ -508,9 +524,17 @@ class Smarty_Tiki extends Smarty
 		
 		//Layout templates
 		if (!empty($prefs['site_layout']) && ($section != "admin" || empty($prefs['theme_admin']))){ //use the admin layout if in the admin section
-			$this->addTemplateDir($this->main_template_dir . '/layouts/' . $prefs['site_layout'] . '/');
+			$layout = $this->main_template_dir . '/layouts/' . $prefs['site_layout'] . '/';
+			if (! is_readable($layout)) {
+				$layout =  $this->main_template_dir . '/layouts/basic/';
+			}
+			$this->addTemplateDir($layout);
 		} elseif (!empty($prefs['site_layout_admin'])) {
-			$this->addTemplateDir($this->main_template_dir . '/layouts/' . $prefs['site_layout_admin'] . '/');
+			$layout = $this->main_template_dir . '/layouts/' . $prefs['site_layout_admin'] . '/';
+			if (! is_readable($layout)) {
+				$layout =  $this->main_template_dir . '/layouts/basic/';
+			}
+			$this->addTemplateDir($layout);
 		}
 		$this->addTemplateDir($this->main_template_dir.'/layouts/');
 		$this->addTemplateDir($this->main_template_dir);

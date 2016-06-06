@@ -6,7 +6,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-list_file_gallery.php 58313 2016-04-12 17:06:29Z jonnybradley $
+// $Id: tiki-list_file_gallery.php 58792 2016-06-05 16:52:09Z jonnybradley $
 
 $inputConfiguration = array(
 	array( 'staticKeyFilters' => array(
@@ -947,7 +947,7 @@ if (isset($_GET['slideshow'])) {
 $smarty->assign('thumbnail_size', $prefs['fgal_thumb_max_size']);
 
 if (isset($_REQUEST['show_details'])) {
-	$show_details = $_REQUEST['show_details'];
+	$show_details = $_REQUEST['show_details'] === 'y' ? 'y' : 'n';
 	setCookieSection('show_details', $show_details);
 } else {
 	$show_details = getCookie('show_details', null, 'n');
