@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: userslib.php 58470 2016-04-27 19:42:12Z dlucio $
+// $Id: userslib.php 58805 2016-06-06 13:41:18Z jonnybradley $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER['SCRIPT_NAME'], basename(__FILE__)) !== false) {
@@ -2497,6 +2497,12 @@ class UsersLib extends TikiLib
 		return $this->get_page_name_from_id($bestLangPageId);
 	}
 
+	/**
+	 * Get the user's home page and checks for grouphome pref
+	 *
+	 * @param string $user        User login
+	 * @return string             Home page
+	 */
 	function get_user_default_homepage2($user)
 	{
 		global $prefs;

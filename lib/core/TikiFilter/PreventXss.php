@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: PreventXss.php 57949 2016-03-17 19:30:36Z jyhem $
+// $Id: PreventXss.php 58801 2016-06-06 09:57:24Z jonnybradley $
 
 class TikiFilter_PreventXss implements Zend\Filter\FilterInterface
 {
@@ -91,6 +91,7 @@ class TikiFilter_PreventXss implements Zend\Filter\FilterInterface
 					'onfocusin',
 					'onfocusout',
 					'onhelp',
+					'onhashchange',
 					'oninput',
 					'onkeydown',
 					'onkeypress',
@@ -135,7 +136,7 @@ class TikiFilter_PreventXss implements Zend\Filter\FilterInterface
 					'xmlns'
 			);
 
-			$ra_as_content = array('vbscript', 'expression', 'blink', 'mocha', 'livescript', 'url', 'alert');
+			$ra_as_content = array('vbscript', 'expression', 'blink', 'mocha', 'livescript', 'url', 'alert', 'eval');
 			$ra_javascript = array('javascript');
 	///		$ra_style = array('style'); // Commented as it has been considered as a bit too aggressive
 		}

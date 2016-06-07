@@ -6,7 +6,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-change_password.php 57938 2016-03-17 19:22:32Z jyhem $
+// $Id: tiki-change_password.php 58803 2016-06-06 13:21:34Z jonnybradley $
 
 $inputConfiguration = array(
 	array( 'staticKeyFilters' => array(
@@ -102,18 +102,20 @@ if (isset($_REQUEST["change"])) {
 		$cryptlib->onChangeUserPassword($_REQUEST["oldpass"], $_REQUEST["pass"]);
 	}
 
+	$homePageUrl = $userlib->get_user_default_homepage2($_REQUEST['user']);
+
 	// Check if a wizard should be run.
 	// If a wizard is run, it will return to the $url location when it has completed. Thus no code after $wizardlib->onLogin will be executed
 	$wizardlib = TikiLib::lib('wizard');
 	$force = $_REQUEST["user"] == 'admin';
-	$wizardlib->onLogin($user, $prefs['tikiIndex'], $force);
+	$wizardlib->onLogin($user, $homePageUrl, $force);
 
 	// Go to homepage or url_after_validation
 	$accesslib = TikiLib::lib('access');
 	if (!empty($prefs['url_after_validation']) && !empty($_REQUEST['new_user_validation'])) {
 		$access->redirect($prefs['url_after_validation']);
 	} else {
-		$accesslib->redirect($prefs['tikiIndex']);
+		$accesslib->redirect($homePageUrl);
 	}
 }
 ask_ticket('change-password');

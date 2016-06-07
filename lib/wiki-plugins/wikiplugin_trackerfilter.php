@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_trackerfilter.php 58393 2016-04-21 13:22:59Z eromneg $
+// $Id: wikiplugin_trackerfilter.php 58797 2016-06-06 08:09:41Z rjsmelo $
 
 function wikiplugin_trackerfilter_info()
 {
@@ -383,6 +383,12 @@ function wikiplugin_trackerfilter($data, $params)
 				$smarty->assign_by_ref('f_fields', $f_fields);
 			}
 			$filters = array();	// clear out filters set up earlier which default to all fields if not exporting
+		} else {
+			$f_fields = array();
+			foreach($formats as $fid => $fformat){
+				$f_fields['x_'.$fid] = $fformat;  // x_ is for not exact
+			}
+			$smarty->assign_by_ref('f_fields', $f_fields);
 		}
 	}
 	if ($displayList == 'n' || !empty($_REQUEST['filter']) || $noflipflop == 'y' || $prefs['javascript_enabled'] != 'y' || (isset($_SESSION['tiki_cookie_jar']["show_trackerFilter$iTrackerFilter"]) && $_SESSION['tiki_cookie_jar']["show_trackerFilter$iTrackerFilter"] == 'y')) {

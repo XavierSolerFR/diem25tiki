@@ -1,4 +1,4 @@
-{* $Id: tiki-view_tracker.tpl 58674 2016-05-23 17:50:23Z jonnybradley $ *}
+{* $Id: tiki-view_tracker.tpl 58797 2016-06-06 08:09:41Z rjsmelo $ *}
 {title url=$trackerId|sefurl:'tracker' adm="trackers"}{$tracker_info.name}{/title}
 {if !empty($tracker_info.description)}
 	{if $tracker_info.descriptionIsParsed eq 'y'}
@@ -79,7 +79,7 @@
 			{/if}
 			{if $tiki_p_export_tracker eq "y"}
 				<li>
-					<a class="export dialog" href="{service controller=tracker action=export trackerId=$trackerId}">
+					<a class="export dialog" href="{service controller=tracker action=export trackerId=$trackerId filterfield=$filterfield filtervalue=$filtervalue}">
 						{icon name="export"} {tr}Export{/tr}
 					</a>
 				</li>
@@ -91,7 +91,9 @@
 							data: {
 								controller: 'tracker',
 								action: 'export',
-								trackerId: {{$trackerId}}
+								trackerId: {{$trackerId}},
+								filterfield: '{{$filterfield}}',
+								filtervalue: '{{$filtervalue}}'
 							}
 						});
 						return false;

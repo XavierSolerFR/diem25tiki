@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_box.php 57943 2016-03-17 19:26:11Z jyhem $
+// $Id: wikiplugin_box.php 58810 2016-06-07 06:26:33Z rjsmelo $
 
 function wikiplugin_box_info()
 {
@@ -155,5 +155,6 @@ function wikiplugin_box($data, $params)
 	// Insert "\n" at data begin if absent (so start-of-line-sensitive syntaxes will be parsed OK)
 	//if (substr($data, 0, 1) != "\n") $data = "\n".$data;
 	//$data = $tikilib->parse_data($data);
+	$data = TikiLib::lib('parser')->protectSpecialChars($data); //they are unprotected before calling the plugins
 	return $begin . $data . $end;
 }
