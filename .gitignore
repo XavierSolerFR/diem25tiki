@@ -17,7 +17,6 @@
 # Ignore PhpStorm
 .idea/
 #ignore localdev
-/Services
 /TEST.php
 /scss.php
 /.svn/
