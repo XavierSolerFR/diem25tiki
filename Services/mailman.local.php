@@ -7,5 +7,5 @@
  */
 $pearpath="/home3/solerx/php";
 $MailManSite="http://diem25fr.org/mailman/admin";
-$MailManPass="Platon+1993";
-$MailManListe = array("volontaires_diem25fr.org", "discussion_diem25fr.org");
+$MailManPass="";
+$MailManListe = array("", "");
