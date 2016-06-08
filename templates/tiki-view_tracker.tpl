@@ -1,4 +1,4 @@
-{* $Id: tiki-view_tracker.tpl 58797 2016-06-06 08:09:41Z rjsmelo $ *}
+{* $Id: tiki-view_tracker.tpl 58823 2016-06-07 22:23:16Z rjsmelo $ *}
 {title url=$trackerId|sefurl:'tracker' adm="trackers"}{$tracker_info.name}{/title}
 {if !empty($tracker_info.description)}
 	{if $tracker_info.descriptionIsParsed eq 'y'}
@@ -93,7 +93,7 @@
 								action: 'export',
 								trackerId: {{$trackerId}},
 								filterfield: '{{$filterfield}}',
-								filtervalue: '{{$filtervalue}}'
+								filtervalue: {{$filtervalue|json_encode}}
 							}
 						});
 						return false;

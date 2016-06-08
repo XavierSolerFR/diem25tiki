@@ -6,7 +6,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-tracker_http_request.php 57937 2016-03-17 19:20:19Z jyhem $
+// $Id: tiki-tracker_http_request.php 58818 2016-06-07 16:19:11Z jonnybradley $
 
 // TODO - refactor to ajax-services then KILME
 
@@ -79,9 +79,7 @@ switch ($filterFieldHere['type']) {
 	
 	case 'r': // r = itemlink - disallow itemlink/category, allow itemlink/itemlink, itemlink/simplefield types like text
 		switch ($filterFieldThere['type']) {
-			case 'r': // r = itemlink tested 
-			break;
-			
+			case 'r': // r = itemlink tested
 			case 't': // textfield tested
 			default:
 				$handler = $trklib->get_field_handler($filterFieldHere);

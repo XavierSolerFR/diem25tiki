@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: DynamicList.php 57949 2016-03-17 19:30:36Z jyhem $
+// $Id: DynamicList.php 58819 2016-06-07 17:08:42Z jonnybradley $
 
 /**
  * Handler class for DynamicList
@@ -251,5 +251,16 @@ $("input[name=ins_' . $filterFieldIdHere . '], select[name=ins_' . $filterFieldI
 		}
 	}
 
+	function getDocumentPart(Search_Type_Factory_Interface $typeFactory)
+	{
+		$item = $this->getValue();
+		$baseKey = $this->getBaseKey();
+
+		$out = array(
+			$baseKey => $typeFactory->identifier($item),
+			"{$baseKey}_text" => $typeFactory->sortable($this->renderInnerOutput()),
+		);
+		return $out;
+	}
 }
 

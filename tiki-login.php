@@ -6,7 +6,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-login.php 58237 2016-04-07 13:30:42Z jonnybradley $
+// $Id: tiki-login.php 58820 2016-06-07 17:50:08Z jonnybradley $
 
 $inputConfiguration = array(
 	array( 'staticKeyFilters' => array(
@@ -85,8 +85,6 @@ if (isset($_REQUEST['su'])) {
 			$finalusers = $userlib->find_best_user(array($_REQUEST['username']), '', 'login');
 			if (count($finalusers[0]) === 1 && !empty($finalusers[0])) {
 				$_REQUEST['username'] = $finalusers[0];
-			} else {
-				$_REQUEST['username'] = '';
 			}
 		}
 		if ($userlib->user_exists($_REQUEST['username'])) {
