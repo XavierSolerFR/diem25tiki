@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_quote.php 57942 2016-03-17 19:25:28Z jyhem $
+// $Id: wikiplugin_quote.php 58835 2016-06-08 13:27:55Z chibaguy $
 
 function wikiplugin_quote_info()
 {
@@ -41,6 +41,7 @@ function wikiplugin_quote($data, $params)
 	}
     
 	$begin  = "<div class='quote'><div class='quoteheader'>";
+	$begin .= "<i class=\"fa fa-quote-left\" aria-hidden=\"true\"></i> ";
     $begin .= "$caption</div><div class='quotebody'>";
 	$end = "</div></div>";
 

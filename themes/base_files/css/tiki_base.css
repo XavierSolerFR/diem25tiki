@@ -1,4 +1,4 @@
-/* $Id: tiki_base.css 58755 2016-06-01 16:05:45Z chibaguy $
+/* $Id: tiki_base.css 58835 2016-06-08 13:27:55Z chibaguy $
 	This Tiki Wiki CMS Groupware file contains global design
 	and layout properties. */
 .margin-bottom-xs {
@@ -4272,9 +4272,11 @@ body.tiki_wiki #comments {
   margin-left: -3px;
 }
 .quoteheader {
-  background: url('../../../img/icons/quoteleft.gif') no-repeat;
-  padding-left: 50px;
   height: 35px;
+}
+.quoteheader .fa {
+  font-size: 34px;
+  color: #aaaaaa;
 }
 .quotebody {
   margin-left: 35px;

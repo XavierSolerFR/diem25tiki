@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Trackerrender.php 57951 2016-03-17 19:32:04Z jyhem $
+// $Id: Trackerrender.php 58828 2016-06-08 11:05:01Z jonnybradley $
 
 class Search_Formatter_ValueFormatter_Trackerrender extends Search_Formatter_ValueFormatter_Abstract
 {
@@ -91,6 +91,7 @@ class Search_Formatter_ValueFormatter_Trackerrender extends Search_Formatter_Val
 				'list_mode' => $this->list_mode,
 				'editable' => $this->editable,
 				'editgroup' => $this->group,
+				'showpopup' => $field['isMain'],
 			)
 		);
 		return '~np~' . $rendered . '~/np~';

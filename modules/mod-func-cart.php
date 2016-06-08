@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: mod-func-cart.php 57942 2016-03-17 19:25:28Z jyhem $
+// $Id: mod-func-cart.php 58833 2016-06-08 12:37:51Z jonnybradley $
 
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
   header("location: index.php");
@@ -98,7 +98,7 @@ function module_cart($mod_reference, & $module_params)
 
 	$module_params = array_merge($defaults, $module_params);
 
-	if ($jitRequest->update->text() && $cart = $jitRequest->cart->array()) {
+	if ($jitRequest->update->text() && $cart = $jitRequest->cart->asArray()) {
 		foreach ($cart as $code => $quantity) {
 			$cartlib->update_quantity($code, $quantity);
 		}

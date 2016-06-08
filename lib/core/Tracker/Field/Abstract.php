@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Abstract.php 57949 2016-03-17 19:30:36Z jyhem $
+// $Id: Abstract.php 58828 2016-06-08 11:05:01Z jonnybradley $
 
 
 /**
@@ -252,12 +252,20 @@ abstract class Tracker_Field_Abstract implements Tracker_Field_Interface, Tracke
 			$field = $this->trackerDefinition->getField($id);
 
 			if (!isset($this->itemData[$field['fieldId']])) {
-				foreach ($this->itemData['field_values'] as $fieldVal) {
-					if ($fieldVal['fieldId'] == $id) {
-						if (isset($fieldVal['value'])) {
-							$this->itemData[$field['fieldId']] = $fieldVal['value'];
+				if (! empty($this->itemData['field_values'])) {
+					foreach ($this->itemData['field_values'] as $fieldVal) {
+						if ($fieldVal['fieldId'] == $id) {
+							if (isset($fieldVal['value'])) {
+								$this->itemData[$field['fieldId']] = $fieldVal['value'];
+							}
 						}
 					}
+				} else {
+					$this->itemData[$field['fieldId']] = TikiLib::lib('trk')->get_item_value(
+						$this->trackerDefinition->getConfiguration('trackerId'),
+						$this->itemData['itemId'],
+						$id
+					);
 				}
 			}
 			$handler = $factory->getHandler($field, $this->itemData);

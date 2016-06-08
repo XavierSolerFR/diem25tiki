@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: twversion.class.php 58450 2016-04-25 17:04:06Z jonnybradley $
+// $Id: twversion.class.php 58862 2016-06-08 16:41:49Z jonnybradley $
 
 // Should generally be instantiated from tiki-setup.php
 
@@ -27,7 +27,7 @@ class TWVersion
 		$this->branch 	= 'stable';
 
 		// Set everything else, including defaults.
-		$this->version 	= '15.1svn';	// needs to have no spaces for releases
+		$this->version 	= '15.2svn';	// needs to have no spaces for releases
 		$this->star	= 'Situla';
 		$this->releases	= array();
 
@@ -231,6 +231,7 @@ class TWVersion
 				'15.0alpha',
 				'15.0beta',
 				'15.0',
+				'15.1',
 			);
 	}
 

@@ -1,4 +1,4 @@
-// $Id: tiki-wikipages_and_plugins.less 57855 2016-03-12 14:53:41Z chibaguy $
+// $Id: tiki-wikipages_and_plugins.less 58835 2016-06-08 13:27:55Z chibaguy $
 // /***** Wiki *****/
 @imagePath: ~"../../../img/";
 @imagePathToIcons: ~"../../../img/icons/";
@@ -798,9 +798,11 @@ body.tiki_wiki #comments {
 
 // /* wikiplugin quote */
 .quoteheader {
-	background: url('@{imagePathToIcons}quoteleft.gif') no-repeat;
-	padding-left: 50px;
 	height: 35px;
+	.fa {
+		font-size: 34px;
+		color: #aaaaaa;
+	}
 }
 
 .quotebody {
