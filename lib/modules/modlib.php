@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: modlib.php 57947 2016-03-17 19:29:02Z jyhem $
+// $Id: modlib.php 58869 2016-06-09 15:15:27Z jyhem $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
@@ -640,7 +640,12 @@ class ModLib extends TikiLib
 			return true;
 		}
 
-		$categories = (array) $params['category'];
+		// Multi-value params of custom modules need transformation into an array
+		if ( is_array($params['category']) ) {
+			$categories = (array) $params['category'];
+		} else {
+			$categories = explode(';',$params['category']);
+		}
 
 		return ! $this->matches_any_in_category_list($categories, $catIds, ! empty($params['subtree']));
 	}
@@ -666,7 +671,12 @@ class ModLib extends TikiLib
 			return false;
 		}
 
-		$categories = (array) $params['nocategory'];
+		// Multi-value params of custom modules need transformation into an array
+		if ( is_array($params['nocategory']) ) {
+			$categories = (array) $params['nocategory'];
+		} else {
+			$categories = explode(';',$params['nocategory']);
+		}
 
 		return $this->matches_any_in_category_list($categories, $catIds, ! empty($params['subtree']));
 	}

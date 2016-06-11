@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services">
+    <!--
+
+    Important: This file is part of Tiki.
+               If you want to load additional services, please create
+               a 'custom.xml' file to avoid conflicts.
+
+    -->
+    <services>
+        <!-- Proxy that will be replaced at runtime -->
+        <service id="tikiaddon.diem25.mailmam" class="tikiaddon\diem25\services_mailman">
+            <file>%kernel.root_dir%/addons/diem25_mailman/lib/services_mailman.php</file>
+        </service>
+        </services>
+    </container>

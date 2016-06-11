@@ -1,0 +1,7 @@
+{
+  "0.1.*": {
+    "remove": [
+      {"type":"wiki_page", "ref":"mailman", "profile":"001_mailmanpage"}
+    ],
+  }
+}
