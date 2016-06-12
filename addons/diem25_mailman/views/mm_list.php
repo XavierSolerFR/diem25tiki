@@ -18,6 +18,8 @@ function mm_list($data, $params){
 foreach($mailmanconfs as $mm){
     $ret .=$mm->name .'<br/>';
 }
+    $content = \TikiLib::lib('tiki')->httprequest("https://diem25fr.org/articles?topic=1");
+    $ret .=htmlentities($content);
     $app = \TikiAddons::get('diem25_mailman');
     //$ServiceMailMan= $app->lib('services_mailman');
     $ret.="<br/>Fin";

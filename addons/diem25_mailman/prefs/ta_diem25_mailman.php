@@ -26,7 +26,7 @@ function prefs_ta_diem25_mailman_list()
         ),
         'ta_diem25_mailman_MailmanList' =>array(
             'name' => tra('List of Mailman'),
-            'description' => tra('List of Mailman json {mailman:[Name:{site:"",pass:"",list:"",},Name2:{site2:"",pass2:"",list2:"",},]} '),
+            'description' => tra('List of Mailman json [{"Name":"", "site":"","pass":"","list":"",},...] '),
 
             'type' => 'textarea',
             'size' => '8',
