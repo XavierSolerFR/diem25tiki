@@ -39,10 +39,12 @@
  * @version   GIT: $Id:$
  * @link      http://php-mailman.sf.net/
  */
+namespace tikiaddon\diem25\mailman;
+
 $pearpath=$prefs['ta_diem25_mailman_pearpath'];
 ini_set("include_path", "$pearpath:" . ini_get("include_path") );
 
-require_once 'HTTP/Request2.php';
+//require_once 'HTTP/Request2.php';
 //require_once 'Services/Mailman/Exception.php';
 
 /**
@@ -56,9 +58,9 @@ require_once 'HTTP/Request2.php';
  * @version   Release: 0.1.0
  * @link      http://php-mailman.sf.net/
  */
-namespace tikiaddon\diem25\mailman;
 
-class Services_Mailman_Exception extends Exception {}
+
+class Services_Mailman_Exception extends \Exception {}
 
 class services_mailman
 {
@@ -96,12 +98,12 @@ class services_mailman
      *
      * @return Services_Mailman
      */
-    public function __construct($adminURL, $list = '', $adminPW = '', HTTP_Request2 $request = null)
+    public function __construct($adminURL="", $list = '', $adminPW = '')//, HTTP_Request2 $request = null)
     {
         $this->setList($list);
         $this->setadminURL($adminURL);
         $this->setadminPW($adminPW);
-        $this->setRequest($request);
+      //  $this->setRequest($request);
     }
 
     /**
@@ -136,9 +138,7 @@ class services_mailman
     public function setadminURL($string)
     {
         if (empty($string)) {
-            throw new Services_Mailman_Exception(
-                'setadminURL() does not expect parameter 1 to be empty'
-            );
+            return $this;
         }
         if (!is_string($string)) {
             throw new Services_Mailman_Exception(
@@ -148,7 +148,7 @@ class services_mailman
         }
         $string = filter_var($string, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED);
         if (!$string) {
-            throw new Services_Mailman_Exception('Invalid URL');
+            throw new Services_Mailman_Exception('Invalid admin URL');
         }
         $this->adminURL = trim($string, '/');
         return $this;
@@ -182,12 +182,12 @@ class services_mailman
      *
      * @throws {@link Services_Mailman_Exception}
      */
-    public function setRequest(HTTP_Request2 $object = null)
+   /* public function setRequest(HTTP_Request2 $object = null)
     {
         $this->request = ($object instanceof HTTP_Request2) ? $object : new HTTP_Request2();
         return $this;
     }
-
+*/
     /**
      * Fetches the HTML to be parsed
      *
@@ -203,9 +203,18 @@ class services_mailman
         if (!$url) {
             throw new Services_Mailman_Exception('Invalid URL');
         }
-        $this->request->setUrl($url);
-        $this->request->setMethod('GET');
-        $html = $this->request->send()->getBody();
+        //$this->request->setUrl($url);
+        //$this->request->setMethod('GET');
+       // $html = $this->request->send()->getBody();
+        //$html = \TikiLib::lib('tiki')->httprequest($url);
+        //$client = new Zend_Http_Client("titt".$url);
+        $client = new  \Zend\Http\Client($url, array(
+            'maxredirects' => 0,
+            'timeout'      => 30,
+            'adapter' => 'Zend\Http\Client\Adapter\Curl'
+        ));
+        $html = \Zend\Http\Response::fromString($client->send())->getBody();
+      
         if (strlen($html)>5) {
             return $html;
         }
@@ -227,7 +236,7 @@ class services_mailman
     {
         $html = $this->fetch($this->adminURL);
         libxml_use_internal_errors(true);
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $doc->preserveWhiteSpace = false;
         $doc->loadHTML($html);
         $xpath = new DOMXPath($doc);
@@ -286,10 +295,10 @@ class services_mailman
         $url   = $this->adminURL . $path . '?' . $query;
         $html  = $this->fetch($url);
         libxml_use_internal_errors(true);
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $doc->preserveWhiteSpace = false;
         $doc->loadHTML($html);
-        $xpath = new DOMXPath($doc);
+        $xpath = new \DOMXPath($doc);
         $queries = array();
         $queries['address'] = $xpath->query('/html/body/form/center/table/tr/td[2]/a');
         $queries['realname'] = $xpath->query('/html/body/form/center/table/tr/td[2]/input[type=TEXT]/@value');
@@ -345,7 +354,7 @@ class services_mailman
         }
 
         libxml_use_internal_errors(true);
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $doc->preserveWhiteSpace = false;
         $doc->loadHTML($html);
         $xpath = new DOMXPath($doc);
@@ -393,10 +402,10 @@ class services_mailman
         }
 
         libxml_use_internal_errors(true);
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $doc->preserveWhiteSpace = false;
         $doc->loadHTML($html);
-        $xpath = new DOMXPath($doc);
+        $xpath = new \DOMXPath($doc);
         $h5 = $xpath->query('/html/body/h5');
         libxml_clear_errors();
 
@@ -510,10 +519,10 @@ class services_mailman
         $url = dirname($this->adminURL) . $path . '?' . $query;
         $html = $this->fetch($url);
         libxml_use_internal_errors(true);
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $doc->preserveWhiteSpace = false;
         $doc->loadHTML($html);
-        $xpath = new DOMXPath($doc);
+        $xpath = new \DOMXPath($doc);
         $query = $xpath->query($xp);
         libxml_clear_errors();
         if ($query->item(0)) {
@@ -540,10 +549,10 @@ class services_mailman
             throw new Services_Mailman_Exception('Unable to fetch HTML.');
         }
         libxml_use_internal_errors(true);
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $doc->preserveWhiteSpace = false;
         $doc->loadHTML($html);
-        $xpath = new DOMXPath($doc);
+        $xpath = new \DOMXPath($doc);
         $letters = $xpath->query('/html/body/form/center[1]/table/tr[2]/td/center/a');
         libxml_clear_errors();
 
@@ -565,10 +574,10 @@ class services_mailman
                 throw new Services_Mailman_Exception('Unable to fetch HTML.');
             }
             libxml_use_internal_errors(true);
-            $doc = new DOMDocument();
+            $doc = new \DOMDocument();
             $doc->preserveWhiteSpace = false;
             $doc->loadHTML($html);
-            $xpath = new DOMXPath($doc);
+            $xpath = new \DOMXPath($doc);
             $emails = $xpath->query('/html/body/form/center[1]/table/tr/td[2]/a');
             $names = $xpath->query('/html/body/form/center[1]/table/tr/td[2]/input[1]/@value');
             $count = $emails->length;
@@ -599,19 +608,19 @@ class services_mailman
         $url = $this->adminURL . $path . '?' . $query;
         $html = $this->fetch($url);
         if (!$html) {
-            throw new Services_Mailman_Exception('Unable to fetch HTML.');
+            throw new Services_Mailman_Exception('Unable to fetch HTML. '.$url );
         }
         libxml_use_internal_errors(true);
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $doc->preserveWhiteSpace = false;
         $doc->loadHTML($html);
-        $xpath = new DOMXPath($doc);
+        $xpath = new \DOMXPath($doc);
         $content = $xpath->query('//table[last()]')->item(0)->textContent;
         libxml_clear_errors();
         if (preg_match('#version ([\d-.]+)#is', $content, $m)) {
             return array_pop($m);
         }
-        throw new Services_Mailman_Exception('Failed to parse HTML.');
+        throw new Services_Mailman_Exception('Version Failed to parse HTML. <br/>'.htmlentities($html).'<br/>'.$url);
     }
 } //end
 //eof

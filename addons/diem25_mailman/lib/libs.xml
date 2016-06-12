@@ -9,7 +9,7 @@
     -->
     <services>
         <!-- Proxy that will be replaced at runtime -->
-        <service id="tikiaddon.diem25.mailmam" class="tikiaddon\diem25\services_mailman">
+        <service id="tikiaddon.diem25.mailmam.services_mailman" class="tikiaddon\diem25\mailman\services_mailman">
             <file>%kernel.root_dir%/addons/diem25_mailman/lib/services_mailman.php</file>
         </service>
         </services>
