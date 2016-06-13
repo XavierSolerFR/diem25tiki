@@ -40,6 +40,7 @@
  * @link      http://php-mailman.sf.net/
  */
 namespace tikiaddon\diem25\mailman;
+use Zend\Http\Request;
 
 $pearpath=$prefs['ta_diem25_mailman_pearpath'];
 ini_set("include_path", "$pearpath:" . ini_get("include_path") );
@@ -98,6 +99,7 @@ class services_mailman
      *
      * @return Services_Mailman
      */
+    public $ldoc =null;
     public function __construct($adminURL="", $list = '', $adminPW = '')//, HTTP_Request2 $request = null)
     {
         $this->setList($list);
@@ -197,7 +199,7 @@ class services_mailman
      *
      * @throws {@link Services_Mailman_Exception}
      */
-    protected function fetch($url)
+    protected function fetch($url,  $pargs=array())
     {
         $url = filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED);
         if (!$url) {
@@ -208,17 +210,57 @@ class services_mailman
        // $html = $this->request->send()->getBody();
         //$html = \TikiLib::lib('tiki')->httprequest($url);
         //$client = new Zend_Http_Client("titt".$url);
-        $client = new  \Zend\Http\Client($url, array(
+        $request= new Request();
+        $request->setUri($url);
+        $request->setMethod('POST');
+        $pargs['adminpw']=$this->adminPW;
+        $request->getPost()->fromArray($pargs);
+
+        $client = new  \Zend\Http\Client();
+        $client->setOptions( array(
             'maxredirects' => 0,
             'timeout'      => 30,
+            'rfc3986strict' =>1,
             'adapter' => 'Zend\Http\Client\Adapter\Curl'
         ));
-        $html = \Zend\Http\Response::fromString($client->send())->getBody();
-      
-        if (strlen($html)>5) {
-            return $html;
+        $content = $client->send($request);
+        $Encoding=$content->getHeaders()->get('Content-Encoding')->getFieldValue();
+
+        $body=(string) $content->getContent();
+        if($Encoding =="gzip"){
+            $body=ltrim(gzinflate(substr($body, 10)));
         }
-        throw new Services_Mailman_Exception('Could not fetch HTML.');
+        //$ret.="<pre>". print_r($body,true)."</pre>";
+
+        libxml_use_internal_errors(true);
+        $doc = new \DOMDocument();
+        $doc->preserveWhiteSpace = false;
+// load the HTML string we want to strip
+        $doc->loadHTML($body);
+        $tagstoremove = array('script');
+        foreach($tagstoremove as $tn){
+            // get all the script tags
+            $script_tags = $doc->getElementsByTagName($tn);
+
+            $length = $script_tags->length;
+
+            // for each tag, remove it from the DOM
+            for ($i = $length; $i >0; $i--) {
+                try{
+                    if (!is_null($script_tags->item($i)))
+                        $script_tags->item($i)->parentNode->removeChild($script_tags->item($i));
+                } catch (Exception $e){
+
+                }
+            }
+        }
+// get the HTML string back
+       $this->ldoc = $doc->saveXML();
+        libxml_clear_errors();
+//var_dump($b2);
+            return $doc;
+
+       // throw new Services_Mailman_Exception('Could not fetch HTML.('.$url.')');
     }
 
     /**
@@ -541,17 +583,14 @@ class services_mailman
     public function members()
     {
         $path = '/' . $this->list . '/members';
-        $query = array('adminpw' => $this->adminPW);
-        $query = http_build_query($query, '', '&');
-        $url = $this->adminURL . $path . '?' . $query;
-        $html = $this->fetch($url);
-        if (!$html) {
-            throw new Services_Mailman_Exception('Unable to fetch HTML.');
-        }
-        libxml_use_internal_errors(true);
-        $doc = new \DOMDocument();
-        $doc->preserveWhiteSpace = false;
-        $doc->loadHTML($html);
+        //$query = array('adminpw' => $this->adminPW);
+        //$query = http_build_query($query, '', '&');
+        $url = $this->adminURL . $path ;//. '?' . $query;
+
+
+        
+        $doc = $this->fetch( $url);
+
         $xpath = new \DOMXPath($doc);
         $letters = $xpath->query('/html/body/form/center[1]/table/tr[2]/td/center/a');
         libxml_clear_errors();
@@ -561,32 +600,30 @@ class services_mailman
         } else {
             $letters = array(null);
         }
-        $members = array(array(), array());
+        $members = array();
         foreach ($letters as $letter) {
-            $query = array('adminpw' => $this->adminPW);
+            $query = array();
             if ($letter != null) {
-                $query['letter'] = $letter;
-                $query = http_build_query($query, '', '&');
-                $url = $this->adminURL . $path . '?' . $query;
-                $html = $this->fetch($url);
+                //$query['letter'] = $letter;
+                //$query = http_build_query($query, '', '&');
+               $url = $this->adminURL . $path . '?letter=' . $letter;
+                $doc = $this->fetch($url);
             }
-            if (!$html) {
-                throw new Services_Mailman_Exception('Unable to fetch HTML.');
-            }
-            libxml_use_internal_errors(true);
-            $doc = new \DOMDocument();
-            $doc->preserveWhiteSpace = false;
-            $doc->loadHTML($html);
+
+            //libxml_use_internal_errors(true);
+            //$doc = new \DOMDocument();
+            //$doc->preserveWhiteSpace = false;
+            //$doc->loadHTML($html);
             $xpath = new \DOMXPath($doc);
             $emails = $xpath->query('/html/body/form/center[1]/table/tr/td[2]/a');
             $names = $xpath->query('/html/body/form/center[1]/table/tr/td[2]/input[1]/@value');
             $count = $emails->length;
             for ($i=0;$i < $count;$i++) {
                 if ($emails->item($i)) {
-                    $members[0][]=$emails->item($i)->nodeValue;
+                    $members[$emails->item($i)->nodeValue]=$emails->item($i)->nodeValue;
                 }
-                if ($names->item($i)) {
-                    $members[1][]=$names->item($i)->nodeValue;
+                if (!empty($names->item($i)->nodeValue)) {
+                   $members[$emails->item($i)->nodeValue]=$names->item($i)->nodeValue;
                 }
             }
             libxml_clear_errors();
@@ -602,25 +639,17 @@ class services_mailman
      */
     public function version()
     {
-        $path = '/' . $this->list . '/';
-        $query = array('adminpw' => $this->adminPW);
-        $query = http_build_query($query, '', '&');
-        $url = $this->adminURL . $path . '?' . $query;
-        $html = $this->fetch($url);
-        if (!$html) {
-            throw new Services_Mailman_Exception('Unable to fetch HTML. '.$url );
-        }
-        libxml_use_internal_errors(true);
-        $doc = new \DOMDocument();
-        $doc->preserveWhiteSpace = false;
-        $doc->loadHTML($html);
+
+        $url = $this->adminURL . '/' . $this->list . '/';
+        $doc = $this->fetch( $url);
+        
         $xpath = new \DOMXPath($doc);
-        $content = $xpath->query('//table[last()]')->item(0)->textContent;
-        libxml_clear_errors();
+        $content = $xpath->query('//address')->item(0)->textContent;
+        
         if (preg_match('#version ([\d-.]+)#is', $content, $m)) {
             return array_pop($m);
         }
-        throw new Services_Mailman_Exception('Version Failed to parse HTML. <br/>'.htmlentities($html).'<br/>'.$url);
+        throw new Services_Mailman_Exception('Version Failed to parse HTML. <br/>'.htmlentities($content).'<br/>'.$url);
     }
 } //end
 //eof
