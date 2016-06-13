@@ -1,10 +1,10 @@
 objects:
  -
   type: wiki_page
-  ref: mailman
+  ref: mailmanager
   mode: create_or_update
   data:
-   name: mailman
+   name: mailmanager
    hide_title: y
    is_html: 1
-   content: wikicontent:mailmanpage
+   content: wikicontent:mailmanager
