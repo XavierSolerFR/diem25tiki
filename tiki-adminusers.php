@@ -180,8 +180,8 @@ function batchImportUsers()
 				$realpass = $pass_first_login ? '' : $u['password'];
 				$userlib->send_validation_email($u['login'], $apass, $u['email'], '', '', '', 'user_creation_validation_mail', $realpass);
 				//MODIF DIEM25
-				require_once "Services/mailman_lib.php";
-				AddToMailManList( $u['email']);
+				//require_once "Services/mailman_lib.php";
+				//AddToMailManList( $u['email']);
 			}
 		}
 

@@ -5,11 +5,13 @@
  * Date: 20/05/2016
  * Time: 23:14
  */
-include_once "Services/mailman.local.php";
 
+include_once "mailman.local.php";
 function MyMailMan($useremail, $site, $listes, $password){
+    global $pearpath;
+
     ini_set("include_path", "$pearpath:" . ini_get("include_path") );
-    require_once 'Services/Mailman.php';
+    require_once 'Mailman.php';
     $msg ="";
     foreach ($listes as $liste){
         $mm = new Services_Mailman($site, $liste , $password);
@@ -29,5 +31,6 @@ function MyMailMan($useremail, $site, $listes, $password){
 
 function AddToMailManList($email)
 {
+    global $MailManSite,$MailManPass,$MailManListe;
     return MyMailMan($email, $MailManSite, $MailManliste, $MailManPass);
 }

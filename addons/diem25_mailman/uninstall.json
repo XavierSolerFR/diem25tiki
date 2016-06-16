@@ -1,7 +1,7 @@
 {
   "0.1.*": {
     "remove": [
-      {"type":"wiki_page", "ref":"mailman", "profile":"001_mailmanpage"}
+      {"type":"wiki_page", "ref":"mailmanager", "profile":"001_mailmanagerpage"}
     ],
   }
 }

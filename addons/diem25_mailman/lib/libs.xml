@@ -12,5 +12,8 @@
         <service id="tikiaddon.diem25.mailmam.services_mailman" class="tikiaddon\diem25\mailman\services_mailman">
             <file>%kernel.root_dir%/addons/diem25_mailman/lib/services_mailman.php</file>
         </service>
-        </services>
-    </container>
+        <service id="tikiaddon.controller.diem25.mailmam.services" class="tikiaddon\diem25\mailman\Services_mm_Controller">
+            <file>%kernel.root_dir%/addons/diem25_mailman/lib/Services_mm_Controller.php</file>
+        </service>
+    </services>
+</container>
