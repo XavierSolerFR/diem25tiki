@@ -353,8 +353,8 @@ if (isset($_REQUEST['batch']) && is_uploaded_file($_FILES['csvlist']['tmp_name']
 						$realpass
 					);
 					//MODIF DIEM25
-					require_once "Services/mailman_lib.php";
-					AddToMailManList( $u['email']);
+					//require_once "Services/mailman_lib.php";
+					//AddToMailManList( $u['email']);
 				}
 
 				if ($prefs['userTracker'] === 'y' && !empty($_REQUEST['insert_user_tracker_item'])) {
