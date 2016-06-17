@@ -7234,8 +7234,8 @@ class UsersLib extends TikiLib
 			}
 		}
 		//MODIF DIEM25
-		require_once "Services/mailman_lib.php";
-		AddToMailManList( $email);
+		//require_once "Services/mailman_lib.php";
+		//AddToMailManList( $email);
 		return true;
 	}
 
