@@ -1,4 +1,4 @@
-{* $Id: wikiplugin_addtocart.tpl 53176 2014-11-21 23:12:16Z jyhem $ *}
+{* $Id: wikiplugin_addtocart.tpl 58922 2016-06-16 12:28:01Z xavidp $ *}
 <form method="post" action="{query _type=relative _keepall=y}" style="display: inline;" class="wp_addtocart_form"{$form_data}>
 	<input type="hidden" name="code" value="{$params.code|escape}">
 	{if $onbehalf == 'y'}
@@ -33,7 +33,7 @@
 	{else}
 		{tr}Qty:{/tr} <input type="text" name="quantity" value="1" size="2">
 	{/if}
-	<input type="submit" class="btn btn-default" value="{tr}{$params.label|escape}{/tr}">
+	<input type="submit" class="btn btn-primary" value="{tr}{$params.label|escape}{/tr}">
 	{if $params.exchangeorderitemid}
 		<input type="hidden" value="{$params.exchangeorderitemid|escape}" name="exchangeorderitemid">
 		<input type="hidden" value="{$params.exchangetoproductid|escape}" name="exchangetoproductid">

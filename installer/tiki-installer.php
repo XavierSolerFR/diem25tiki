@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-installer.php 57954 2016-03-17 19:34:29Z jyhem $
+// $Id: tiki-installer.php 58923 2016-06-16 14:31:30Z jyhem $
 
 // To (re-)enable this script the file has to be named tiki-installer.php and the following four lines
 // must start with two '/' and 'stopinstall:'. (Make sure there are no spaces inbetween // and stopinstall: !)
@@ -723,6 +723,7 @@ if ($max_execution_time != 0) {
 include_once ('lib/setup/twversion.class.php');
 $TWV = new TWVersion();
 $smarty->assign('tiki_version_name', preg_replace('/^(\d+\.\d+)([^\d])/', '\1 \2', $TWV->version));
+$smarty->assign('tiki_version_short', preg_replace('/^(\d+)\..*$/', '\1', $TWV->version));
 
 // Available DB Servers
 $dbservers = array();

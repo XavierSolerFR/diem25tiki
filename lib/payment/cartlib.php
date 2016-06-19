@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: cartlib.php 57947 2016-03-17 19:29:02Z jyhem $
+// $Id: cartlib.php 58917 2016-06-15 15:23:50Z jonnybradley $
 
 class CartLib
 {
@@ -598,6 +598,9 @@ class CartLib
 		foreach ( $_SESSION['cart'] as $info ) {
 			$total += floatval($info['quantity']) * floatval($info['price']);
 		}
+		if ($total < 0) {
+			$total = 0;
+		}
 
 		$this->total_no_discount = $total;
 
@@ -1061,7 +1064,7 @@ class CartLib
 			$info['hash'] = md5($code.time());
 			$info['code'] = $code;
 			$info['quantity'] = $quantity;
-			$info['price'] = number_format(abs($info['price']), 2, '.', '');
+			$info['price'] = number_format($info['price'], 2, '.', '');
 			$info['inputedprice'] = number_format(abs($childInputedPrice), 2, '.', '');
 
 			if ( ! isset( $info['href'] ) ) {

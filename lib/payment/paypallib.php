@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: paypallib.php 57947 2016-03-17 19:29:02Z jyhem $
+// $Id: paypallib.php 58918 2016-06-15 16:35:18Z jonnybradley $
 
 class PaypalLib extends TikiDb_Bridge
 {
@@ -128,8 +128,7 @@ class PaypalLib extends TikiDb_Bridge
 	{
 		global $prefs;
 
-		$client = TikiLib::lib('tiki')->get_http_client();
-		$client->setUri($prefs['payment_paypal_environment']);
+		$client = TikiLib::lib('tiki')->get_http_client($prefs['payment_paypal_environment']);
 
 		$base = array( 'cmd' => '_notify-validate' );
 

@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: twversion.class.php 58862 2016-06-08 16:41:49Z jonnybradley $
+// $Id: twversion.class.php 58903 2016-06-14 10:16:01Z jonnybradley $
 
 // Should generally be instantiated from tiki-setup.php
 
@@ -206,6 +206,7 @@ class TWVersion
 				'10.3',
 				'10.4',
 				'10.5',
+				'10.6',
 				'11.0beta',
 				'11.0',
 				'11.1',
@@ -220,6 +221,9 @@ class TWVersion
 				'12.3',
 				'12.4',
 				'12.5',
+				'12.6',
+				'12.7',
+				'12.8',
 				'13.0beta',
 				'13.0',
 				'13.1',
@@ -228,6 +232,7 @@ class TWVersion
 				'14.0',
 				'14.1',
 				'14.2',
+				'14.3',
 				'15.0alpha',
 				'15.0beta',
 				'15.0',

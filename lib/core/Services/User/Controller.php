@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Controller.php 58250 2016-04-08 11:43:50Z jonnybradley $
+// $Id: Controller.php 58875 2016-06-11 15:10:09Z lindonb $
 
 class Services_User_Controller
 {
@@ -564,7 +564,7 @@ class Services_User_Controller
 				$users = json_decode($input['items'], true);
 				$add_remove = $input->add_remove->word();
 			//single user removed from a particular group
-			} else {
+			} elseif (!empty($extra['add_remove'])) {
 				$groups = json_decode($input['items'], true);
 				$users[] = $extra['user'];
 				$add_remove = $extra['add_remove'];

@@ -1,4 +1,4 @@
-{* $Id: header.tpl 58790 2016-06-05 15:42:26Z jonnybradley $ *}
+{* $Id: header.tpl 58924 2016-06-16 15:53:57Z yonixxx $ *}
 {if $base_uri and ($dir_level gt 0 or $prefs.feature_html_head_base_tag eq 'y')}
 	<base href="{$base_uri|escape}">
 {/if}
@@ -10,7 +10,6 @@
 <meta name="generator" content="Tiki Wiki CMS Groupware - https://tiki.org">
 
 {* --- SocialNetwork:Domain ---*}
-<meta content="{$base_url_canonical}" property="article:publisher">
 <meta content="{$base_url_canonical}" name="twitter:domain"> {* may be obsolete when using twitter:card *}
 
 
@@ -192,11 +191,13 @@
 
 {if $prefs.feature_canonical_url eq 'y' and isset($mid)}
 	{if $mid eq 'tiki-view_blog.tpl'}
-		<meta content="article" property="og:type">
+		<meta content="blog" property="og:type">
 	{elseif $mid eq 'tiki-view_blog_post.tpl'}
-		<meta content="article" property="og:type">
+		<meta content="blog" property="og:type">
 	{elseif $mid eq 'tiki-read_article.tpl'}
 		<meta content="article" property="og:type">
+	{else}
+		<meta content="website" property="og:type">
 	{/if}
 {/if}
 
@@ -210,8 +211,11 @@
 	{elseif $mid eq 'tiki-view_blog_post.tpl'}
 {* --- Article --- *}
 	{elseif $mid eq 'tiki-read_article.tpl'}
-		<meta content="{if not empty($prefs.socialnetworks_facebook_site_image)}{$prefs.socialnetworks_facebook_site_image}{else}{$base_url_canonical}{if $hasImage eq 'y'}article_image.php?image_type=article&amp;id={$articleId}{else}article_image.php?image_type=topic&amp;id={$topicId}{/if}{/if}" property="og:image">
-		<meta content="{if not empty($prefs.socialnetworks_twitter_site_image)}{$prefs.socialnetworks_twitter_site_image}{else}{$base_url_canonical}{if $hasImage eq 'y'}article_image.php?image_type=article&amp;id={$articleId}{else}article_image.php?image_type=topic&amp;id={$topicId}{/if}{/if}" name="twitter:image">
+		<meta content="{$base_url_canonical}{if $hasImage eq 'y'}article_image.php?image_type=article&amp;id={$articleId}{else}article_image.php?image_type=topic&amp;id={$topicId}{/if}" property="og:image">
+		<meta content="{$base_url_canonical}{if $hasImage eq 'y'}article_image.php?image_type=article&amp;id={$articleId}{else}article_image.php?image_type=topic&amp;id={$topicId}{/if}" name="twitter:image">
+	{else}
+		<meta content="{$prefs.socialnetworks_facebook_site_image}" property="og:image">
+		<meta content="{$prefs.socialnetworks_twitter_site_image}" name="twitter:image">
 	{/if}
 {/if}
 

@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_mediaplayer.php 58568 2016-05-10 07:22:14Z xavidp $
+// $Id: wikiplugin_mediaplayer.php 58930 2016-06-17 12:12:43Z xavidp $
 
 function wikiplugin_mediaplayer_info()
 {
@@ -247,7 +247,7 @@ function wikiplugin_mediaplayer($data, $params)
 				$src = \ZendOpenId\OpenId::absoluteUrl($params['src']);
 				$src = $prefs['fgal_viewerjs_uri'] . '#' . $src;
 
-				$out = "<iframe width=\"{$params['width']}\" height=\"{$params['height']}\" src=\"{$src}\"></iframe>";
+				$out = "<iframe width=\"{$params['width']}\" height=\"{$params['height']}\" src=\"{$src}\" allowfullscreen webkitallowfullscreen></iframe>";
 
 				return $out;
 

@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: paymentlib.php 57947 2016-03-17 19:29:02Z jyhem $
+// $Id: paymentlib.php 58916 2016-06-15 14:55:43Z jonnybradley $
 
 class PaymentLib extends TikiDb_Bridge
 {
@@ -329,10 +329,10 @@ class PaymentLib extends TikiDb_Bridge
 					continue;
 				}
 
-				if ($amount) {
+				if ($received['amount']) {
 					// When electing to capture a specific amount, assume that amount is the total to be paid.
 					$table = $this->table('tiki_payment_requests');
-					$table->update(['amount' => (float) $amount], ['paymentRequestId' => $paymentId]);
+					$table->update(['amount' => (float) $received['amount']], ['paymentRequestId' => $paymentId]);
 				}
 
 				if ($gateway = $this->gateway($received['type'])) {

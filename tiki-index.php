@@ -6,7 +6,7 @@
  * @copyright (c) Copyright 2002-2016 by authors of the Tiki Wiki CMS Groupware Project. All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * @licence Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
  */
-// $Id: tiki-index.php 57979 2016-03-18 12:19:47Z jonnybradley $
+// $Id: tiki-index.php 58927 2016-06-16 17:15:04Z nkoth $
 
 require_once ('check_composer_exists.php');
 
@@ -353,6 +353,7 @@ if (empty($info) && !($user && $prefs['feature_wiki_userpage'] == 'y' && strcase
 					$smarty->assign('canonical_ending', urlencode(trim(substr($page, strlen($newPage)))));
 					$page = $newPage;
 					$info = $tikilib->get_page_info($_REQUEST['page']);
+					unset($_REQUEST['sort_mode']); // prevent invalid sort_mode when coming from tracker listing to cause search fatal error in any LIST plugins
 				}
 			}
 		}

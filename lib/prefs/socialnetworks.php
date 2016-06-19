@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: socialnetworks.php 58623 2016-05-18 15:38:32Z yonixxx $
+// $Id: socialnetworks.php 58924 2016-06-16 15:53:57Z yonixxx $
 
 function prefs_socialnetworks_list()
 {
@@ -66,7 +66,7 @@ function prefs_socialnetworks_list()
 		),
 		'socialnetworks_facebook_site_image' => array(
 			'name' => tra('Site Image'),
-			'description' => tra('Default og:image to be used on every page of your tiki, must be url'),
+			'description' => tra('Default og:image for sections without images (not articles, blogs, etc.), must be url and minimum image size is 200 x 200 pixels'),
 			'keywords' => 'social networks',
 			'type' => 'text',
 			'size' => 60,

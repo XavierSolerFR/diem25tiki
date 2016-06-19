@@ -1,4 +1,4 @@
-{* $Id: include_payment.tpl 56989 2015-12-13 11:14:40Z chibaguy $ *}
+{* $Id: include_payment.tpl 58914 2016-06-15 11:09:17Z jonnybradley $ *}
 <form class="form-horizontal" action="tiki-admin.php?page=payment" method="post">
 	<input type="hidden" name="ticket" value="{$ticket|escape}">
 	<div class="row">
@@ -59,7 +59,7 @@
 							{preference name=payment_israelpost_request_preauth}
 						</div>
 					{/accordion_group}
-					{accordion_group title="{tr}Ccline{/tr}"}
+					{accordion_group title="{tr}Cclite{/tr}"}
 						<div class="admin payment">
 							{remarksbox title="{tr}Experimental{/tr}" type="warning" icon="bricks"}
 								{tr}Cclite is for creating and managing alternative or complementary trading currencies and groups{/tr}

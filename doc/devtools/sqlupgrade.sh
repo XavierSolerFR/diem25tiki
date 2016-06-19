@@ -3,7 +3,7 @@
 # 
 # All Rights Reserved. See copyright.txt for details and a complete list of authors.
 # Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-# $Id: sqlupgrade.sh 57954 2016-03-17 19:34:29Z jyhem $
+# $Id: sqlupgrade.sh 58881 2016-06-13 06:40:41Z xavidp $
 
 # that script runs the last sql upgrade
 # It reads db/local.php to find proper mysql info
@@ -35,6 +35,7 @@ if [ ! -d 'db' ]; then
 	exit 0
 fi
 
-find db/ -name local.php -follow | sed -nr 's/db(\/([a-z0-9_-]+))?\/local\.php/\2/p' | awk '{system("'$PHP' installer/shell.php " $0)}'
+# Update old command 'installer/shell.php' to the newer one 'console.php d:u --site='
+find db/ -name local.php -follow | sed -nr 's/db(\/([a-z0-9_-.]+))?\/local\.php/\2/p' | awk '{system("'$PHP' console.php -n database:update --site=" $0)}'
 
 exit 0
