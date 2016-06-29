@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_tracker.php 58590 2016-05-12 17:37:26Z jonnybradley $
+// $Id: wikiplugin_tracker.php 58996 2016-06-28 15:43:29Z jonnybradley $
 
 function wikiplugin_tracker_info()
 {
@@ -1573,7 +1573,7 @@ function wikiplugin_tracker($data, $params)
 			$validationjs = $validatorslib->generateTrackerValidateJS($flds['data'], $fields_prefix, $customvalidation, $customvalidation_m);
 
 			if (!empty($params['_ajax_form_ins_id']) && $params['_ajax_form_ins_id'] === 'group') {
-				$headerlib->add_jq_onready("var ajaxTrackerValidation_group={validation:{" . $validationjs  . '};');		// return clean rules and messages object for ajax
+				$headerlib->add_jq_onready("var ajaxTrackerValidation_group={validation:{" . $validationjs  . '}};');		// return clean rules and messages object for ajax
 			} else {
 				$smarty->assign('validationjs', $validationjs);
 				$back .= $smarty->fetch('tracker_validator.tpl');

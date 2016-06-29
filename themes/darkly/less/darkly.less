@@ -1,4 +1,10 @@
-// $Id: darkly.less 54998 2015-04-08 04:03:15Z lindonb $
+// $Id: darkly.less 59013 2016-06-29 14:42:38Z chibaguy $
+@web-font-path: "https://fonts.googleapis.com/css?family=Lato:400,700,400italic";
+
+.web-font(@path) {
+	@import url("@{path}");
+}
+.web-font(@web-font-path);
 @import "../../../vendor/twitter/bootstrap/less/bootstrap.less";
 @import "../../base_files/less/bootswatch_overrides.less";
 // So far, just removes the CSS content theme-option-required warning.

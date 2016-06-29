@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: prefs.php 58414 2016-04-22 15:37:43Z jonnybradley $
+// $Id: prefs.php 58964 2016-06-23 20:39:12Z nkoth $
 
 // RULE1: $prefs does not contain serialized values. Only the database contains serialized values.
 // RULE2: put array('') in default prefs for serialized values
@@ -347,7 +347,11 @@ function initialize_prefs($force = false)
 
 	if ($cachelib->isCached('global_preferences')) {
 		$prefs = $cachelib->getSerialized('global_preferences');
-	} else {
+		// note there is a small chance in high concurrency environments that cache file may be cleared
+		// in the interim leading to blank $prefs
+	}
+
+	if (empty($prefs) || !$cachelib->isCached('global_preferences')) {
 		$defaults = get_default_prefs();
 
 		// Find which preferences need to be serialized/unserialized, based on the default

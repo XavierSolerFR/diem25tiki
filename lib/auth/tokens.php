@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tokens.php 58322 2016-04-13 16:43:40Z jonnybradley $
+// $Id: tokens.php 58956 2016-06-22 11:39:50Z xavidp $
 
 class AuthTokens
 {
@@ -94,8 +94,13 @@ class AuthTokens
 			$sefurl = $tikiroot . smarty_modifier_sefurl($sefurl, $sefurlTypeMap[$_GET[0]]);
 		}
 
+		// add an extra conversion to prevent false positives due to former missmatches
+		// in cases of "/tikiroot/My Page" vs "/tikiroot/My+Page"
+		$entry_no_tikiroot = substr($data['entry'], strlen($tikiroot));
+		$entry_encoded_no_tikiroot = urlencode($entry_no_tikiroot);
+		$full_entry_encoded = $tikiroot . $entry_encoded_no_tikiroot;
 		// entry doesn't match "or" sefurl feature is in use but that also doesn't match
-		if ( $data['entry'] != $entry && $sefurl && $data['entry']  !== $sefurl ) {
+		if ( $data['entry'] != $entry && $sefurl && $data['entry']  !== $sefurl && $full_entry_encoded !== $sefurl ) {
 			return null;
 		}
 

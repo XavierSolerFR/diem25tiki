@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: ArticleSource.php 58279 2016-04-10 17:17:57Z jonnybradley $
+// $Id: ArticleSource.php 58941 2016-06-20 13:39:20Z jonnybradley $
 
 class Search_ContentSource_ArticleSource implements Search_ContentSource_Interface, Tiki_Profile_Writer_ReferenceProvider
 {
@@ -72,6 +72,7 @@ class Search_ContentSource_ArticleSource implements Search_ContentSource_Interfa
 			'article_topline' => $typeFactory->wikitext($article['topline']),
 			'article_subtitle' => $typeFactory->wikitext($article['subtitle']),
 			'article_author' => $typeFactory->plaintext($article['authorName']),
+			'article_linkto' => $typeFactory->plaintext($article['linkto']),
 
 			'view_permission' => ($article['ispublished'] == 'y') ? $typeFactory->identifier('tiki_p_read_article') : $typeFactory->identifier('tiki_p_edit_article'),
 			'parent_object_type' => $typeFactory->identifier('topic'),
@@ -104,6 +105,7 @@ class Search_ContentSource_ArticleSource implements Search_ContentSource_Interfa
 			'article_topline',
 			'article_subtitle',
 			'article_author',
+			'article_linkto',
 
 			'view_permission',
 			'parent_view_permission',

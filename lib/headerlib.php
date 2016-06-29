@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: headerlib.php 58381 2016-04-19 17:48:26Z jonnybradley $
+// $Id: headerlib.php 58988 2016-06-27 17:10:32Z jonnybradley $
 
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
 	header("location: index.php");
@@ -499,11 +499,11 @@ class HeaderLib
 		
 		global $prefs;
 		if ($prefs['javascript_enabled'] == 'n') {
-			return;
+			return [];
 		}
 		
 		if (count($this->jsfiles) == 0) {
-			return;
+			return [];
 		}
 		
 		$smarty = TikiLib::lib('smarty');
@@ -553,8 +553,8 @@ class HeaderLib
 			$output[] .= "<script type=\"text/javascript\" src=\"".smarty_modifier_escape($entry)."\"></script>\n";
 
 			$minifyLateActive = isset($prefs['tiki_minify_late_js_files']) && $prefs['tiki_minify_late_js_files'] == 'y' ? true : false;
+			$rank = '60late';
 			if ($minifyLateActive) {
-				$rank = '60late';
 				// handling of user defined cdn servers is done inside minifyJSFiles()
 				$entry =  $this->minifyJSFiles($jsfiles, array($rank));
 				$output[] .= "<script type=\"text/javascript\" src=\"".smarty_modifier_escape($entry)."\"></script>\n";

@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: userslib.php 58805 2016-06-06 13:41:18Z jonnybradley $
+// $Id: userslib.php 58958 2016-06-22 14:52:02Z nkoth $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER['SCRIPT_NAME'], basename(__FILE__)) !== false) {
@@ -2080,6 +2080,7 @@ class UsersLib extends TikiLib
 		$userid = $this->get_user_id($user);
 		$query = 'delete from `users_usergroups` where `userId` = ?';
 		$result = $this->query($query, array($userid));
+		TikiLib::events()->trigger('tiki.user.update', array('type' => 'user', 'object' => $user));
 	}
 
 	function get_groups_userchoice()
@@ -2259,6 +2260,9 @@ class UsersLib extends TikiLib
 		$this->query('delete from `tiki_user_mailin_struct` where `username` = ?', array($user));
 
 		$cachelib->invalidate('userslist');
+
+		TikiLib::events()->trigger('tiki.user.delete', array('type' => 'user', 'object' => $user));
+
 		return true;
 	}
 

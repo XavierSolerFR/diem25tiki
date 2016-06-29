@@ -1,4 +1,4 @@
-{* $Id: tiki-print_forum_thread.tpl 53267 2014-12-04 23:57:46Z jyhem $ *}
+{* $Id: tiki-print_forum_thread.tpl 58969 2016-06-26 13:38:46Z jonnybradley $ *}
 <div style="margin:10px 20px 0px 20px">
 
 	{title}{tr}Forum:{/tr} {$forum_info.name}{/title}
@@ -7,8 +7,10 @@
 		{include file='comment.tpl' first='y' comment=$thread_info thread_style='commentStyle_plain'}
 	</div>
 	{include file='comments.tpl'}
-	<br>
-	<footer class="editdate">
-		{tr}The original document is available at{/tr} <a href="{$base_url}tiki-view_forum_thread.php?{query fullscreen=NULL display=NULL PHPSESSID=NULL}">{$base_url}tiki-view_forum_thread.php?{query fullscreen=NULL display=NULL PHPSESSID=NULL}</a>
-	</footer>
+	{if $prefs.print_original_url_forum eq 'y'}
+		<br>
+		<footer class="editdate">
+			{tr}The original document is available at{/tr} <a href="{$base_url}tiki-view_forum_thread.php?{query fullscreen=NULL display=NULL PHPSESSID=NULL}">{$base_url}tiki-view_forum_thread.php?{query fullscreen=NULL display=NULL PHPSESSID=NULL}</a>
+		</footer>
+	{/if}
 </div>

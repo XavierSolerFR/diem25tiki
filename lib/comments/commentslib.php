@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: commentslib.php 58781 2016-06-03 19:17:28Z patrick-proulx $
+// $Id: commentslib.php 58943 2016-06-20 13:56:03Z jonnybradley $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
@@ -3885,6 +3885,8 @@ class Comments extends TikiLib
 
 		if(is_array($ret) && isset($ret[0])) {
 			return $ret[0];
+		} else {
+			return [];
 		}
 	}
 }

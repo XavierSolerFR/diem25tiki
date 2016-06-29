@@ -1,4 +1,4 @@
-{* $Id: tiki-view_tracker_item.tpl 58236 2016-04-07 12:38:05Z jonnybradley $ *}
+{* $Id: tiki-view_tracker_item.tpl 58969 2016-06-26 13:38:46Z jonnybradley $ *}
 {if !$viewItemPretty.override}
 	{title help="trackers"}{$tracker_item_main_value}{/title}
 {/if}
@@ -368,6 +368,6 @@
 
 <br><br>
 
-{if isset($print_page) && $print_page eq 'y'}
+{if isset($print_page) and $print_page eq 'y' and $prefs.print_original_url_tracker eq 'y'}
 	{tr}The original document is available at{/tr} <a href="{$base_url|escape}{$itemId|sefurl:trackeritem}">{$base_url|escape}{$itemId|sefurl:trackeritem}</a>
 {/if}

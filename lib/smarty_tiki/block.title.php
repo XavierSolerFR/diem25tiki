@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: block.title.php 57997 2016-03-19 08:45:24Z gezzzan $
+// $Id: block.title.php 58982 2016-06-27 12:57:59Z jonnybradley $
 /**
  * Smarty plugin
  * @package Smarty
@@ -48,6 +48,8 @@ function smarty_block_title($params, $content, $template, &$repeat)
 	if ( ! isset($params['url']) ) {
 		$params['url'] = smarty_modifier_sefurl($current['object'], $current['type']);
 	}
+
+	$params['url'] = str_replace('"', '', $params['url']);
 
 	$metadata = '';
 	$coordinates = TikiLib::lib('geo')->get_coordinates($current['type'], $current['object']);

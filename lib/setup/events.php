@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: events.php 58909 2016-06-14 23:13:11Z nkoth $
+// $Id: events.php 58958 2016-06-22 14:52:02Z nkoth $
 
 
 tiki_setup_events();
@@ -308,6 +308,7 @@ function tiki_setup_events()
 	$events->bind('tiki.user.groupleave', 'tiki.user.update');
 	$events->bind('tiki.user.update', 'tiki.user.save');
 	$events->bind('tiki.user.create', 'tiki.user.save');
+	$events->bind('tiki.user.delete', 'tiki.save');
 
 	$events->bind('tiki.user.follow.add', 'tiki.user.network');
 	$events->bind('tiki.user.follow.incoming', 'tiki.user.network');

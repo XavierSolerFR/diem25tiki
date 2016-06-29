@@ -1,4 +1,10 @@
-// $Id: paper.less 55391 2015-05-10 15:11:51Z jonnybradley $
+// $Id: paper.less 59013 2016-06-29 14:42:38Z chibaguy $
+@web-font-path: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
+
+.web-font(@path) {
+	@import url("@{path}");
+}
+.web-font(@web-font-path);
 @import "../../../vendor/twitter/bootstrap/less/bootstrap.less";
 @import "../../base_files/less/bootswatch_overrides.less";
 // So far, just removes the CSS content theme-option-required warning.

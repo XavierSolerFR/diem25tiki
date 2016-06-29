@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: function.payment.php 58913 2016-06-15 11:08:35Z jonnybradley $
+// $Id: function.payment.php 59009 2016-06-29 12:24:04Z xavidp $
 
 // @param numeric $id: id of the payment
 // @params url $returnurl: optional return url
@@ -42,7 +42,15 @@ function smarty_function_payment( $params, $smarty )
 				$prefs['payment_user_only_his_own_past'] != 'y'
 			) ||
 			$theguy ||
-			$objectperms->payment_admin
+			$objectperms->payment_admin ||
+			(
+				(
+					$info['state'] == 'outstanding' ||
+					$info['state'] == 'overdue'
+				) &&
+				$info['userId'] == '-1' &&
+				$prefs['payment_anonymous_allowed'] == 'y'
+			)
 		)
 	) {
 		if ($prefs['payment_system'] == 'cclite' && isset($_POST['cclite_payment_amount']) && $_POST['cclite_payment_amount'] == $info['amount_remaining']) {

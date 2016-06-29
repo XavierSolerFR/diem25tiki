@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: maillib.php 57948 2016-03-17 19:29:43Z jyhem $
+// $Id: maillib.php 58992 2016-06-27 21:34:02Z nkoth $
 
 /* Common shared mail functions */
 /*
@@ -85,6 +85,10 @@ function tiki_mail_setup()
 
 		if ( $prefs['zend_mail_smtp_security'] ) {
 			$options['connection_config']['ssl'] = $prefs['zend_mail_smtp_security'];
+		}
+
+		if ( $prefs['zend_mail_smtp_helo'] ) {
+			$options['name'] = $prefs['zend_mail_smtp_helo'];
 		}
 
 		if ($prefs['openpgp_gpg_pgpmimemail'] == 'y') {

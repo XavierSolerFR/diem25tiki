@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: feature.php 58683 2016-05-24 14:19:15Z jonnybradley $
+// $Id: feature.php 58947 2016-06-20 16:08:24Z jyhem $
 
 function prefs_feature_list($partial = false)
 {
@@ -1279,8 +1279,6 @@ function prefs_feature_list($partial = false)
 			'description' => tra("If this is a testing site with duplicate content, you may want to put the real site domain here so search engines don't index the testing site. In complex perspective setups using multiple domains, you may want more control on which canonical domain is advertised."),
 			'type' => 'text',
 			'dependencies' => array('feature_canonical_url'),
-			'tags' => array('experimental'),
-			'warning' => tra('experimental'),
 			'default' =>'',
 		),
 		'feature_modulecontrols' => array(

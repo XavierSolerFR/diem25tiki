@@ -6,7 +6,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-setup_base.php 57937 2016-03-17 19:20:19Z jyhem $
+// $Id: tiki-setup_base.php 59006 2016-06-29 10:01:52Z jonnybradley $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
@@ -216,6 +216,8 @@ if (isset($_SERVER["REQUEST_URI"])) {
 				unset($sequence);
 			}
 		} catch( Zend\Session\Exception\ExceptionInterface $e ) {
+			// Ignore
+		} catch( Zend\Stdlib\Exception\InvalidArgumentException $e ) {
 			// Ignore
 		}
 	}

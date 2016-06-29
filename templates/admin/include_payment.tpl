@@ -1,4 +1,4 @@
-{* $Id: include_payment.tpl 58914 2016-06-15 11:09:17Z jonnybradley $ *}
+{* $Id: include_payment.tpl 59009 2016-06-29 12:24:04Z xavidp $ *}
 <form class="form-horizontal" action="tiki-admin.php?page=payment" method="post">
 	<input type="hidden" name="ticket" value="{$ticket|escape}">
 	<div class="row">
@@ -36,6 +36,7 @@
 					{preference name=payment_manual}
 					{preference name=payment_user_only_his_own}
 					{preference name=payment_user_only_his_own_past}
+					{preference name=payment_anonymous_allowed}
 				</fieldset>
 				{accordion}
 					{accordion_group title="{tr}PayPal{/tr}"}

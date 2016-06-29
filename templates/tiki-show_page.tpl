@@ -1,4 +1,4 @@
-{* $Id: tiki-show_page.tpl 58017 2016-03-20 09:46:05Z gezzzan $ *}
+{* $Id: tiki-show_page.tpl 58969 2016-06-26 13:38:46Z jonnybradley $ *}
 {extends 'layout_view.tpl'}
 
 {* Separate the content display from the display of the whole page.
@@ -185,7 +185,7 @@ Note: The show content block must be defined at root level to use the include. A
 
 		{include file='show_copyright.tpl' copyright_context="wiki"}
 
-		{if $print_page eq 'y'}
+		{if $print_page eq 'y' and $prefs.print_original_url_wiki eq 'y'}
 			<br>
 			{tr}The original document is available at{/tr} <a href="{$base_url|escape}{$page|sefurl}">{$base_url|escape}{$page|sefurl}</a>
 		{/if}

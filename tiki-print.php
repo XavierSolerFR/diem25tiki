@@ -6,7 +6,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-print.php 57937 2016-03-17 19:20:19Z jyhem $
+// $Id: tiki-print.php 58969 2016-06-26 13:38:46Z jonnybradley $
 
 $section_class="tiki_wiki_page print";
 require_once ('tiki-setup.php');
@@ -42,6 +42,12 @@ $access->check_permission('tiki_p_view', '', 'wiki page', $page);
 
 // Now increment page hits since we are visiting this page
 $tikilib->add_hit($page);
+
+if ($prefs['print_wiki_authors'] === 'y') {
+	// Get the authors style for this page
+	$wiki_authors_style = ($prefs['wiki_authors_style_by_page'] == 'y' && $info['wiki_authors_style'] != '') ? $info['wiki_authors_style'] : $prefs['wiki_authors_style'];
+	$smarty->assign('wiki_authors_style', $wiki_authors_style);
+}
 
 if (isset($prefs['wiki_feature_copyrights']) && $prefs['wiki_feature_copyrights'] == 'y' && isset($prefs['wikiLicensePage'])) {
 	// insert license if wiki copyrights enabled
@@ -101,7 +107,7 @@ if (isset($_REQUEST['display']) && $_REQUEST['display'] == 'pdf') {
 	$generator = new PdfGenerator();
 	$pdf = $generator->getPdf('tiki-print.php', array('page' => $page));
 	if (empty($pdf)) {
-		echo "Unable to generate PDF";
+		$access->display_error($page, "Unable to generate PDF");
 	} else {
 		$length = strlen($pdf);
 		header('Cache-Control: private, must-revalidate');

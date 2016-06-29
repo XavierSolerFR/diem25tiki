@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: UserSource.php 58279 2016-04-10 17:17:57Z jonnybradley $
+// $Id: UserSource.php 58941 2016-06-20 13:39:20Z jonnybradley $
 
 class Search_ContentSource_UserSource implements Search_ContentSource_Interface
 {
@@ -218,6 +218,10 @@ class Search_ContentSource_UserSource implements Search_ContentSource_Interface
 			}
 
 			$item = $this->trk->get_tracker_item($row['itemId']);
+			$data = array_merge($data, array(
+				'tracker_item_id' => $typeFactory->identifier($row['itemId']),
+				'tracker_item_status' => $typeFactory->identifier($item['status']),
+			));
 
 			foreach (Search_ContentSource_TrackerItemSource::getIndexableHandlers($definition, $item) as $baseKey => $handler) {
 				$data = array_merge($data, $handler->getDocumentPart($typeFactory));

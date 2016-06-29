@@ -1,4 +1,4 @@
-{* $Id: include_general.tpl 58329 2016-04-14 11:11:03Z chibaguy $ *}
+{* $Id: include_general.tpl 58969 2016-06-26 13:38:46Z jonnybradley $ *}
 <form class="form-horizontal" action="tiki-admin.php?page=general" class="admin" method="post">
 	<input type="hidden" name="ticket" value="{$ticket|escape}">
 	<input type="hidden" name="new_prefs" />
@@ -177,6 +177,13 @@
 				<div class="adminoptionboxchild print_pdf_from_url_childcontainer webservice">
 					{preference name=print_pdf_webservice_url}
 				</div>
+				<div class="adminoptionboxchild print_pdf_from_url_childcontainer mpdf">
+					{preference name=print_pdf_mpdf_path}
+				</div>
+				{preference name=print_wiki_authors}
+				{preference name=print_original_url_wiki}
+				{preference name=print_original_url_tracker}
+				{preference name=print_original_url_forum}
 			</fieldset>
 			<fieldset>
 				<legend>{tr}Terms and Conditions{/tr}</legend>

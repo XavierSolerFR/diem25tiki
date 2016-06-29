@@ -1,0 +1,37 @@
+Trying to change property 'svn:ignore'
+but the property has already been locally changed to a different value.
+ZendStudioServer
+var
+.project
+phpmyadmin
+.lastup
+ZendPlatform
+.settings
+templates_c
+db/lock
+tiki-emptycache.php
+modules/cache
+last.log
+.cache
+_htaccess
+.metadata*
+mods
+dummy.php
+.svnrev
+svn-commit.tmp
+.buildpath
+.htaccess
+maps
+project.index
+nbproject
+.idea
+vendor
+node_modules
+themes
+tiki-*.log
+bin
+<<<<<<< (local property value)
+themes/Diem25fr
+=======
+vendor_custom
+>>>>>>> (incoming property value)

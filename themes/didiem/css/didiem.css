@@ -4496,7 +4496,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: #ffffff;
-  background-color: linear-gradient(to bottom, #93C44F 0%, #6D9F26 100%);
+  background-color: linear-gradient(to bottom, #93c44f 0%, #6d9f26 100%);
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -4537,7 +4537,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
     color: #ffffff;
-    background-color: linear-gradient(to bottom, #93C44F 0%, #6D9F26 100%);
+    background-color: linear-gradient(to bottom, #93c44f 0%, #6d9f26 100%);
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
@@ -6801,7 +6801,7 @@ textarea,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus,
 li.selected > a {
-  background: linear-gradient(to bottom, #93C44F 0%, #6D9F26 100%);
+  background: linear-gradient(to bottom, #93c44f 0%, #6d9f26 100%);
   color: #ffffff;
 }
 .postbody-title {
