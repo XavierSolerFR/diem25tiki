@@ -8,5 +8,11 @@
   "depends": [
   ],
   "api": {
+    "eventmap":[
+      {"event":"tiki.user.create",
+      "lib":"tikiaddon.diem25.mailmam.services_mailman",
+      "function":"susbscribe_event"
+      }
+    ]
   }
 }

@@ -6341,15 +6341,13 @@ class UsersLib extends TikiLib
 
 		if (empty($groups)) {
 			$this->assign_user_to_group($user, 'Registered');
-			$this->assign_user_to_group($user, 'Volontaires'); //DIEM25
-		} else {
+			} else {
 			if (is_array($groups)) {
 				foreach ($groups as $grp) {
 					$this->assign_user_to_group($user, $grp);
 				}
 			} else {
 				$this->assign_user_to_group($user, 'Registered');
-				$this->assign_user_to_group($user, 'Volontaires');//DIEM25
 			}
 		}
 

@@ -651,5 +651,22 @@ class services_mailman
         }
         throw new Services_Mailman_Exception('Version Failed to parse HTML. <br/>'.htmlentities($content).'<br/>'.$url);
     }
+    public function susbscribe_event(array $arguments = array()){
+        global $prefs;
+        $userlib = \TikiLib::lib('user');
+
+        $userId=$arguments['userId'];
+        $email=$userlib->get_userId_what(array($userId));
+
+        $json=str_replace('EmailToSubscribe',$email[0],$prefs['ta_diem25_mailman_MailmanList']);
+        $MailmanList=json_decode($json,true);
+        foreach($MailmanList as $ml){
+            mail($ml['email'],$ml['objet'],"");
+           
+        }
+        $userlib->assign_user_to_group($arguments['object'], 'Volontaires');
+
+    }
+        
 } //end
 //eof

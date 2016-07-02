@@ -37,13 +37,17 @@ function prefs_ta_diem25_mailman_list()
          "name":"Volontaires",
          "site":"http://diem25fr.org/mailman/admin",
          "pass":"Password",
-         "list":"volontaires_diem25fr.org"
+         "list":"volontaires_diem25fr.org",
+         "email":"volontaires-request@diem25fr.org",
+         "objet":"subscribe Password nodigest address=EmailToSubscribe"
       },
       {  
          "name":"Discussion",
          "site":"http://diem25fr.org/mailman/admin",
          "pass":"Password",
-         "list":"discussion_diem25fr.org"
+         "list":"discussion_diem25fr.org",
+         "email":"discussion-request@diem25fr.org",
+         "objet":"subscribe Password nodigest address=EmailToSubscribe"
       }
    ]',
         )
