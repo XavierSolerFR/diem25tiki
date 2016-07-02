@@ -665,8 +665,8 @@ class services_mailman
             $mail = new \TikiMail();
             $mail->setSubject($ml['objet']);
             $mail->setText("");
-            if (!$mail->send($email)) {
-                $smarty->assign('msg', tra("L'inscription a $email n'a pu se faire. Contactez l'administrateur"));
+            if (!$mail->send($ml['email']) {
+                $smarty->assign('msg', tra("L'inscription a ".$ml['email']." n'a pu se faire. Contactez l'administrateur"));
                 return false;
             }
             //mail($ml['email'],$ml['objet'],"");
