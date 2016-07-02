@@ -654,6 +654,7 @@ class services_mailman
     public function susbscribe_event(array $arguments = array()){
         global $prefs;
         $userlib = \TikiLib::lib('user');
+        include_once('lib/webmail/tikimaillib.php');
 
         $userId=$arguments['userId'];
         $email=$userlib->get_userId_what(array($userId));
@@ -661,7 +662,14 @@ class services_mailman
         $json=str_replace('EmailToSubscribe',$email[0],$prefs['ta_diem25_mailman_MailmanList']);
         $MailmanList=json_decode($json,true);
         foreach($MailmanList as $ml){
-            mail($ml['email'],$ml['objet'],"");
+            $mail = new \TikiMail();
+            $mail->setSubject($ml['objet']);
+            $mail->setText("");
+            if (!$mail->send($email)) {
+                $smarty->assign('msg', tra("L'inscription a $email n'a pu se faire. Contactez l'administrateur"));
+                return false;
+            }
+            //mail($ml['email'],$ml['objet'],"");
            
         }
         $userlib->assign_user_to_group($arguments['object'], 'Volontaires');
