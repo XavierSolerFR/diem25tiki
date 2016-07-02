@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: paymentlib.php 58916 2016-06-15 14:55:43Z jonnybradley $
+// $Id: paymentlib.php 59017 2016-06-29 16:43:14Z jonnybradley $
 
 class PaymentLib extends TikiDb_Bridge
 {
@@ -79,6 +79,16 @@ class PaymentLib extends TikiDb_Bridge
 						' LEFT JOIN `users_users` uup ON (uup.`userId` = tp.`userId`) WHERE ' . $conditions;
 
 		$all = $this->fetchAll($data, array(), $max, $offset);
+
+		foreach($all as & $payment) {
+
+			if (empty($payment['payer'])) {	// anonymous
+				$details = json_decode($payment['payment_detail'], true);
+				if ($details && !empty($details['payer_email'])) {
+					$payment['payer_email'] = $details['payer_email'];
+				}
+			}
+		}
 
 		return array(
 			'cant' => $this->getOne($count),

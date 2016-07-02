@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: userslib.php 58958 2016-06-22 14:52:02Z nkoth $
+// $Id: userslib.php 59015 2016-06-29 15:59:05Z jonnybradley $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER['SCRIPT_NAME'], basename(__FILE__)) !== false) {
@@ -7143,25 +7143,29 @@ class UsersLib extends TikiLib
 					}
 
 					$definition = Tracker_Definition::get($re['usersTrackerId']);
-					$items = $trklib->list_items(
-						$re['usersTrackerId'],
-						0,
-						1,
-						'',
-						$listfields,
-						$definition->getUserField(),
-						'',
-						'',
-						'',
-						$name,
-						'',
-						null,
-						true,
-						true
-					);
+					if ($definition) {
+						$items = $trklib->list_items(
+							$re['usersTrackerId'],
+							0,
+							1,
+							'',
+							$listfields,
+							$definition->getUserField(),
+							'',
+							'',
+							'',
+							$name,
+							'',
+							null,
+							true,
+							true
+						);
 
-					if (isset($items['data'][0]))
-						$smarty->assign_by_ref('item', $items['data'][0]);
+						if (isset($items['data'][0]))
+							$smarty->assign_by_ref('item', $items['data'][0]);
+					} else {
+						TikiLib::lib('errorreport')->report(tr('No user tracker found with id #%0', $re['usersTrackerId']));
+					}
 				}
 			}
 			$mail_data = $smarty->fetch('mail/moderate_validation_mail.tpl');

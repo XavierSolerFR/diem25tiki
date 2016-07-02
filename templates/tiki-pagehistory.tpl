@@ -1,4 +1,4 @@
-{* $Id: tiki-pagehistory.tpl 58512 2016-05-02 18:34:34Z jonnybradley $ *}
+{* $Id: tiki-pagehistory.tpl 59045 2016-07-02 12:44:20Z chibaguy $ *}
 
 {title admpage="wiki" url='tiki-pagehistory.php?page='|cat:$page|escape}{tr}History:{/tr} {$page}{/title}
 
@@ -120,7 +120,7 @@
 				<input type="checkbox" name="paginate" id="paginate"{if $paginate} checked="checked"{/if}>
 				<label for="paginate">{tr}Enable pagination{/tr}</label>
 				{if $paginate}
-					<input type="text" name="history_pagesize" id="history_pagesize" value="{$history_pagesize}" size="5">
+					<input type="text" name="history_pagesize" id="history_pagesize" value="{$history_pagesize}" class="form-control" style="width: 5em; display: inline-block">
 					<label for="history_pagesize">{tr}per page{/tr}</label>
 				{/if}
 			</div>
