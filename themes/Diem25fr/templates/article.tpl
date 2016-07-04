@@ -1,5 +1,5 @@
 <article class="article">
-{if $hasImage eq 'y'}
+{if $hasImage eq 'biniinin'}
 	{$headerlib->set_metatags("og:image","{$base_url_canonical}article_image.php?id={$articleId}")}
 {/if}
 	{if $show_topline eq 'y' and $topline}
