@@ -1,6 +1,6 @@
 <article class="article">
 {if $hasImage eq 'y'}
-	{$headerlib->set_metatags("og:image","article_image.php?id={$articleId}")}
+	{$headerlib->set_metatags("og:image","{$base_url_canonical}article_image.php?id={$articleId}")}
 {/if}
 	{if $show_topline eq 'y' and $topline}
 		<div class="articletopline">{$topline|escape}</div>

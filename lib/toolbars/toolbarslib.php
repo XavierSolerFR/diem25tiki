@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: toolbarslib.php 58281 2016-04-10 19:43:31Z jonnybradley $
+// $Id: toolbarslib.php 59049 2016-07-02 18:02:04Z jonnybradley $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
@@ -1545,18 +1545,19 @@ class ToolbarFileGallery extends Toolbar
 					);
 				};'
 			);
-			return 'openElFinderDialog(
+			return 'var area_id = editor.name;
+				openElFinderDialog(
 				this,
 				{
 					defaultGalleryId: ' . (empty($prefs['home_file_gallery']) ? $prefs['fgal_root_id'] : $prefs['home_file_gallery']) . ',
 					deepGallerySearch: true,
 					getFileCallback: function(file,elfinder) {
-							window.handleFinderInsertAt(file,elfinder,\''.$areaId.'\');
+							window.handleFinderInsertAt(file,elfinder,area_id);
 						},
 					eventOrigin:this,
 					uploadCallback: function (data) {
 							if (data.data.added.length === 1 && confirm(tr(\'Do you want to use this file in your page?\'))) {
-								window.handleFinderInsertAt(data.data.added[0],window.elFinder,\''.$areaId.'\');
+								window.handleFinderInsertAt(data.data.added[0],window.elFinder,area_id);
 							}
 						}
 				}
