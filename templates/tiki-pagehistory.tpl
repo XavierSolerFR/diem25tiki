@@ -1,10 +1,11 @@
-{* $Id: tiki-pagehistory.tpl 59045 2016-07-02 12:44:20Z chibaguy $ *}
+{* $Id: tiki-pagehistory.tpl 59059 2016-07-04 13:52:20Z lindonb $ *}
 
 {title admpage="wiki" url='tiki-pagehistory.php?page='|cat:$page|escape}{tr}History:{/tr} {$page}{/title}
 
 <div class="t_navbar margin-bottom-md">
 	{assign var=thispage value=$page|escape:url}
 	{button href="tiki-index.php?page=$thispage" class="btn btn-default" _text="{tr}View page{/tr}" _icon_name="view"}
+	{button href="tiki-editpage.php?page=$thispage" class="btn btn-default" _text="{tr}Edit page{/tr}" _icon_name="edit"}
 	{if !isset($noHistory)}
 		{if $show_all_versions eq "y"}
 			{button _text="{tr}Collapse Into Edit Sessions{/tr}" href="?clear_versions=1&show_all_versions=n" _auto_args="*" class="btn btn-default" _icon_name="expanded"}

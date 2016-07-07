@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Files.php 57949 2016-03-17 19:30:36Z jyhem $
+// $Id: Files.php 59122 2016-07-07 11:31:00Z xavidp $
 
 class Tracker_Field_Files extends Tracker_Field_Abstract
 {
@@ -87,7 +87,7 @@ class Tracker_Field_Files extends Tracker_Field_Abstract
 					),
 					'browseGalleryId' => array(
 						'name' => tr('Browse Gallery ID'),
-						'description' => tr('File gallery browse files. Use 0 for root file gallery. (requires elFinder feature - experimental)'),
+						'description' => tr('File gallery browse files. Use 0 for root file gallery. (requires elFinder feature - experimental)') . '. ' . tr('Restrict permissions to view the file gallery to hide the button.') ,
 						'filter' => 'int',
 						'legacy_index' => 8,
 						'profile_reference' => 'file_gallery',

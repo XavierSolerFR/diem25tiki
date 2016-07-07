@@ -1,4 +1,4 @@
-// $Id: tiki-selectors.less 58763 2016-06-02 02:39:10Z chibaguy $
+// $Id: tiki-selectors.less 59076 2016-07-05 10:06:04Z chibaguy $
 // This file contains rules for colors, consolidated from the tiki_base less files. They're moved here so that theme variables can provide values for them.
 @imagePathToImgDir: ~"../../../img/";
 
@@ -1058,6 +1058,14 @@ a.admbox {
 	background: @btn-default-bg;
 	color: @btn-default-color;
 }
+
+// Example: tracker field type "icon". Bootstrap modal with jquery-ui contents
+.tiki .modal-content .ui-state-default { color: @modal-link-color; }
+.tiki .modal-content .ui-state-hover:hover
+//.tiki .modal-content .ui-state-focus,
+//.tiki .modal-content .ui-widget-content .ui-state-focus,
+//.tiki .modal-content .ui-widget-content .ui-state-focus:hover
+ { color: @modal-link-hover-color; }
 
 
 // To correct login dropdown color

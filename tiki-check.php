@@ -6,7 +6,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-check.php 58417 2016-04-22 17:06:09Z jonnybradley $
+// $Id: tiki-check.php 59087 2016-07-06 11:43:32Z jonnybradley $
 /*
 About the design:
 tiki-check.php is designed to run in 2 modes
@@ -20,6 +20,17 @@ tiki-check.php should not crash but rather avoid running tests which lead to tik
 isset($_REQUEST['nagios']) ? $nagios = true : $nagios = false;
 file_exists('tiki-check.php.lock') ? $locked = true : $locked = false;
 $font = 'lib/captcha/DejaVuSansMono.ttf';
+
+$inputConfiguration = array(
+	array(
+		'staticKeyFilters' => array(
+			'dbhost' => 'text',
+			'dbuser' => 'text',
+			'dbpass' => 'text',
+			'email_test_to' => 'email',
+		),
+	),
+);
 
 if (file_exists('./db/local.php') && file_exists('./templates/tiki-check.tpl')) {
 	$standalone = false;

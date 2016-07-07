@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-installer.php 58923 2016-06-16 14:31:30Z jyhem $
+// $Id: tiki-installer.php 59087 2016-07-06 11:43:32Z jonnybradley $
 
 // To (re-)enable this script the file has to be named tiki-installer.php and the following four lines
 // must start with two '/' and 'stopinstall:'. (Make sure there are no spaces inbetween // and stopinstall: !)
@@ -24,7 +24,7 @@ $inputConfiguration = array(
 			'db' => 'alpha',
 			'dbinfo' => 'alpha',
 			'email_test_cc' => 'digits',
-//			'email_test_to' => '',  //validated later
+			'email_test_to' => 'email',
 			'use_proxy' => 'alpha',
 			'proxy_host' => 'striptags',
 			'proxy_port' => 'digits',
@@ -38,7 +38,7 @@ $inputConfiguration = array(
 			'fix_double_encoding' => 'xss',
 			'force_utf8' => 'alpha',
 			'general_settings' => 'alpha',
-//			'host' => '',   //validated later
+			'host' => 'text',
 			'https_login' => 'word',
 			'https_port' => 'digits',
 			'install_step' => 'digits',
@@ -46,15 +46,15 @@ $inputConfiguration = array(
 			'lang' => 'lang',
 			'log_tpl' => 'alpha',
 			'multi' => 'striptags',
-//			'name' => '',   //validated later
-//			'pass' => '',   //validated later
+			'name' => 'text',
+			'pass' => 'text',
 			'perform_mail_test' => 'alpha',
 			'previous_encoding' => 'word',
 			'reset' => 'alpha',
 			'resetdb' => 'alpha',
 			'scratch' => 'word',
 			'sender_email' => 'striptags',
-//			'setdbversion' => '',  //not used as input
+			'setdbversion' => 'text',
 			'smarty_notice_reporting' => 'alpha',
 			'test' => 'alnum',
 			'test2' => 'digits',
@@ -62,7 +62,7 @@ $inputConfiguration = array(
 			'test4' => 'word',
 			'update' => 'word',
 			'useInnoDB' => 'digits',
-//			'user' => '',   //validated later
+			'user' => 'text',
 //			'validPatches' => '',   //paramterized in sql
 		)
 	)

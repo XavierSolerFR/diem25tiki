@@ -1,4 +1,4 @@
-/* $Id: greenvalley.css 58768 2016-06-02 15:46:22Z chibaguy $
+/* $Id: greenvalley.css 59076 2016-07-05 10:06:04Z chibaguy $
 	Greenvalley theme (greenvalley.css) for Tiki Wiki CMS Groupware. */
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
@@ -7475,6 +7475,12 @@ a.admbox.off:active {
 .tiki .ui-widget button {
   background: #ffffff;
   color: #42281d;
+}
+.tiki .modal-content .ui-state-default {
+  color: #da388f;
+}
+.tiki .modal-content .ui-state-hover:hover {
+  color: #e679b3;
 }
 .dropdown-menu {
   color: #515151;

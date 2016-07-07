@@ -3,15 +3,18 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-error_simple.php 57938 2016-03-17 19:22:32Z jyhem $
+// $Id: tiki-error_simple.php 59087 2016-07-06 11:43:32Z jonnybradley $
+
+require_once 'tiki-filter-base.php';
+$filter = \TikiFilter::get('xss');
 
 if (!empty($_REQUEST['error'])) {
-	$error = substr($_REQUEST["error"], 0, 256);
+	$error = $filter->filter(substr($_REQUEST["error"], 0, 256));
 } else {
 	$error = 'There was an unspecified error.  Please go back and try again.';
 }
 if (!empty($_REQUEST['title'])) {
-	$title = $_REQUEST['title'];
+	$title = $filter->filter($_REQUEST['title']);
 } else {
 	$title = 'Maintenance';
 }

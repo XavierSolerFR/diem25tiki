@@ -1,4 +1,4 @@
-/* $Id: tiki_base.css 59013 2016-06-29 14:42:38Z chibaguy $
+/* $Id: tiki_base.css 59076 2016-07-05 10:06:04Z chibaguy $
 	This Tiki Wiki CMS Groupware file contains global design
 	and layout properties. */
 .margin-bottom-xs {
@@ -762,6 +762,12 @@ a.admbox.off:active {
 .tiki .ui-widget button {
   background: #fff;
   color: #333;
+}
+.tiki .modal-content .ui-state-default {
+  color: #337ab7;
+}
+.tiki .modal-content .ui-state-hover:hover {
+  color: #23527c;
 }
 .dropdown-menu {
   color: #333333;

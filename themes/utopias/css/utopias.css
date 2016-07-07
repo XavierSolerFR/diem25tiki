@@ -1,4 +1,4 @@
-/* $Id: utopias.css 58769 2016-06-02 16:31:55Z chibaguy $
+/* $Id: utopias.css 59076 2016-07-05 10:06:04Z chibaguy $
  * The Utopias theme for Tiki Wiki CMS Groupware
  * Developed in part in association with http://attainable-utopias.org by jonnybradley
  * © 2003-2014 Jonny Bradley licensed under LGPL/MIT in accordance with Tiki licensing practices
@@ -7478,6 +7478,12 @@ a.admbox.off:active {
 .tiki .ui-widget button {
   background: #eeeeee;
   color: #555555;
+}
+.tiki .modal-content .ui-state-default {
+  color: #aaaaaa;
+}
+.tiki .modal-content .ui-state-hover:hover {
+  color: #999999;
 }
 .dropdown-menu {
   color: #333333;

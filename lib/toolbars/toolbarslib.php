@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: toolbarslib.php 59049 2016-07-02 18:02:04Z jonnybradley $
+// $Id: toolbarslib.php 59065 2016-07-04 15:57:47Z jonnybradley $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
@@ -1545,8 +1545,9 @@ class ToolbarFileGallery extends Toolbar
 					);
 				};'
 			);
-			return 'var area_id = editor.name;
-				openElFinderDialog(
+			return '
+			var area_id = (typeof editor === \'undefined\' ?  \'' . $areaId . '\' : editor.name);
+			openElFinderDialog(
 				this,
 				{
 					defaultGalleryId: ' . (empty($prefs['home_file_gallery']) ? $prefs['fgal_root_id'] : $prefs['home_file_gallery']) . ',
