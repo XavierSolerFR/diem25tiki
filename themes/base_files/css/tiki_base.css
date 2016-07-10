@@ -1,4 +1,4 @@
-/* $Id: tiki_base.css 59076 2016-07-05 10:06:04Z chibaguy $
+/* $Id: tiki_base.css 59132 2016-07-08 14:07:52Z chibaguy $
 	This Tiki Wiki CMS Groupware file contains global design
 	and layout properties. */
 .margin-bottom-xs {
@@ -199,6 +199,11 @@ table.treetable.objectperms td.removed {
 }
 .btn-default.highlight:hover {
   background: #dca7a7;
+}
+.btn-default.btn-link,
+.btn-default.btn-link:hover {
+  background: transparent;
+  border: none;
 }
 #ajaxLoadingBG {
   background: transparent url('../../../img/overlay-light.png');
@@ -2957,6 +2962,9 @@ body.tiki.navbar-padding {
 .tiki .col1 .table-responsive {
   width: 100%;
   margin-bottom: 15px;
+  overflow-y: hidden;
+  overflow-x: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
   -webkit-overflow-scrolling: touch;
 }
 .tiki .table-responsive > .table {
@@ -3386,6 +3394,9 @@ table.tablesorter thead tr.tablesorter-filter-row {
 .chosen-container .chosen-results li.active-result.result-selected {
   display: list-item;
   color: inherit;
+}
+.chosen-container .chosen-results li.active-result.result-selected.highlighted {
+  color: #ffffff;
 }
 .chosen-container .chosen-results li.active-result:hover {
   display: inherit;

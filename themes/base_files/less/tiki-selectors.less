@@ -1,4 +1,4 @@
-// $Id: tiki-selectors.less 59076 2016-07-05 10:06:04Z chibaguy $
+// $Id: tiki-selectors.less 59132 2016-07-08 14:07:52Z chibaguy $
 // This file contains rules for colors, consolidated from the tiki_base less files. They're moved here so that theme variables can provide values for them.
 @imagePathToImgDir: ~"../../../img/";
 
@@ -278,6 +278,13 @@ table.treetable.objectperms td.removed {
 
 .btn-default.highlight:hover {
 	background: darken(@state-danger-bg, 15%);
+}
+
+// Smarty {button} maeks .btn-default but sometimes .btn-link is added by hand. Actually Smarty {button} probably should make just .btn.
+.btn-default.btn-link,
+.btn-default.btn-link:hover {
+	background: transparent;
+	border: none;
 }
 
 // Ajax, jquery. etc.

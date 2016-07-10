@@ -1,4 +1,4 @@
-/* $Id: utopias.css 59076 2016-07-05 10:06:04Z chibaguy $
+/* $Id: utopias.css 59132 2016-07-08 14:07:52Z chibaguy $
  * The Utopias theme for Tiki Wiki CMS Groupware
  * Developed in part in association with http://attainable-utopias.org by jonnybradley
  * © 2003-2014 Jonny Bradley licensed under LGPL/MIT in accordance with Tiki licensing practices
@@ -6915,6 +6915,11 @@ table.treetable.objectperms td.removed {
 }
 .btn-default.highlight:hover {
   background: #dca7a7;
+}
+.btn-default.btn-link,
+.btn-default.btn-link:hover {
+  background: transparent;
+  border: none;
 }
 #ajaxLoadingBG {
   background: transparent url('../../../img/overlay-light.png');

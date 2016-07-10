@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: user.php 58435 2016-04-25 12:56:41Z jyhem $
+// $Id: user.php 59147 2016-07-09 22:12:46Z yonixxx $
 
 function prefs_user_list($partial = false)
 {
@@ -211,8 +211,6 @@ function prefs_user_list($partial = false)
 				'user_trackersync_trackers',
 			),
 			'default' => '',
-			'profile_reference' => 'tracker_field',
-			'format' => $fieldFormat,
 		),
 		'user_trackersync_geo' => array(
 			'name' => tra('Synchronize long/lat/zoom to location field'),

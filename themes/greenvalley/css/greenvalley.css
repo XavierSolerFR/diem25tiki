@@ -1,4 +1,4 @@
-/* $Id: greenvalley.css 59076 2016-07-05 10:06:04Z chibaguy $
+/* $Id: greenvalley.css 59132 2016-07-08 14:07:52Z chibaguy $
 	Greenvalley theme (greenvalley.css) for Tiki Wiki CMS Groupware. */
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
@@ -6912,6 +6912,11 @@ table.treetable.objectperms td.removed {
 }
 .btn-default.highlight:hover {
   background: #dca7a7;
+}
+.btn-default.btn-link,
+.btn-default.btn-link:hover {
+  background: transparent;
+  border: none;
 }
 #ajaxLoadingBG {
   background: transparent url('../../../img/overlay-light.png');
