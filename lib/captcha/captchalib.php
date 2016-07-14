@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: captchalib.php 58253 2016-04-08 14:27:01Z patrick-proulx $
+// $Id: captchalib.php 59157 2016-07-11 23:57:42Z rjsmelo $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER['SCRIPT_NAME'], basename(__FILE__)) != FALSE) {
@@ -67,6 +67,9 @@ class Captcha
 					'public_key' => $prefs['recaptcha_pubkey'],
 				)
 			);
+			$httpClient = TikiLib::lib('tiki')->get_http_client();
+			$this->captcha->getService()->setHttpClient($httpClient);
+
 			$this->captcha->getService()->setOption('theme', isset($prefs['recaptcha_theme']) ? $prefs['recaptcha_theme'] : 'clean');
 
 			$this->captcha->setOption('ssl', true);
@@ -85,6 +88,8 @@ class Captcha
 					'theme' => isset($prefs['recaptcha_theme']) ? $prefs['recaptcha_theme'] : 'clean',
 				)
 			);
+			$httpClient = TikiLib::lib('tiki')->get_http_client();
+			$this->captcha->getService()->setHttpClient($httpClient);
 
 			$this->captcha->setOption('ssl', true);
 

@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: zend.php 57946 2016-03-17 19:28:19Z jyhem $
+// $Id: zend.php 59157 2016-07-11 23:57:42Z rjsmelo $
 
 function prefs_zend_list()
 {
@@ -90,6 +90,16 @@ function prefs_zend_list()
 			'options' => array(
 				'' => tra('Send immediately'),
 				'y' => tra('Queue'),
+			),
+			'default' => '',
+		),
+		'zend_http_sslverifypeer' => array(
+			'name' => tra('Verify HTTPS certificates of remote servers'),
+			'description' => tra('When set to enforce, the server will fail to connect over HTTPS to a remote server that do not have a SSL certificate that is valid and can be verified against the local list of Certificate Authority (CA)'),
+			'type' => 'list',
+			'options' => array(
+				'' => tra('Do not enforce verification'),
+				'y' => tra('Enforce verification'),
 			),
 			'default' => '',
 		),

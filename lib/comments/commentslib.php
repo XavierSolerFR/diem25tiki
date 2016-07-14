@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: commentslib.php 58943 2016-06-20 13:56:03Z jonnybradley $
+// $Id: commentslib.php 59157 2016-07-11 23:57:42Z rjsmelo $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
@@ -3054,7 +3054,8 @@ class Comments extends TikiLib
 			$tikilib = TikiLib::lib('tiki');
 
 			$url = $tikilib->tikiUrl();
-			$akismet = new ZendService\Akismet\Akismet($prefs['comments_akismet_apikey'], $url);
+			$httpClient = $tikilib->get_http_client();
+			$akismet = new ZendService\Akismet\Akismet($prefs['comments_akismet_apikey'], $url, $httpClient);
 
 			return $akismet->isSpam(
 				array(

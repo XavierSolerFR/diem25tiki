@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tikilib.php 57943 2016-03-17 19:26:11Z jyhem $
+// $Id: tikilib.php 59157 2016-07-11 23:57:42Z rjsmelo $
 
 require_once('lib/debug/Tracer.php');
 
@@ -171,9 +171,10 @@ class TikiLib extends TikiDb_Bridge
 
 	/**
 	 * @param bool $url
+	 * @param array $options
 	 * @return mixed|Zend\Http\Client
 	 */
-	function get_http_client($url = false)
+	function get_http_client($url = false, $options = null)
 	{
 		global $prefs;
 
@@ -192,11 +193,22 @@ class TikiLib extends TikiDb_Bridge
 				$config["proxy_pass"] = $prefs['proxy_pass'];
 			}
 		}
-		if (strpos($url, 'https://') === 0) {
-			$config['sslverifypeer'] = false;	// zf2 only
+
+		if ($prefs['zend_http_sslverifypeer'] == 'y') {
+			$config['sslverifypeer'] = true;
+		} else {
+			$config['sslverifypeer'] = false;
+		}
+
+
+		if(is_array($options)){
+			foreach($options as $key => $value) {
+				$config[$key] = $value;
+			}
 		}
 
 		$client = new Zend\Http\Client(null, $config);
+		$client->setArgSeparator('&');
 
 		if ($url) {
 			$client = $this->prepare_http_client($client, $url);

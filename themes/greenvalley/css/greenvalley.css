@@ -1,4 +1,4 @@
-/* $Id: greenvalley.css 59132 2016-07-08 14:07:52Z chibaguy $
+/* $Id: greenvalley.css 59151 2016-07-10 09:08:06Z chibaguy $
 	Greenvalley theme (greenvalley.css) for Tiki Wiki CMS Groupware. */
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
@@ -7499,6 +7499,12 @@ pre.codelisting {
   background: #f8f8f8;
   border: 1px solid #dddddd;
   border-radius: 1px;
+}
+.adminoptionboxchild {
+  border-bottom: 1px solid #ffffff;
+}
+.adminoptionboxchild legend {
+  font-size: 19px;
 }
 .margin-bottom-xs {
   margin-bottom: 5px;

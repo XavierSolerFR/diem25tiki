@@ -1,4 +1,4 @@
-{* $Id: include_security.tpl 57055 2015-12-22 04:21:53Z lindonb $ *}
+{* $Id: include_security.tpl 59157 2016-07-11 23:57:42Z rjsmelo $ *}
 
 <div class="t_navbar btn-group form-group">
 	<a role="link" class="btn btn-link" href="tiki-admingroups.php" title="{tr}Admin groups{/tr}">
@@ -74,6 +74,7 @@
 			{preference name=tiki_allow_trust_input}
 			{preference name=feature_quick_object_perms}
 			{preference name=feature_user_encryption}
+			{preference name=zend_http_sslverifypeer}
 			<div class="adminoptionboxchild" id="feature_user_encryption_childcontainer">
 				{if isset($no_mcrypt)}
 					{remarksbox type="warning" title="{tr}Mcrypt is not loaded{/tr}"}

@@ -1,4 +1,4 @@
-/* $Id: tiki_base.css 59132 2016-07-08 14:07:52Z chibaguy $
+/* $Id: tiki_base.css 59151 2016-07-10 09:08:06Z chibaguy $
 	This Tiki Wiki CMS Groupware file contains global design
 	and layout properties. */
 .margin-bottom-xs {
@@ -786,6 +786,12 @@ pre.codelisting {
   background: #f8f8f8;
   border: 1px solid #dddddd;
   border-radius: 1px;
+}
+.adminoptionboxchild {
+  border-bottom: 1px solid #eeeeee;
+}
+.adminoptionboxchild legend {
+  font-size: 19px;
 }
 .button.highlight {
   background: inherit;
@@ -2599,6 +2605,13 @@ img.pref_dependency {
   width: auto;
   display: inline;
   margin: 0 1em;
+}
+.adminoptionboxchild {
+  padding-left: 4em;
+  margin-bottom: 2em;
+}
+.adminoptionboxchild legend {
+  margin-bottom: 0;
 }
 form.simple label.error {
   padding: 4px 0 0 20px;

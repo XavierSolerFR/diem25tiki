@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: SendToFuture.php 57953 2016-03-17 19:33:34Z jyhem $
+// $Id: SendToFuture.php 59157 2016-07-11 23:57:42Z rjsmelo $
 
 // File name: Send.php
 // Required path: /lib/core/FutureLink
@@ -38,7 +38,7 @@ Class FutureLink_SendToFuture extends Feed_Abstract
 				if (empty($item->futurelink->href) || isset($sent[$item->futurelink->hash])) continue;
 
 				$sent[$item->futurelink->hash] = true;
-				$client = new Zend\Http\Client($item->futurelink->href, array('timeout' => 60));
+				$client = TikiLib::lib('tiki')->get_http_client($item->futurelink->href, array('timeout' => 60));
 
 				if (!empty($feed->feed->entry)) {
 					$client->setParameterPost(

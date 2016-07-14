@@ -1,4 +1,4 @@
-/* $Id: utopias.css 59132 2016-07-08 14:07:52Z chibaguy $
+/* $Id: utopias.css 59151 2016-07-10 09:08:06Z chibaguy $
  * The Utopias theme for Tiki Wiki CMS Groupware
  * Developed in part in association with http://attainable-utopias.org by jonnybradley
  * © 2003-2014 Jonny Bradley licensed under LGPL/MIT in accordance with Tiki licensing practices
@@ -7502,6 +7502,12 @@ pre.codelisting {
   background: #f8f8f8;
   border: 1px solid #dddddd;
   border-radius: 1px;
+}
+.adminoptionboxchild {
+  border-bottom: 1px solid #888888;
+}
+.adminoptionboxchild legend {
+  font-size: 19px;
 }
 .margin-bottom-xs {
   margin-bottom: 5px;

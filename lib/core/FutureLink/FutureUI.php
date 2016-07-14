@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: FutureUI.php 57953 2016-03-17 19:33:34Z jyhem $
+// $Id: FutureUI.php 59157 2016-07-11 23:57:42Z rjsmelo $
 
 // File name: FutureUI.php
 // Required path: /lib/core/Feed
@@ -37,7 +37,7 @@ Class FutureLink_FutureUI extends Feed_Abstract
 	{
 		//May be used soon for encrypting futurelinks
 		if (isset($_REQUEST['action'], $_REQUEST['hash']) && $_REQUEST['action'] == 'timestamp') {
-			$client = new Zend\Http\Client(TikiLib::tikiUrl() . 'tiki-timestamp.php', array('timeout' => 60));
+			$client = TikiLib::lib('tiki')->get_http_client(TikiLib::tikiUrl() . 'tiki-timestamp.php', array('timeout' => 60));
 			$client->getRequest()->getQuery()->set('hash', $_REQUEST['hash']);
 			$client->getRequest()->getQuery()->set('clienttime', time());
 			$response = $client->send();

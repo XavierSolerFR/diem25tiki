@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: oauthlib.php 57947 2016-03-17 19:29:02Z jyhem $
+// $Id: oauthlib.php 59157 2016-07-11 23:57:42Z rjsmelo $
 
 class OAuthLib extends TikiDb_Bridge
 {
@@ -169,7 +169,10 @@ class OAuthLib extends TikiDb_Bridge
 	private function get_consumer($provider_key)
 	{
 		if ($configuration = $this->get_configuration($provider_key)) {
-			return new ZendOAuth\Consumer($configuration);
+			$consumer = new ZendOAuth\Consumer($configuration);
+			$httpClient = TikiLib::lib('tiki')->get_http_client();
+			$consumer->setHttpClient($httpClient);
+			return $consumer;
 		}
 	}
 }

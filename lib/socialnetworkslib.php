@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: socialnetworkslib.php 57945 2016-03-17 19:27:36Z jyhem $
+// $Id: socialnetworkslib.php 59157 2016-07-11 23:57:42Z rjsmelo $
 
 // this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER['SCRIPT_NAME'], basename(__FILE__)) !== false) {
@@ -83,6 +83,8 @@ class SocialNetworksLib extends LogsLib
 
 		try {
 			$consumer = new ZendOAuth\Consumer($this->options);
+			$httpClient = TikiLib::lib('tiki')->get_http_client();
+			$consumer->setHttpClient($httpClient);
 			$token = $consumer->getRequestToken();
 			$_SESSION['TWITTER_REQUEST_TOKEN'] = serialize($token);
 			$consumer->redirect();
@@ -115,6 +117,8 @@ class SocialNetworksLib extends LogsLib
 		$this->options['consumerSecret'] = $prefs['socialnetworks_twitter_consumer_secret'];
 
 		$consumer = new ZendOAuth\Consumer($this->options);
+		$httpClient = TikiLib::lib('tiki')->get_http_client();
+		$consumer->setHttpClient($httpClient);
 		$token = $consumer->getAccessToken($_GET, unserialize($_SESSION['TWITTER_REQUEST_TOKEN']));
 		unset($_SESSION['TWITTER_REQUEST_TOKEN']);
 		$this->set_user_preference($user, 'twitter_token', serialize($token));
@@ -543,6 +547,7 @@ class SocialNetworksLib extends LogsLib
 		$this->options['callbackUrl'] = $this->getURL();
 		$this->options['consumerKey'] = $prefs['socialnetworks_twitter_consumer_key'];
 		$this->options['consumerSecret'] = $prefs['socialnetworks_twitter_consumer_secret'];
+		$httpClient = TikiLib::lib('tiki')->get_http_client();
 		$twitter = new ZendService\Twitter\Twitter(
 			array(
 				'oauthOptions' => array(
@@ -550,7 +555,9 @@ class SocialNetworksLib extends LogsLib
 					'consumerSecret' => $prefs['socialnetworks_twitter_consumer_secret'],
 				),
 				'accessToken' => $token
-			)
+			),
+			null,
+			$httpClient
 		);
 
 		try {
@@ -589,6 +596,7 @@ class SocialNetworksLib extends LogsLib
 		$this->options['callbackUrl'] = $this->getURL();
 		$this->options['consumerKey'] = $prefs['socialnetworks_twitter_consumer_key'];
 		$this->options['consumerSecret'] = $prefs['socialnetworks_twitter_consumer_secret'];
+		$httpClient = TikiLib::lib('tiki')->get_http_client();
 		$twitter = new ZendService\Twitter\Twitter(
 			array(
 				'oauthOptions' => array(
@@ -596,7 +604,9 @@ class SocialNetworksLib extends LogsLib
 					'consumerSecret' => $prefs['socialnetworks_twitter_consumer_secret'],
 				),
 				'accessToken' => $token
-			)
+			),
+			null,
+			$httpClient
 		);
 		try {
 			$response = $twitter->statuses->destroy($id);
@@ -826,6 +836,7 @@ class SocialNetworksLib extends LogsLib
 
 		$token = unserialize($token);
 
+		$httpClient = TikiLib::lib('tiki')->get_http_client();
 		$twitter = new ZendService\Twitter\Twitter(
 			array(
 				'oauthOptions' => array(
@@ -833,7 +844,9 @@ class SocialNetworksLib extends LogsLib
 					'consumerSecret' => $prefs['socialnetworks_twitter_consumer_secret'],
 				),
 				'accessToken' => $token
-			)
+			),
+			null,
+			$httpClient
 		);
 
 		if ($timelineType=='friends') {
