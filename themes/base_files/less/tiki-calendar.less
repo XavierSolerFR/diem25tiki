@@ -1,4 +1,4 @@
-// $Id: tiki-calendar.less 55039 2015-04-10 12:55:19Z jonnybradley $
+// $Id: tiki-calendar.less 59214 2016-07-18 01:26:12Z chibaguy $
 // Calendar
 .viewmode {
 	line-height: 1em;
@@ -31,6 +31,18 @@ a.fc-event:hover {
 	#calendar_dialog .modal-dialog {
 		min-width: 750px;
 		width: 80%;
+	}
+}
+
+// Event edit popup in FullCalendar: convert non-modal page heading appearance to modal appearance
+#calendar_dialog .modal-content {
+	h1.pagetitle {
+		padding: 15px;
+		margin: 0;
+		font-size: 18px;
+	}
+	.modal-header {
+		margin-top: -63px;
 	}
 }
 

@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: UserSource.php 58941 2016-06-20 13:39:20Z jonnybradley $
+// $Id: UserSource.php 59208 2016-07-16 16:03:41Z jonnybradley $
 
 class Search_ContentSource_UserSource implements Search_ContentSource_Interface
 {
@@ -34,6 +34,10 @@ class Search_ContentSource_UserSource implements Search_ContentSource_Interface
 		global $prefs;
 
 		$detail = $this->user->get_user_details($objectId, false);
+
+		if (empty($detail['info'])) {
+			return false;
+		}
 
 		$name = $objectId;
 		if (! empty($detail['preferences']['realName'])) {

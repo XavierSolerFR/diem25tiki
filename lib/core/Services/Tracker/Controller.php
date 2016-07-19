@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Controller.php 58797 2016-06-06 08:09:41Z rjsmelo $
+// $Id: Controller.php 59202 2016-07-15 09:49:44Z xavidp $
 
 class Services_Tracker_Controller
 {
@@ -25,11 +25,11 @@ class Services_Tracker_Controller
 		$item = Tracker_Item::fromId($input->id->int());
 			
 		if (! $item) {
-			throw new Services_Exception_NotFound('Item not found');
+			throw new Services_Exception_NotFound(tr('Item not found'));
 		}
 
 		if (! $item->canView()) {
-			throw new Services_Exception_Denied('Permission denied');
+			throw new Services_Exception_Denied(tr('Permission denied'));
 		}
 
 		$definition = $item->getDefinition();
@@ -65,6 +65,15 @@ class Services_Tracker_Controller
 
 		$name = $input->name->text();
 		$permName = $input->permName->word();
+		// Ensure that PermName is no longer than 36 characters, since the maximum allowed by MySQL Full
+		// Text Search as Unified Search Index is 50, and trackers will internally prepend "tracker_field_",
+		// which are another 14 characters (36+14=50). We could allow longer permanent names when other search
+		// index engines are the ones being used, but this will probably only delay the problem until the admin
+		// wants to change the search engine for some reason (some constrains in Lucene or Elastic Search,
+		// as experience demonstrated in some production sites in real use cases over long periods of time).
+		// And to increase chances to avoid conflict when long names only differ in the end of the long string,
+		// where some meaningful info resides, we'll get the first 26 chars, 1 underscore and the last 9 chars.
+		$permName = (strlen($permName) > 36) ? substr($permName,0,26) . '_' . substr($permName,-9): $permName;
 		$type = $input->type->text();
 		$description = $input->description->text();
 		$wikiparse = $input->description_parse->int();
@@ -889,7 +898,7 @@ class Services_Tracker_Controller
 					'action' => 'modal_alert',
 					'ajaxtype' => 'feedback',
 					'ajaxheading' => tra('Success'),
-					'ajaxmsg' => 'Your item has been updated.',
+					'ajaxmsg' => tra('Your item has been updated.'),
 					'ajaxdismissible' => 'n',
 					'ajaxtimer' => 5,
 				)

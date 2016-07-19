@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: CommentSource.php 58279 2016-04-10 17:17:57Z jonnybradley $
+// $Id: CommentSource.php 59208 2016-07-16 16:03:41Z jonnybradley $
 
 class Search_ContentSource_CommentSource implements Search_ContentSource_Interface
 {
@@ -36,6 +36,10 @@ class Search_ContentSource_CommentSource implements Search_ContentSource_Interfa
 	{
 		$commentslib = TikiLib::lib('comments');
 		$comment = $commentslib->get_comment($objectId);
+
+		if (! $comment) {
+			return false;
+		}
 
 		$url = $commentslib->getHref($comment['objectType'], $comment['object'], $objectId);
 		$url = str_replace('&amp;', '&', $url);

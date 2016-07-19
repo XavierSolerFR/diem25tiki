@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: CategorySource.php 57952 2016-03-17 19:32:46Z jyhem $
+// $Id: CategorySource.php 59208 2016-07-16 16:03:41Z jonnybradley $
 
 class Search_ContentSource_CategorySource implements Search_ContentSource_Interface
 {
@@ -24,6 +24,10 @@ class Search_ContentSource_CategorySource implements Search_ContentSource_Interf
 		$lib = TikiLib::lib('categ');
 		
 		$item = $lib->get_category($objectId);
+
+		if (! $item) {
+			return false;
+		}
 
 		$data = array(
 			'title' => $typeFactory->sortable($item['name']),

@@ -1,4 +1,4 @@
-{* $Id: comment-body.tpl 57072 2015-12-25 16:32:56Z lindonb $ *}
+{* $Id: comment-body.tpl 59218 2016-07-19 08:22:17Z xavidp $ *}
 <div class="postbody-content panel-body">
 
 	<div class="clearfix author">
@@ -34,7 +34,9 @@
 			{/if}
 			{if $forum_info.ui_level eq 'y' and $comment.user_level}
 			<span class="author_stars">
-				<img src="img/icons/{$comment.user_level}stars.gif" alt="{$comment.user_level} {tr}stars{/tr}" title="{tr}User Level{/tr}">
+				{for $levelstars=1 to $comment.user_level}
+					<span>☆</span>
+				{/for}
 			</span>
 			{/if}
 

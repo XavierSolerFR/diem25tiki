@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: FileGallerySource.php 58279 2016-04-10 17:17:57Z jonnybradley $
+// $Id: FileGallerySource.php 59208 2016-07-16 16:03:41Z jonnybradley $
 
 class Search_ContentSource_FileGallerySource implements Search_ContentSource_Interface
 {
@@ -24,6 +24,10 @@ class Search_ContentSource_FileGallerySource implements Search_ContentSource_Int
 		$lib = TikiLib::lib('filegal');
 		
 		$item = $lib->get_file_gallery_info($objectId);
+
+		if (! $item) {
+			return false;
+		}
 
 		$data = array(
 			'title' => $typeFactory->sortable($item['name']),

@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: ArticleSource.php 58941 2016-06-20 13:39:20Z jonnybradley $
+// $Id: ArticleSource.php 59208 2016-07-16 16:03:41Z jonnybradley $
 
 class Search_ContentSource_ArticleSource implements Search_ContentSource_Interface, Tiki_Profile_Writer_ReferenceProvider
 {
@@ -32,6 +32,10 @@ class Search_ContentSource_ArticleSource implements Search_ContentSource_Interfa
 		$artlib = TikiLib::lib('art');
 		
 		$article = $artlib->get_article($objectId, false);
+
+		if (! $article) {
+			return false;
+		}
 
 		if ($topic = $artlib->get_topic($article['topicId'])) {
 			$topic_name = $topic['name'];

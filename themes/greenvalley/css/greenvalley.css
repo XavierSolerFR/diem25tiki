@@ -1,4 +1,4 @@
-/* $Id: greenvalley.css 59151 2016-07-10 09:08:06Z chibaguy $
+/* $Id: greenvalley.css 59211 2016-07-17 06:19:02Z chibaguy $
 	Greenvalley theme (greenvalley.css) for Tiki Wiki CMS Groupware. */
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
@@ -7440,6 +7440,9 @@ div.drillshow {
 .chosen-container .chosen-results li.highlighted {
   background-color: #f5f5f5;
   color: #444444;
+}
+.tiki .chosen-container .active-result {
+  color: #737373;
 }
 .breadcrumb {
   font-style: normal;

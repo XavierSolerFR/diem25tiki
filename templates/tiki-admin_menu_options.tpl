@@ -1,4 +1,4 @@
-{* $Id: tiki-admin_menu_options.tpl 57893 2016-03-16 02:07:06Z chibaguy $ *}
+{* $Id: tiki-admin_menu_options.tpl 59175 2016-07-14 07:59:52Z yonixxx $ *}
 {title help="Menus" url="tiki-admin_menu_options.php?menuId=$menuId" admpage="general&amp;cookietab=3"}{tr}Menu{/tr}: {$editable_menu_info.name}{/title}
 
 <div class="t_navbar margin-bottom-md">
@@ -402,7 +402,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-md-3" for="type">{tr}Type:{/tr}</label>
+					<label class="control-label col-md-3" for="type">{tr}Type{/tr}:</label>
 
 					<div class="col-md-9">
 						<select name="type" class="form-control">
@@ -511,7 +511,7 @@
 	<form action="tiki-admin_menu_options.php" class="form-inline">
 		<input type="hidden" name="menuId" value="{$menuId}">
 		<div class="form-group">
-			<label for="preview_type" class="control-label">Type:</label>
+			<label for="preview_type" class="control-label">{tr}Type{/tr}:</label>
 			<select id="preview_type" class="form-control" name="preview_type" onchange="this.form.submit()">
 				<option value="vert"{if $preview_type eq 'vert'} selected{/if}>{tr}Vertical{/tr}</option>
 				<option value="horiz"{if $preview_type eq 'horiz'} selected{/if}>{tr}Horizontal{/tr}</option>

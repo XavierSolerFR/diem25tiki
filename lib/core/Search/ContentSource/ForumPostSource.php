@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: ForumPostSource.php 58944 2016-06-20 13:57:56Z jonnybradley $
+// $Id: ForumPostSource.php 59208 2016-07-16 16:03:41Z jonnybradley $
 
 class Search_ContentSource_ForumPostSource implements Search_ContentSource_Interface, Tiki_Profile_Writer_ReferenceProvider
 {
@@ -39,6 +39,10 @@ class Search_ContentSource_ForumPostSource implements Search_ContentSource_Inter
 		$commentslib = TikiLib::lib('comments');
 		$commentslib->extras_enabled(false);
 		$comment = $commentslib->get_comment($objectId);
+
+		if (! $comment) {
+			return false;
+		}
 
 		$root_thread_id = $commentslib->find_root($comment['parentId']);
 		if ($comment['parentId']) {

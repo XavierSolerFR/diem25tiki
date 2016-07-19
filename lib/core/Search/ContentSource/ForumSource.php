@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: ForumSource.php 58279 2016-04-10 17:17:57Z jonnybradley $
+// $Id: ForumSource.php 59208 2016-07-16 16:03:41Z jonnybradley $
 
 class Search_ContentSource_ForumSource implements Search_ContentSource_Interface
 {
@@ -24,6 +24,10 @@ class Search_ContentSource_ForumSource implements Search_ContentSource_Interface
 		$lib = TikiLib::lib('comments');
 		
 		$item = $lib->get_forum($objectId);
+
+		if (! $item) {
+			return false;
+		}
 
 		$data = array(
 			'title' => $typeFactory->sortable($item['name']),

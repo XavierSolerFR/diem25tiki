@@ -1,4 +1,4 @@
-{* $Id: tiki-adminusers.tpl 58738 2016-05-30 11:36:20Z jonnybradley $ *}
+{* $Id: tiki-adminusers.tpl 59184 2016-07-14 13:01:04Z yonixxx $ *}
 {* Use css menus as fallback for item dropdown action menu if javascript is not being used *}
 {if $prefs.javascript_enabled !== 'y'}
 	{$js = 'n'}
@@ -466,7 +466,7 @@
 						<div class="form-group">
 							<label class="col-sm-3 col-md-2 control-label" for="pass1">{tr}New Password{/tr}</label>
 							<div class="col-sm-7 col-md-6">
-								<input type="password" class="form-control" placeholder="New Password" name="pass" id="pass1">
+								<input type="password" class="form-control" placeholder="{tr}New Password{/tr}" name="pass" id="pass1">
 								<div style="margin-left:5px;">
 									<div id="mypassword_text">{icon name='ok' istyle='display:none'}{icon name='error' istyle='display:none' } <span id="mypassword_text_inner"></span></div>
 									<div id="mypassword_bar" style="font-size: 5px; height: 2px; width: 0px;"></div>
@@ -479,7 +479,7 @@
 						<div class="form-group">
 							<label class="col-sm-3 col-md-2 control-label" for="pass2">{tr}Repeat Password{/tr}</label>
 							<div class="col-sm-7 col-md-6">
-								<input type="password" class="form-control" name="passAgain" id="pass2" placeholder="Repeat Password">
+								<input type="password" class="form-control" name="passAgain" id="pass2" placeholder="{tr}Repeat Password{/tr}">
 								<div id="mypassword2_text">
 									<div id="match" style="display:none">
 										{icon name='ok' istyle='color:#0ca908'} {tr}Passwords match{/tr}

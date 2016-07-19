@@ -1,4 +1,4 @@
-{* $Id: user_welcome_msg.tpl 58611 2016-05-17 14:35:45Z eromneg $ *}{if $prefs.login_autogenerate eq 'y'}
-	<strong>Your {$prefs.mail_template_custom_text}account ID {$username} has been generated.</strong>
+{* $Id: user_welcome_msg.tpl 59185 2016-07-14 13:13:15Z yonixxx $ *}{if $prefs.login_autogenerate eq 'y'}
+	<strong>{tr _0=$prefs.mail_template_custom_text}Your %0account ID{/tr} {$username} {tr}has been generated.{/tr}</strong>
 {/if}
-{tr}Thank you for your {$prefs.mail_template_custom_text}registration.{/tr} <a href="tiki-login_scr.php?clearmenucache=y">{tr}You may log in now.{/tr}</a>
+{tr _0=$prefs.mail_template_custom_text}Thank you for your %0registration.{/tr} <a href="tiki-login_scr.php?clearmenucache=y">{tr}You may log in now.{/tr}</a>

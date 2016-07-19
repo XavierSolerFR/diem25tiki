@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: FileSource.php 58279 2016-04-10 17:17:57Z jonnybradley $
+// $Id: FileSource.php 59208 2016-07-16 16:03:41Z jonnybradley $
 
 class Search_ContentSource_FileSource implements Search_ContentSource_Interface, Tiki_Profile_Writer_ReferenceProvider
 {
@@ -40,6 +40,10 @@ class Search_ContentSource_FileSource implements Search_ContentSource_Interface,
 		$filegallib = Tikilib::lib('filegal');
 
 		$file = $filegallib->get_file_info($objectId, true, false);
+
+		if (! $file) {
+			return false;
+		}
 
 		$data = array(
 			'title' => $typeFactory->sortable(empty($file['name'])?$file['filename']:$file['name']),

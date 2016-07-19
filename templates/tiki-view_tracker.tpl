@@ -1,4 +1,4 @@
-{* $Id: tiki-view_tracker.tpl 58823 2016-06-07 22:23:16Z rjsmelo $ *}
+{* $Id: tiki-view_tracker.tpl 59177 2016-07-14 10:06:11Z yonixxx $ *}
 {title url=$trackerId|sefurl:'tracker' adm="trackers"}{$tracker_info.name}{/title}
 {if !empty($tracker_info.description)}
 	{if $tracker_info.descriptionIsParsed eq 'y'}
@@ -250,7 +250,7 @@
 															{icon name="post" _menu_text='y' _menu_icon='y' alt="{tr}View/Edit{/tr}"}
 														</a>{$liend}
 													{/if}
-													{if $tiki_p_create_tracker_items eq 'y'}
+													{if $tiki_p_create_tracker_items eq 'y' and $prefs.tracker_clone_item eq 'y'}
 														{$libeg}<a href="{bootstrap_modal controller=tracker action=clone_item trackerId=$trackerId itemId=$items[user].itemId}"
 															onclick="$('[data-toggle=popover]').popover('hide');"
 														>

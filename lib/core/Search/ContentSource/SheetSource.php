@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: SheetSource.php 57952 2016-03-17 19:32:46Z jyhem $
+// $Id: SheetSource.php 59208 2016-07-16 16:03:41Z jonnybradley $
 
 class Search_ContentSource_SheetSource implements Search_ContentSource_Interface
 {
@@ -24,6 +24,10 @@ class Search_ContentSource_SheetSource implements Search_ContentSource_Interface
 		$sheetlib = TikiLib::lib('sheet');
 
 		$info = $sheetlib->get_sheet_info($objectId);
+
+		if (! $info) {
+			return false;
+		}
 
 		$values = $this->db->table('tiki_sheet_values');
 		$contributors = $values->fetchColumn(

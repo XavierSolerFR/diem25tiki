@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: BlogPostSource.php 58279 2016-04-10 17:17:57Z jonnybradley $
+// $Id: BlogPostSource.php 59208 2016-07-16 16:03:41Z jonnybradley $
 
 class Search_ContentSource_BlogPostSource implements Search_ContentSource_Interface, Tiki_Profile_Writer_ReferenceProvider
 {
@@ -31,6 +31,10 @@ class Search_ContentSource_BlogPostSource implements Search_ContentSource_Interf
 		$bloglib = TikiLib::lib('blog');
 		
 		$post = $bloglib->get_post($objectId);
+
+		if (! $post) {
+			return false;
+		}
 
 		$data = array(
 			'title' => $typeFactory->sortable($post['title']),

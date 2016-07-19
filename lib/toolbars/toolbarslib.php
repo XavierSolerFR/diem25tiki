@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: toolbarslib.php 59065 2016-07-04 15:57:47Z jonnybradley $
+// $Id: toolbarslib.php 59179 2016-07-14 10:30:57Z jonnybradley $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
@@ -1385,7 +1385,8 @@ class ToolbarDialog extends Toolbar
 				"window.dialogData[$this->index] = " . json_encode($this->list) . ";",
 				1 + $this->index
 			);
-			$this->setupCKEditorTool($this->getSyntax($areaId), $this->wysiwyg, $this->label, $this->icon);
+			$syntax = str_replace('\'' . $areaId . '\'', 'editor.name', $this->getSyntax($areaId));
+			$this->setupCKEditorTool($syntax, $this->wysiwyg, $this->label, $this->icon);
 		}
 		return $this->wysiwyg;
 	} // }}}
@@ -1840,7 +1841,7 @@ class ToolbarWikiplugin extends Toolbar
 	function getWysiwygToken( $areaId, $add_js = true ) // {{{
 	{
 		if (!empty($this->wysiwyg) && $add_js) {
-			$js = "popup_plugin_form('{$areaId}','{$this->pluginName}');";
+			$js = "popup_plugin_form(editor.name,'{$this->pluginName}');";
 			//CKEditor needs image icons so get legacy plugin icons for the toolbar
 			if (!$this->icon && !empty($this->iconname)) {
 				$iconsetlib = TikiLib::lib('iconset');
