@@ -7122,6 +7122,15 @@ input[type="checkbox"] {
 .navbar-default .navbar-collapse.collapse.in .dropdown-menu li {
   background: transparent;
 }
+.alert-info input {
+  color: #222222 !important;
+}
+.navbar-default .dropdown-menu > li > a:hover {
+  color: #ffffff;
+}
+.navbar-default .dropdown-menu > .active > a {
+  color: #bdbdbd;
+}
 .margin-bottom-xs {
   margin-bottom: 6px;
 }
@@ -7665,6 +7674,7 @@ body.wikitext {
 }
 .editable-inline.loaded {
   background: transparent;
+  position: absolute;
 }
 .editable-inline.failure {
   background: transparent url('../../../img/icons/lock_gray.png') no-repeat top right;

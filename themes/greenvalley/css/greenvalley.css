@@ -1,4 +1,4 @@
-/* $Id: greenvalley.css 59211 2016-07-17 06:19:02Z chibaguy $
+/* $Id: greenvalley.css 59250 2016-07-22 20:22:42Z pom2ter $
 	Greenvalley theme (greenvalley.css) for Tiki Wiki CMS Groupware. */
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
@@ -7257,6 +7257,7 @@ body.wikitext {
 }
 .editable-inline.loaded {
   background: transparent;
+  position: absolute;
 }
 .editable-inline.failure {
   background: transparent url('../../../img/icons/lock_gray.png') no-repeat top right;

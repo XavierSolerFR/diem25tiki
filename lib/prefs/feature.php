@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: feature.php 58947 2016-06-20 16:08:24Z jyhem $
+// $Id: feature.php 59220 2016-07-19 13:07:22Z yonixxx $
 
 function prefs_feature_list($partial = false)
 {
@@ -501,6 +501,7 @@ function prefs_feature_list($partial = false)
 			'description' => tra('Display the page name at the top of each page as page title. If not enabled, the page content should contain an h1 heading to function as the page title, or the page description can be used as the title.'),
 			'type' => 'flag',
 			'default' => 'y',
+			'tags' => array('basic'),
 		),
 		'feature_wiki_pageid' => array(
 			'name' => tra('Display page ID'),

@@ -6,7 +6,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-listpages.php 58364 2016-04-18 18:40:20Z jonnybradley $
+// $Id: tiki-listpages.php 59277 2016-07-26 13:44:23Z giograf $
 
 $section = 'wiki page';
 $section_class = 'tiki_wiki_page manage';	// This will be body class instead of $section
@@ -187,6 +187,15 @@ if (!empty($_REQUEST['submit_mult']) && isset($_REQUEST['checked'])) {
 			}
 			break;
 	}
+    /*
+        The 6 lines below are currently for the Plugin List Pages (redirects to the page where plugin is located and action was
+        initiated from)
+     */
+    if (isset($_POST["redirectTo"]) && strlen($_POST["redirectTo"]) > 0){
+        $currentPage = $_POST["redirectTo"];
+        $wikilib = TikiLib::lib('wiki');
+        header('Location: ' . $wikilib->sefurl($currentPage, '', $all_langs));
+    }
 }
 
 //add tablesorter sorting and filtering

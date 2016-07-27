@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Controller.php 59202 2016-07-15 09:49:44Z xavidp $
+// $Id: Controller.php 59259 2016-07-25 12:46:00Z jonnybradley $
 
 class Services_Tracker_Controller
 {
@@ -747,7 +747,16 @@ class Services_Tracker_Controller
 
 			// test if one item per user
 			if ($definition->getConfiguration('oneUserItem', 'n') == 'y') {
-				$tmp = TikiLib::lib('trk')->get_user_item($trackerId, $definition->getInformation());
+				$perms = Perms::get('tracker', $trackerId);
+
+				if ($perms->admin_trackers) {	// tracker admins can make items for other users
+					$field = $definition->getField($definition->getUserField());
+					$theUser = isset($fields[$field['permName']]) ? $fields[$field['permName']] : null;	// setup error?
+				} else {
+					$theUser = null;
+				}
+
+				$tmp = TikiLib::lib('trk')->get_user_item($trackerId, $definition->getInformation(), $theUser);
 				if ($tmp > 0) {
 					throw new Services_Exception(tr('Item could not be created. Only one item per user is allowed.'), 400);
 				}

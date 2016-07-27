@@ -1,4 +1,4 @@
-/* $Id: utopias.css 59211 2016-07-17 06:19:02Z chibaguy $
+/* $Id: utopias.css 59250 2016-07-22 20:22:42Z pom2ter $
  * The Utopias theme for Tiki Wiki CMS Groupware
  * Developed in part in association with http://attainable-utopias.org by jonnybradley
  * © 2003-2014 Jonny Bradley licensed under LGPL/MIT in accordance with Tiki licensing practices
@@ -7260,6 +7260,7 @@ body.wikitext {
 }
 .editable-inline.loaded {
   background: transparent;
+  position: absolute;
 }
 .editable-inline.failure {
   background: transparent url('../../../img/icons/lock_gray.png') no-repeat top right;

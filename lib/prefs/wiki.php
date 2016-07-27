@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wiki.php 58038 2016-03-21 04:08:00Z lindonb $
+// $Id: wiki.php 59275 2016-07-26 11:35:40Z yonixxx $
 
 function prefs_wiki_list($partial = false)
 {
@@ -276,7 +276,8 @@ function prefs_wiki_list($partial = false)
 		'wiki_edit_icons_toggle' => array(
 			'name' => tra('Toggle display of section and plugin edit icons'),
 			'type' => 'flag',
-			'default' => 'n',
+			'default' => 'y',
+			'tags' => array('basic'),
 		),
 		'wiki_edit_minor' => array(
 			'name' => tra('Allow minor edits of wiki pages'),

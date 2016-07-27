@@ -1,4 +1,4 @@
-{* $Id: tiki-user_preferences.tpl 58294 2016-04-11 14:24:40Z gezzzan $ *}
+{* $Id: tiki-user_preferences.tpl 59236 2016-07-22 08:17:38Z yonixxx $ *}
 {if $userwatch ne $user}
 	{title help="User Preferences"}{tr}User Preferences:{/tr} {$userwatch}{/title}
 {else}
@@ -204,7 +204,7 @@
 									</option>
 								{/section}
 							</select>
-							<span class="help-block">If email is public, select a scrambling method to prevent spam</span>
+							<span class="help-block">{tr}If email is public, select a scrambling method to prevent spam{/tr}</span>
 						{else}
 							<p class="form-control-static">{tr}Unavailable - please set your email below{/tr}</p>
 						{/if}
@@ -222,7 +222,7 @@
 								</option>
 							{/section}
 						</select>
-						<span class="help-block">Special character set for your email application</span>
+						<span class="help-block">{tr}Special character set for your email application{/tr}</span>
 					</div>
 				</div>
 				{if $prefs.change_theme eq 'y' && empty($group_theme)}

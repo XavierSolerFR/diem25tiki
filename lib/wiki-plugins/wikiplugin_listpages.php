@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_listpages.php 57943 2016-03-17 19:26:11Z jyhem $
+// $Id: wikiplugin_listpages.php 59277 2016-07-26 13:44:23Z giograf $
 
 function wikiplugin_listpages_info()
 {
@@ -399,8 +399,10 @@ function wikiplugin_listpages($data, $params)
 				$listpages['data'][$i]['snippet'] = $tikilib->get_snippet($page['data'], $page['outputType'], ! empty($page['is_html']), '', $length, $start, $end);
 			}
 		}
-		$ret = $smarty->fetch('tiki-listpages_content.tpl');
+        $smarty->assign("redirectTo", $_REQUEST["page"]);
+        $ret = $smarty->fetch('tiki-listpages_content.tpl');
 	}
 
 	return '~np~'.$ret.'~/np~';
 }
+

@@ -1,4 +1,4 @@
-{* $Id: header.tpl 59137 2016-07-09 16:04:39Z yonixxx $ *}
+{* $Id: header.tpl 59253 2016-07-23 07:17:12Z yonixxx $ *}
 {if $base_uri and ($dir_level gt 0 or $prefs.feature_html_head_base_tag eq 'y')}
 	<base href="{$base_uri|escape}">
 {/if}
@@ -27,32 +27,33 @@
 {if $prefs.metatag_author neq ''}
 	<meta name="author" content="{$prefs.metatag_author|escape}">
 {/if}
-	{* --- Blog description --- *}
+
+{* --- Blog description --- *}
 {if isset($section) and $section eq "blogs"}
 	{if not empty($post_info.parsed_excerpt)}
-		{$description = $post_info.parsed_excerpt|strip_tags|truncate:200|escape}
+		{$metatag_description = $post_info.parsed_excerpt|strip_tags|truncate:200|escape}
 	{elseif not empty($post_info.parsed_data|strip_tags)}
-		{$description = $post_info.parsed_data|strip_tags|truncate:200|escape}
+		{$metatag_description = $post_info.parsed_data|strip_tags|truncate:200|escape}
 	{else}
-		{$description = $post_info.title|cat:' - '|cat:$blog_data.title|escape}
+		{$metatag_description = $post_info.title|cat:' - '|cat:$blog_data.title|escape}
 	{/if}
 	{* --- Article description --- *}
 {elseif isset($section) and $section eq "cms"}
 	{if not empty($heading)}
-		{$description = $heading|truncate:200|escape}
+		{$metatag_description = $parsed_heading|truncate:200|strip_tags|escape}
 	{elseif not empty ($body)}
-		{$description = $body|truncate:200|escape}
+		{$metatag_description = $parsed_body|truncate:200|strip_tags|escape}
 	{/if}
-{elseif $prefs.metatag_pagedesc eq 'y' and not empty($description)}
-	{$description = $description|escape}
+{elseif $prefs.metatag_pagedesc eq 'y' and not empty($metatag_description)}
+	{$metatag_description = $metatag_description|escape}
 {elseif not empty($prefs.metatag_description)}
-	{$description = $prefs.metatag_description|escape}
+	{$metatag_description = $prefs.metatag_description|escape}
 {/if}
 
-{if not empty($description|trim)}
-	<meta name="description" content="{$description}" property="og:description">
-	<meta name="twitter:description" content="{$description}">
-	{else}
+{if not empty($metatag_description|trim)}
+	<meta name="description" content="{$metatag_description}" property="og:description">
+	<meta name="twitter:description" content="{$metatag_description}">
+{else}
 	<meta name="description" content="{$prefs.browsertitle|tr_if|escape} {$prefs.site_nav_seper} {$title}" property="og:description">
 	<meta name="twitter:description" content="{$prefs.browsertitle|tr_if|escape} {$prefs.site_nav_seper} {$title} ">
 {/if}
@@ -117,8 +118,6 @@
 			{$aliasname|escape}
 		{elseif !empty($page)}
 			{$page|escape}
-		{elseif !empty($description)}{$description|escape}
-		{* add $description|escape if you want to put the description + update breadcrumb_build replace return $crumbs->title; with return empty($crumbs->description)? $crumbs->title: $crumbs->description; *}
 		{elseif !empty($arttitle)}
 			{$arttitle|escape}
 		{elseif !empty($thread_info.title)}
@@ -133,6 +132,9 @@
 			{$tracker_info.name|escape}
 		{elseif !empty($headtitle)}
 			{$headtitle|stringfix:"&nbsp;"|escape}{* use $headtitle last if feature specific title not found *}
+		{elseif !empty($description)}
+			{$description|escape}{* use description if nothing else is found but this is likely to contain tiki markup *}
+			{* add $description|escape if you want to put the description + update breadcrumb_build replace return $crumbs->title; with return empty($crumbs->description)? $crumbs->title: $crumbs->description; *}
 		{/if}
 	{/if}
 	{if $prefs.site_title_location eq 'after'} {$prefs.site_nav_seper} {$prefs.browsertitle|tr_if|escape}{/if}

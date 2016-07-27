@@ -1,4 +1,4 @@
-{* $Id: tiki-listpages_content.tpl 58102 2016-03-28 13:47:42Z lindonb $ *}
+{* $Id: tiki-listpages_content.tpl 59277 2016-07-26 13:44:23Z giograf $ *}
 
 {* Use css menus as fallback for item dropdown action menu if javascript is not being used *}
 {if $prefs.javascript_enabled != 'y'}
@@ -31,7 +31,7 @@
 
 
 {if isset($checkboxes_on) and $checkboxes_on eq 'y'}
-	<form name="checkboxes_on" method="post">
+	<form name="checkboxes_on" method="post" action="tiki-listpages.php">
 {/if}
 
 {assign var='pagefound' value='n'}
@@ -471,6 +471,7 @@
 	{/if}
 
 	{if $checkboxes_on eq 'y'}
+		<input type="hidden" name="redirectTo" value="{$redirectTo|escape}">
 		</form>
 	{/if}
 

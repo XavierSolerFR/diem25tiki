@@ -1,4 +1,4 @@
-{* $Id: include_wiki.tpl 58969 2016-06-26 13:38:46Z jonnybradley $ *}
+{* $Id: include_wiki.tpl 59275 2016-07-26 11:35:40Z yonixxx $ *}
 
 {if !empty($feedbacksWikiUp) || !empty($moveWikiUp)}
 	{remarksbox type="feedback" title="{tr}Feedback{/tr}"}
@@ -110,11 +110,11 @@
 				{preference name=feature_wiki_allowhtml}
 				{preference name=feature_wysiwyg}
 				{preference name=wiki_timeout_warning}
+				{preference name=wiki_edit_icons_toggle}
 				{preference name=wiki_edit_section}
 				<div class="adminoptionboxchild" id="wiki_edit_section_childcontainer">
 					{preference name=wiki_edit_section_level}
 				</div>
-				{preference name=wiki_edit_icons_toggle}
 				{preference name=wiki_edit_minor}
 				{preference name=feature_wiki_mandatory_category}
 				{preference name=feature_actionlog_bytes}

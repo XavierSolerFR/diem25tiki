@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_mediaplayer.php 58930 2016-06-17 12:12:43Z xavidp $
+// $Id: wikiplugin_mediaplayer.php 59242 2016-07-22 09:53:46Z xavidp $
 
 function wikiplugin_mediaplayer_info()
 {
@@ -206,6 +206,12 @@ function wikiplugin_mediaplayer($data, $params)
 		'width' => 320,
 		'height' => 240,
 	);
+	if (preg_match('/webm/', $params['type']) >0 && $params['type'] != 'video/webm') {
+		$params['type'] = 'video/webm';
+	}
+	if ($params['type'] == 'video/webm'){
+		$params['style'] = 'native';
+	}
 	if (!empty($params['flv'])) {
 		$params = array_merge($defaults_flv, $params);
 	} elseif (!empty($params['mp3'])) {

@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Check.php 58011 2016-03-19 22:47:33Z lindonb $
+// $Id: Check.php 59227 2016-07-21 00:52:37Z lindonb $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER['SCRIPT_NAME'], basename(__FILE__)) !== false) {
@@ -117,9 +117,10 @@ class Table_Check
 						$colon = explode(':', $ret[$key]);
 						unset($ret[$key]);
 						if (trim($colon[1]) == 'nofilter') {
-							$colon[1] = false;
+							$ret[$key][$colon[0]] = false;
+						} else {
+							$ret[$key][$colon[0]] = trim($colon[1]);
 						}
-						$ret[$key][$colon[0]] = trim($colon[1]);
 					}
 				} elseif (is_array($ret[$key])) {
 					foreach ($ret[$key] as $key2 => $subparam) {
