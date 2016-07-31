@@ -246,7 +246,7 @@ if (is_null($base) || is_null($path)) {
 	header('HTTP/1.0 500 Internal Server Error');
 	header('Content-Type: text/plain; charset=utf-8');
 
-	echo "Request could not be understood. Verify routing file.";
+	echo "Request could not be understood. Verify routing file. $path";
 	exit;
 }
 
@@ -270,7 +270,7 @@ if ($inclusion) {
 		header('HTTP/1.0 404 Not Found');
 		header('Content-Type: text/plain; charset=utf-8');
 
-		echo "No route found. Please see http://dev.tiki.org/URL+Rewriting+Revamp";
+		echo "No route found $path. Please see http://dev.tiki.org/URL+Rewriting+Revamp";
 	} else {
 		header('Location: '.$noroute_url);
 	}
