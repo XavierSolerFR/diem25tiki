@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_trackerfilter.php 59002 2016-06-28 18:10:45Z luciash $
+// $Id: wikiplugin_trackerfilter.php 59318 2016-07-29 23:29:55Z pom2ter $
 
 function wikiplugin_trackerfilter_info()
 {
@@ -230,7 +230,7 @@ function wikiplugin_trackerfilter($data, $params)
 					});'
 	);
 	if ($prefs['jquery_ui_chosen'] === 'y') {
-		$headerlib->add_css('@media (min-width: 768px) { .trackerfilter form .table-responsive { overflow-x: visible; overflow-y: visible; }} /* jquery_ui_chosen specific: edit this in wikiplugin_trackerfilter.php */');
+		$headerlib->add_css('@media (min-width: 768px) { .tiki .trackerfilter form .table-responsive { overflow-x: visible; overflow-y: visible; }} /* jquery_ui_chosen specific: edit this in wikiplugin_trackerfilter.php */');
 	} // TODO: move the CSS to less and add class html attribute in wikiplugin_trackerfilter.tpl instead
 
 	if (!empty($_REQUEST['tracker_filters']) && count($_REQUEST['tracker_filters']) > 0) {

@@ -7,14 +7,14 @@
  * @copyright (c) Copyright 2002-2016 by authors of the Tiki Wiki CMS Groupware Project. All Rights Reserved. See copyright.txt for details and a complete list of authors.
  * @licence Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
  */
-// $Id: tra.php 57948 2016-03-17 19:29:43Z jyhem $
+// $Id: tra.php 59283 2016-07-27 10:26:11Z jonnybradley $
 
 global $interactive_collected_strings;
 $interactive_collected_strings = array();
 
 /**
  * needs a description
- * @param $content
+ * @param string $content
  * @return mixed|string
  */function tr($content)
 {
@@ -24,7 +24,7 @@ $interactive_collected_strings = array();
 
 /**
  * translate an English string
- * @param        $content English string
+ * @param string $content English string
  * @param string $lg      language - if not specify = global current language
  * @param bool   $unused
  * @param array  $args

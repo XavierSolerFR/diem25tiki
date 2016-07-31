@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: MainOptions.php 58101 2016-03-28 13:46:53Z lindonb $
+// $Id: MainOptions.php 59311 2016-07-29 11:35:32Z jonnybradley $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER['SCRIPT_NAME'], basename(__FILE__)) !== false) {
@@ -75,6 +75,9 @@ class Table_Code_MainOptions extends Table_Code_Manager
 			if (parent::$s['colselect']['type'] === true) {
 				if (isset($info['priority'])) {
 					$allcols[$col]['attr']['data-priority'] = $info['priority'];
+				}
+				if (! empty($info['hidden'])) {
+					$allcols[$col]['addClass'][] = 'columnSelector-false';
 				}
 			}
 		}

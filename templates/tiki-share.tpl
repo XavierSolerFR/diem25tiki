@@ -1,4 +1,4 @@
-{* $Id: tiki-share.tpl 58362 2016-04-18 17:58:30Z jonnybradley $ *}
+{* $Id: tiki-share.tpl 59301 2016-07-28 14:11:56Z giograf $ *}
 {title help='share' admpage='share'}
 	{if $report != 'y'}{tr}Share this page{/tr}{else}{tr}Report this page{/tr}{/if}
 {/title}
@@ -24,7 +24,7 @@
 			</div>
 		{/if}
 		{if isset($messageSent)}
-			<div>{tr}The link was sent as message to{/tr} {$messageto|escape}</div>
+			<div>{tr}The link was sent as message to{/tr} {$messageSentTo|escape}</div>
 		{/if}
 		{if isset($threadId) and $threadId>0}
 			<div>
@@ -68,7 +68,7 @@
 				{tr}Text{/tr}
 			</label>
 			<div class="col-sm-9">
-				<textarea name="comment" class="form-control" rows="5" id='comment'>{$comment|escape|@default:"{tr}I found an interesting page that I thought you would like.{/tr}"}</textarea>
+				<textarea name="comment" class="form-control" rows="5" id='comment'>{$comment|escape|@default:"{tr}Access rights are granted for the page.{/tr}"}</textarea>
 			</div>
 		</div>
 		{if $prefs.share_display_links eq 'y'}

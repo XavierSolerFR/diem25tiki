@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Files.php 59122 2016-07-07 11:31:00Z xavidp $
+// $Id: Files.php 59299 2016-07-28 05:30:29Z fvtorres $
 
 class Tracker_Field_Files extends Tracker_Field_Abstract
 {
@@ -45,6 +45,7 @@ class Tracker_Field_Files extends Tracker_Field_Abstract
 						'filter' => 'word',
 						'options' => array(
 							'' => tr('Links'),
+							'barelink' => tr('Bare Links'),
 							'img' => tr('Images'),
 							'vimeo' => tr('Vimeo'),
 							'googleviewer' => tr('Google Viewer'),
@@ -341,6 +342,12 @@ class Tracker_Field_Files extends Tracker_Field_Abstract
 						$smarty->assign('files', $files);
 						$ret = $smarty->fetch('trackeroutput/files_googleviewer.tpl');
 					}
+				} else if ($this->getOption('displayMode') == 'barelink') {					
+						$smarty = TikiLib::lib('smarty');
+						$smarty->loadPlugin('smarty_function_object_link');
+						foreach ($this->getConfiguration('files') as $fileId => $file) {
+							$ret .= 'dl' . $file['fileId'];
+						}
 				}
 				$ret = preg_replace('/~\/?np~/', '', $ret);
 			} else {

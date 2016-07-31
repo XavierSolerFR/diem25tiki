@@ -1,4 +1,4 @@
-{* $Id: categorize.tpl 57996 2016-03-19 08:34:29Z gezzzan $ *}
+{* $Id: categorize.tpl 59333 2016-07-31 16:39:44Z lindonb $ *}
 {if $prefs.feature_categories eq 'y' and $tiki_p_modify_object_categories eq 'y' and (count($categories) gt 0 or $tiki_p_admin_categories eq 'y')}
 	{if !isset($labelcol)}
 		{$labelcol = '4'}
@@ -9,7 +9,7 @@
 	{if !isset($notable) || $notable neq 'y'}
 		<!-- div class="form-horizontal" -->
 			<div class="form-group">
-				<label class="col-sm-{$labelcol} control-label">
+				<label class="col-sm-{$labelcol} control-label{if !empty($labelclass)} {$labelclass}{/if}">
 					{tr}Categorize{/tr}
 				</label>
 				<div class="col-sm-{$inputcol}">
@@ -21,7 +21,7 @@
 	{if $mandatory_category >= 0 or $prefs.javascript_enabled neq 'y' or (isset($auto) and $auto eq 'y')}
 		<div id="categorizator"><div>
 	{else}
-		{if !isset($notable) || $notable neq 'y'} <div class="col-sm-{$inputcol}">{button href="#" _flip_id='categorizator' _class='btn btn-default btn-sm tips' _text="{tr}Select Categories{/tr}" _flip_default_open='n'}</div>{/if}
+		{if !isset($notable) || $notable neq 'y'} <div class="col-sm-{$inputcol}{if isset($inputgroup) && $inputgroup === 'y'} input-group{/if}">{button href="#" _flip_id='categorizator' _class='btn btn-default btn-sm tips' _text="{tr}Select Categories{/tr}" _flip_default_open='n'}</div>{/if}
 		<div class="clearfix"><div id="categorizator" class="col-sm-{$inputcol} col-sm-offset-{$labelcol}" style="display:{if isset($smarty.session.tiki_cookie_jar.show_categorizator) and $smarty.session.tiki_cookie_jar.show_categorizator eq 'y' or (isset($notable) && $notable eq 'y')}block{else}none{/if};">
 	{/if}
 	<div class="multiselect">

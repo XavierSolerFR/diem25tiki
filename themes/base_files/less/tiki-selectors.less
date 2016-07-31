@@ -1,4 +1,4 @@
-// $Id: tiki-selectors.less 59250 2016-07-22 20:22:42Z pom2ter $
+// $Id: tiki-selectors.less 59307 2016-07-29 01:41:22Z pom2ter $
 // This file contains rules for colors, consolidated from the tiki_base less files. They're moved here so that theme variables can provide values for them.
 @imagePathToImgDir: ~"../../../img/";
 
@@ -754,8 +754,12 @@ body.wikitext {
 }
 
 .editable-inline.loaded {
-	background: transparent;
+	background: #fff;
 	position: absolute;
+	padding: 6px;
+	border: 1px solid #eee;
+	border-radius: 4px;
+	z-index: 1001;
 }
 
 .editable-inline.failure {

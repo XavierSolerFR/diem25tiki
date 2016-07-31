@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_files.php 58530 2016-05-03 16:39:52Z eromneg $
+// $Id: wikiplugin_files.php 59292 2016-07-27 16:08:42Z jonnybradley $
 
 function wikiplugin_files_info()
 {
@@ -188,7 +188,6 @@ function wikiplugin_files_info()
 				'since' => '3.0',
 				'filter' => 'alpha',
 				'default' => 'y',
-				'advanced' => true,
 				'options' => array(
 					array('text' => '', 'value' => ''), 
 					array('text' => tra('Yes'), 'value' => 'y'), 

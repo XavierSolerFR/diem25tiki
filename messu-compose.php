@@ -6,7 +6,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: messu-compose.php 58252 2016-04-08 12:20:05Z xavidp $
+// $Id: messu-compose.php 59301 2016-07-28 14:11:56Z giograf $
 
 $section = 'user_messages';
 require_once ('tiki-setup.php');
@@ -149,7 +149,7 @@ if (isset($_REQUEST['send'])) {
 					$rawuser = $userlib->clean_user($rawuser, ! $check_user_show_realnames, $login_fallback);
 				}
 			$users_formatted[] = htmlspecialchars($rawuser);
-		$message.= tra("Message has been sent to: ") . implode(',', $users_formatted) . "<br />";
+        $message.= tra("Message has been sent to: ") . implode(',  ', $users) . "<br />";
 	} else {
 		$message.= tra('ERROR: No valid users to send the message');
 		$smarty->assign('message', $message);

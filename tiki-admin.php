@@ -6,7 +6,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-admin.php 58422 2016-04-23 12:20:21Z jonnybradley $
+// $Id: tiki-admin.php 59334 2016-07-31 16:40:58Z yonixxx $
 
 $section = 'admin';
 
@@ -247,7 +247,7 @@ if (isset($_REQUEST['prefrebuild'])) {
 $admin_icons = array(
 	"general" => array(
 		'title' => tr('General'),
-		'description' => tr('Global site configuration, date formats, admin password, etc.'),
+		'description' => tr('Global site configuration, date formats, etc.'),
 		'help' => 'General Admin',
 	),
 	"features" => array(

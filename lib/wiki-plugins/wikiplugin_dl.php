@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_dl.php 57943 2016-03-17 19:26:11Z jyhem $
+// $Id: wikiplugin_dl.php 59290 2016-07-27 15:39:33Z xavidp $
 
 function wikiplugin_dl_info()
 {
@@ -32,7 +32,7 @@ function wikiplugin_dl($data, $params)
 	$lines = explode("\n", $data);
 
 	foreach ($lines as $line) {
-		$parts = explode(":", $line);
+		$parts = explode(":", $line, 2);
 
 		if (isset($parts[0]) && isset($parts[1])) {
 			$result .= '<dt>' . $parts[0] . '</dt><dd>' . $parts[1] . '</dd>';

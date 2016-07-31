@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_trackeritemfield.php 57999 2016-03-19 11:41:40Z chibaguy $
+// $Id: wikiplugin_trackeritemfield.php 59319 2016-07-30 01:40:17Z fvtorres $
 
 function wikiplugin_trackeritemfield_info()
 {
@@ -88,7 +88,7 @@ function wikiplugin_trackeritemfield_info()
 				),
 			),
 			'value' => array(
-				'required' => true,
+				'required' => false,
 				'name' => tra('Value'),
 				'description' => tra('Value to compare against.'),
 				'since' => '2.0',

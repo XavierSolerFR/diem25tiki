@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: WidgetOptions.php 57950 2016-03-17 19:31:22Z jyhem $
+// $Id: WidgetOptions.php 59324 2016-07-30 16:34:42Z lindonb $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER['SCRIPT_NAME'], basename(__FILE__)) !== false) {
@@ -27,6 +27,10 @@ class Table_Code_WidgetOptions extends Table_Code_Manager
 	{
 		$wo[] = 'stickyHeaders : \'ts-stickyHeader\'';
 		$wo[] = 'resizable : true';
+		//column select
+		if (parent::$s['colselect']) {
+			$wo[] = 'columnSelector_mediaqueryHidden : true';
+		}
 		//sort
 		if (parent::$sorts) {
 			//row grouping
