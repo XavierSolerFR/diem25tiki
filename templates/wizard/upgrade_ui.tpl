@@ -1,4 +1,4 @@
-{* $Id: upgrade_ui.tpl 55586 2015-05-27 15:48:41Z jonnybradley $ *}
+{* $Id: upgrade_ui.tpl 59344 2016-08-01 23:32:57Z fvtorres $ *}
 
 <div class="media">
 	<span class="pull-left fa-stack fa-lg margin-right-18em" alt="{tr}Upgrade Wizard{/tr}" title="Upgrade Wizard">
@@ -36,7 +36,8 @@
 			{preference name=wiki_auto_toc}
 			<div class="adminoptionboxchild" id="wiki_auto_toc_childcontainer">
 				{preference name=wiki_inline_auto_toc}
-				{preference name=wiki_inline_toc_pos}
+				{preference name=wiki_toc_pos}
+				{preference name=wiki_toc_offset}
 			</div>
 			{preference name=wysiwyg_inline_editing}
 		</fieldset>

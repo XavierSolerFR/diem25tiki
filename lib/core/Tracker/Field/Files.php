@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Files.php 59299 2016-07-28 05:30:29Z fvtorres $
+// $Id: Files.php 59347 2016-08-02 01:30:16Z fvtorres $
 
 class Tracker_Field_Files extends Tracker_Field_Abstract
 {
@@ -345,8 +345,9 @@ class Tracker_Field_Files extends Tracker_Field_Abstract
 				} else if ($this->getOption('displayMode') == 'barelink') {					
 						$smarty = TikiLib::lib('smarty');
 						$smarty->loadPlugin('smarty_function_object_link');
+						$smarty->loadPlugin('smarty_modifier_sefurl');
 						foreach ($this->getConfiguration('files') as $fileId => $file) {
-							$ret .= 'dl' . $file['fileId'];
+							$ret .= smarty_modifier_sefurl($file['fileId'], 'file');
 						}
 				}
 				$ret = preg_replace('/~\/?np~/', '', $ret);

@@ -1,4 +1,4 @@
-/* $Id: utopias.css 59307 2016-07-29 01:41:22Z pom2ter $
+/* $Id: utopias.css 59351 2016-08-02 03:59:37Z pom2ter $
  * The Utopias theme for Tiki Wiki CMS Groupware
  * Developed in part in association with http://attainable-utopias.org by jonnybradley
  * © 2003-2014 Jonny Bradley licensed under LGPL/MIT in accordance with Tiki licensing practices
@@ -7259,7 +7259,7 @@ body.wikitext {
   display: inline-block;
 }
 .editable-inline.loaded {
-  background: #fff;
+  background: #ffffff;
   position: absolute;
   padding: 6px;
   border: 1px solid #eee;

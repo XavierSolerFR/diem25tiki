@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: javascript.php 57946 2016-03-17 19:28:19Z jyhem $
+// $Id: javascript.php 59344 2016-08-01 23:32:57Z fvtorres $
 
 //this script may only be included - so its better to die if called directly.
 $access->check_script($_SERVER['SCRIPT_NAME'], basename(__FILE__));
@@ -207,6 +207,9 @@ jqueryTiki.shortTimeFormat = "'.$prefs['short_time_format_js'].'";
 jqueryTiki.username = "' . $user . '";
 jqueryTiki.userRealName = "' . TikiLib::lib('user')->clean_user($user) . '";
 jqueryTiki.userAvatar = "' . $base_url . TikiLib::lib('userprefs')->get_public_avatar_path($user) . '";
+jqueryTiki.autoToc_inline = ' . (($prefs['wiki_inline_auto_toc'] == 'y') ? 'true' : 'false') . ';
+jqueryTiki.autoToc_pos = "' . $prefs['wiki_toc_pos'] . '";
+jqueryTiki.autoToc_offset = ' . (!empty($prefs['wiki_toc_offset']) ? $prefs['wiki_toc_offset'] : 10) . ';
 ';
 
 	if ($prefs['feature_calendar'] === 'y') {

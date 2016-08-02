@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikilib.php 57943 2016-03-17 19:26:11Z jyhem $
+// $Id: wikilib.php 59344 2016-08-01 23:32:57Z fvtorres $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER['SCRIPT_NAME'], basename(__FILE__)) !== false) {
@@ -1495,28 +1495,36 @@ class WikiLib extends TikiLib
 					// Enable Auto TOC
 					$headerlib->add_jsfile('lib/jquery_tiki/autoToc.js');
 
+					//Get autoToc offset
+					$tocOffset = !empty($prefs['wiki_toc_offset']) ? $prefs['wiki_toc_offset'] : 10;
+
 					// Show/Hide the static inline TOC
 					$isAddInlineToc = isset($prefs['wiki_inline_auto_toc']) ? $prefs['wiki_inline_auto_toc'] === 'y' : false;
 					if ($isAddInlineToc) {
 						// Enable static, inline TOC
-						$headerlib->add_css('div#outerToc-static {display: block;}');
+						//$headerlib->add_css('#autotoc {display: block;}');
 
-						// Postion TOC top/left/right
-						$tocPos = !empty($prefs['wiki_inline_toc_pos']) ? $prefs['wiki_inline_toc_pos'] : 'right';
+						//Add top margin
+						$headerlib->add_css('#autotoc {margin-top:' . $tocOffset . 'px;}');
+
+						// Postion inline TOC top/left/right
+						$tocPos = !empty($prefs['wiki_toc_pos']) ? $prefs['wiki_toc_pos'] : 'right';
 						switch(strtolower($tocPos)) {
 							case 'top':
-								$headerlib->add_css('div#outerToc-static {border: 0px;}');
+								$headerlib->add_css('#autotoc {border: 0px;}');
 								break;
 							case 'left':
-								$headerlib->add_css('div#outerToc-static {float: left;}');
+								$headerlib->add_css('#autotoc {float: left;margin-right:15px;}');
 								break;
 							case 'right':
 							default:
-								$headerlib->add_css('div#outerToc-static {float: right;}');
+								$headerlib->add_css('#autotoc {float: right;margin-left:15px;}');
 								break;
 						}
-					} else {
-						$headerlib->add_css('div#outerToc-static {display: none;}');
+					} else {//Not inline TOC
+						//$headerlib->add_css('#autotoc {display: none;}');
+						//Adds the offset for the affix
+						$headerlib->add_css('.affix {top:' . $tocOffset . 'px;}');
 					}
 				}
 			}

@@ -1,4 +1,4 @@
-{* $Id: include_wiki.tpl 59275 2016-07-26 11:35:40Z yonixxx $ *}
+{* $Id: include_wiki.tpl 59344 2016-08-01 23:32:57Z fvtorres $ *}
 
 {if !empty($feedbacksWikiUp) || !empty($moveWikiUp)}
 	{remarksbox type="feedback" title="{tr}Feedback{/tr}"}
@@ -88,7 +88,8 @@
 				{preference name=wiki_auto_toc}
 				<div class="adminoptionbox clearfix" id="wiki_auto_toc_childcontainer">
 					{preference name=wiki_inline_auto_toc}
-					{preference name=wiki_inline_toc_pos}
+					{preference name=wiki_toc_pos}
+					{preference name=wiki_toc_offset}
 				</div>
 			</fieldset>
 			<fieldset>
