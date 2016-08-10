@@ -1,9 +1,10 @@
-{* $Id: upgrade_wizard_completed.tpl 54557 2015-03-19 14:45:26Z lindonb $ *}
+{* $Id: upgrade_wizard_completed.tpl 59406 2016-08-09 18:53:03Z yonixxx $ *}
 
 <div class="media">
 	<div class="media-body">
-		{icon name="check" size=2}{tr}Congratulations{/tr}. {tr}You are done with the upgrade wizard{/tr}.
-		</br></br>
+		<p class="wizardCongrat text-success">
+			{icon name="check" size=1}{tr}Congratulations{/tr}. {tr}You are done with the upgrade wizard{/tr}.
+		</P>
 		<fieldset>
 			<legend>{tr}Next?{/tr}</legend>
 			<ul>

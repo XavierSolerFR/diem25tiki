@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Math.php 57949 2016-03-17 19:30:36Z jyhem $
+// $Id: Math.php 59379 2016-08-05 14:42:38Z xavidp $
 
 /**
  * Handler to perform a calculation for the tracker entry.
@@ -95,12 +95,18 @@ class Tracker_Field_Math extends Tracker_Field_Abstract implements Tracker_Field
 			$data = [];
 
 			foreach ($runner->inspect() as $fieldName) {
-				$data[$fieldName] = $this->getItemField($fieldName);
+				if( is_string($fieldName) || is_numeric($fieldName) )
+					$data[$fieldName] = $this->getItemField($fieldName);
 			}
 
 			$runner->setVariables($data);
 
 			$value = $runner->evaluate();
+
+			if( $value !== $this->getValue() ) {
+				$trklib = TikiLib::lib('trk');
+				$trklib->modify_field($this->getItemId(), $this->getConfiguration('fieldId'), $value);
+			}
 		}
 
 		$baseKey = $this->getBaseKey();

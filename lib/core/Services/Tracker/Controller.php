@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Controller.php 59259 2016-07-25 12:46:00Z jonnybradley $
+// $Id: Controller.php 59372 2016-08-05 10:40:25Z jonnybradley $
 
 class Services_Tracker_Controller
 {
@@ -953,6 +953,17 @@ class Services_Tracker_Controller
 			$title = $input->title->text();
 		}
 
+		if ($input->format->word()) {
+			$format = $input->format->word();
+		} else {
+			$format = $definition->getConfiguration('sectionFormat');
+		}
+
+		$editItemPretty = '';
+		if ($format === 'config') {
+			$editItemPretty = $definition->getConfiguration('editItemPretty');
+		}
+
 		//Used if skip form is set
 		if (empty($input->skip_form_message->text())) {
 			$skip_form_message = tr('Are you sure you would like to update this item?');
@@ -981,7 +992,8 @@ class Services_Tracker_Controller
 			'status' => $status,
 			'skip_form' => $input->skip_form->word(),
 			'skip_form_message' => $skip_form_message,
-			'format' => $input->format->word(),
+			'format' => $format,
+			'editItemPretty' => $editItemPretty,
 			'button_label' => $button_label,
 			'redirect' => $input->redirect->none(),
 		);

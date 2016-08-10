@@ -1,4 +1,4 @@
-{* $Id: upgrade_new_in_14.tpl 54734 2015-03-24 18:54:27Z jonnybradley $ *}
+{* $Id: upgrade_new_in_14.tpl 59378 2016-08-05 14:15:15Z xavidp $ *}
 
 <div class="media">
 	<span class="pull-left fa-stack fa-lg margin-right-18em" alt="{tr}Upgrade Wizard{/tr}" title="Upgrade Wizard">
@@ -48,6 +48,7 @@
 		<fieldset class="table clearfix featurelist">
 			<legend>{tr}Look & Feel options{/tr}</legend>
 			{preference name=theme_iconset}
+			{preference name=image_responsive_class}
 		</fieldset>
 		<fieldset class="table clearfix featurelist">
 			<legend>{tr}Other new features{/tr}</legend>

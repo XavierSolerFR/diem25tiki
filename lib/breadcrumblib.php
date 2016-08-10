@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: breadcrumblib.php 57953 2016-03-17 19:33:34Z jyhem $
+// $Id: breadcrumblib.php 59399 2016-08-09 04:29:17Z fvtorres $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
@@ -365,7 +365,7 @@ function _breadcrumb_getTitle($crumbs, $loc)
 			}
 		}
 	}
-	if (!empty($prefs['wiki_pagename_strip'])) {
+	if (!empty($prefs['wiki_pagename_strip']) || $prefs['namespace_indicator_in_page_title'] == 'y') {
 		include_once('lib/smarty_tiki/modifier.pagename.php');
 		$ret .= tra(smarty_modifier_pagename($cur_title)).'</a>';
 	} else {

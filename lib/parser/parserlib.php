@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: parserlib.php 58231 2016-04-07 10:10:31Z jonnybradley $
+// $Id: parserlib.php 59386 2016-08-06 23:00:24Z lindonb $
 
 /**
  * Parser Library
@@ -1873,7 +1873,7 @@ if ( \$('#$id') ) {
 				if (isset($matches[2]) && $matches[2]=='nocache') {
 					$data = preg_replace($pattern, "<a $class $target href=\"$link\" rel=\"$rel\">$1</a>$ext_icon", $data);
 				} else {
-					$data = preg_replace($pattern, "<a $class $target href=\"$link\" rel=\"$2 $rel\">$1</a>$ext_icon $cosa", $data);
+					$data = preg_replace($pattern, "<a $class $target href=\"$link\" rel=\"$rel\" data-box=\"$2\">$1</a>$ext_icon $cosa", $data);
 				}
 				$pattern = "/(?<!\[)\[$link2\|([^\]\|]+)\]/";
 				$data = preg_replace($pattern, "<a $class $target href=\"$link\" rel=\"$rel\">$1</a>$ext_icon $cosa", $data);
@@ -1884,7 +1884,7 @@ if ( \$('#$id') ) {
 				$data = str_replace("|nocache", "", $data);
 
 				$pattern = "/(?<!\[)\[$link2\|([^\]\|]+)\|([^\]]+)\]/";
-				$data = preg_replace($pattern, "<a $class $target href=\"$link\" rel=\"$2 $rel\">$1</a>$ext_icon", $data);
+				$data = preg_replace($pattern, "<a $class $target href=\"$link\" rel=\"$rel\" data-box=\"$2\">$1</a>$ext_icon", $data);
 				$pattern = "/(?<!\[)\[$link2\|([^\]\|]+)([^\]])*\]/";
 				$data = preg_replace($pattern, "<a $class $target href=\"$link\" rel=\"$rel\">$1</a>$ext_icon", $data);
 				$pattern = "/(?<!\[)\[$link2\]/";

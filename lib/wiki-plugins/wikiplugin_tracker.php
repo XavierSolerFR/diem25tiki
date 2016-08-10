@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_tracker.php 59348 2016-08-02 01:54:12Z fvtorres $
+// $Id: wikiplugin_tracker.php 59383 2016-08-05 20:50:10Z pom2ter $
 
 function wikiplugin_tracker_info()
 {
@@ -1827,6 +1827,11 @@ function wikiplugin_tracker($data, $params)
 							$back.= '<div class="col-md-1 col-sm-1"><span class="text-danger tips" title=":'
 								. tra('This field is mandatory') . '">*</span></div>';
 						}
+
+					if ($f['type'] === 'j') {
+						$smarty->loadPlugin('smarty_function_js_insert_icon');
+						$back .= smarty_function_js_insert_icon(array('type'=>"jscalendar"), $smarty);
+					}
 
 					if ($isTextOnSameRow) {
 						$back .= '</div>';

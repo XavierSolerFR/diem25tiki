@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Controller.php 57951 2016-03-17 19:32:04Z jyhem $
+// $Id: Controller.php 59363 2016-08-03 09:14:03Z kroky6 $
 
 class Services_File_Controller
 {
@@ -83,6 +83,13 @@ class Services_File_Controller
 		if ($fileId === false) {
 			throw new Services_Exception(tr('File could not be uploaded. Restrictions apply.'), 406);
 		}
+
+		$cat_type = 'file';
+		$cat_objid = $fileId;
+		$cat_desc = null;
+		$cat_name = $name;
+		$cat_href = "tiki-download_file.php?fileId=$fileId";
+		include('categorize.php');
 
 		return array(
 			'size' => $size,

@@ -1,4 +1,4 @@
-{* $Id: tiki-editpage.tpl 58303 2016-04-12 06:04:26Z yonixxx $ *}
+{* $Id: tiki-editpage.tpl 59407 2016-08-09 22:26:28Z fvtorres $ *}
 {extends 'layout_edit.tpl'}
 {block name=title}
 	{if $translation_mode eq 'n'}
@@ -618,7 +618,7 @@
 								</div>
 							</div>
 						{/if}
-						{if $prefs.wiki_page_hide_title eq 'y' && ($prefs.wiki_page_name_above eq 'y' or $prefs.feature_page_title eq 'y')}
+						{if $prefs.wiki_page_hide_title eq 'y' && ($prefs.wiki_page_name_above eq 'y' or $prefs.wiki_page_name_position eq 'above' or $prefs.feature_page_title eq 'y')}
 							<div class="form-group clearfix">
 								<label for="page_hide_title" class="col-md-4 control-label">{tr}Show page title{/tr}</label>
 								<div class="col-md-8">

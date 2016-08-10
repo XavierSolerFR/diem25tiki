@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: WikiPage.php 57949 2016-03-17 19:30:36Z jyhem $
+// $Id: WikiPage.php 59361 2016-08-02 23:58:23Z giograf $
 
 class Tiki_Profile_InstallHandler_WikiPage extends Tiki_Profile_InstallHandler
 {
@@ -20,7 +20,7 @@ class Tiki_Profile_InstallHandler_WikiPage extends Tiki_Profile_InstallHandler
 	private $wiki_authors_style;
 	private $geolocation;
 	private $hide_title;
-
+    private $freetags;
 	private $mode = 'create_or_update';
 	private $exists;
 
@@ -33,7 +33,8 @@ class Tiki_Profile_InstallHandler_WikiPage extends Tiki_Profile_InstallHandler
 
 		if ( array_key_exists('message', $data) )
 			$this->message = $data['message'];
-
+        if ( array_key_exists('freetags', $data) )
+            $this->freetags = $data['freetags'];
 		if ( array_key_exists('name', $data) )
 			$this->name = $data['name'];
 		if ( array_key_exists('namespace', $data) )
@@ -237,6 +238,15 @@ class Tiki_Profile_InstallHandler_WikiPage extends Tiki_Profile_InstallHandler
 				$structlib->s_create_page($structure_parent, $page_ref_id, $finalName, '', $structure_id);
 			}
 		}
+
+        if ($this->freetags != "" && $tikilib->page_exists($finalName, false)) {
+            $cat_type = "wiki page";
+            $cat_objid = $finalName;
+            $cat_name = $finalName;
+            $tag_string = $this->freetags;
+            $cat_lang = null;
+            require_once 'freetag_apply.php';
+        }
 
 		return $finalName;
 	}

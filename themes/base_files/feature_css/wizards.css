@@ -1,4 +1,4 @@
-/* $Id: wizards.css 49689 2014-02-04 09:04:34Z xavidp $ */
+/* $Id: wizards.css 59406 2016-08-09 18:53:03Z yonixxx $ */
 
 /* Admin wizard */
 
@@ -29,6 +29,7 @@
 .adminWizardBody {
     vertical-align: top;
     width:73%;
+	margin-top: 4em;
 }
 
 .adminWizardContent {
@@ -65,5 +66,19 @@
 	top: 0.5em;
 }
 
+/* User Wizard */
 
-/* end Admin WIzard */
+#wizardBody {
+	margin-top: 4em;
+}
+
+#wizardBody .col-sm-12 {
+	margin-top: 1em;
+}
+
+#wizardBody .wizardCongrat {
+	font-size: 1.3em;
+	margin-bottom: 2em;
+}
+
+/* End of file */

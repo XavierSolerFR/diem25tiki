@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tikilib.php 59157 2016-07-11 23:57:42Z rjsmelo $
+// $Id: tikilib.php 59389 2016-08-08 17:45:11Z nkoth $
 
 require_once('lib/debug/Tracer.php');
 
@@ -2031,15 +2031,16 @@ class TikiLib extends TikiDb_Bridge
 	function user_has_voted($user, $id)
 	{
 		global $prefs;
-		if (!isset($_SESSION['votes'])) {
-			return false;
-		}
 
 		$ret = false;
-		$votes = $_SESSION['votes'];
-		if (is_array($votes) && in_array($id, $votes)) { // has already voted in the session (logged or not)
-			$ret = true;
+
+		if (isset($_SESSION['votes'])) {
+			$votes = $_SESSION['votes'];
+			if (is_array($votes) && in_array($id, $votes)) { // has already voted in the session (logged or not)
+				return true;
+			}
 		}
+
 		if (!$user) {
 			if ($prefs['ip_can_be_checked'] != 'y' && !isset($_COOKIE[ session_name() ])) {// cookie has not been activated too bad for him
 				$ret = true;

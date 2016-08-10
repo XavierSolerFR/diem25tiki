@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: namespace.php 57947 2016-03-17 19:29:02Z jyhem $
+// $Id: namespace.php 59399 2016-08-09 04:29:17Z fvtorres $
 
 function prefs_namespace_list()
 {
@@ -37,6 +37,12 @@ function prefs_namespace_list()
 		'namespace_indicator_in_structure' => array(
 			'name' => tra('Hide namespace indicator in structure path'),
 			'description' => tra('Hide namespace indicator in structure path.'),
+			'type' => 'flag',
+			'default' => 'n',
+		),
+		'namespace_indicator_in_page_title' => array(
+			'name' => tra('Hide namespace indicator in page title'),
+			'description' => tra('Hide namespace indicator in page title.'),
 			'type' => 'flag',
 			'default' => 'n',
 		),

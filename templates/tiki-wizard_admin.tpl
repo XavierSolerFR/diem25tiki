@@ -1,4 +1,4 @@
-{* $Id: tiki-wizard_admin.tpl 53016 2014-11-06 21:29:18Z xavidp $ *}
+{* $Id: tiki-wizard_admin.tpl 59406 2016-08-09 18:53:03Z yonixxx $ *}
 {extends "layout_plain.tpl"}
 
 {block name="title"}
@@ -7,7 +7,9 @@
 
 {block name="content"}
 	<form action="tiki-wizard_admin.php" method="post">
-	{include file="wizard/wizard_bar_admin.tpl"}
+	<div class="col-sm-12">
+		{include file="wizard/wizard_bar_admin.tpl"}
+	</div>
 	<div id="wizardBody">
 	<div class="row">
 		{if !empty($wizard_toc)}

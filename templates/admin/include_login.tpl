@@ -1,4 +1,4 @@
-{* $Id: include_login.tpl 58706 2016-05-26 08:24:46Z yonixxx $ *}
+{* $Id: include_login.tpl 59409 2016-08-10 00:42:44Z jyhem $ *}
 {jq}
 	$("#genPass").click(function () {
 		var passcodeId = $("input[name=registerPasscode]").attr('id');
@@ -154,6 +154,7 @@
 						{preference name=cookie_consent_button}
 						{preference name=cookie_consent_mode}
 						{preference name=cookie_consent_dom_id}
+						{preference name=cookie_consent_disable}
 					</div>
 				</fieldset>
 				{preference name=feature_banning}

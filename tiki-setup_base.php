@@ -6,7 +6,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-setup_base.php 59006 2016-06-29 10:01:52Z jonnybradley $
+// $Id: tiki-setup_base.php 59409 2016-08-10 00:42:44Z jyhem $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
@@ -76,6 +76,7 @@ $needed_prefs = array(
 	'min_pass_length' => 5,
 	'pass_chr_special' => 'n',
 	'cookie_consent_feature' => 'n',
+	'cookie_consent_disable' => 'n',
 	'cookie_consent_name' => 'tiki_cookies_accepted',
 
 );
@@ -156,9 +157,11 @@ if (empty($tikidomain)) {
 	$tikidomain = "";
 }
 
-if ($prefs['cookie_consent_feature'] === 'y' && empty($_COOKIE[$prefs['cookie_consent_name']])) {
+if ($prefs['cookie_consent_feature'] === 'y' && empty($_COOKIE[$prefs['cookie_consent_name']]) && $prefs['cookie_consent_disable'] !== 'y' ) {
+	// No consent yet
 	$feature_no_cookie = true;
 } else {
+	// Cookie consent not implemented or consent given or consent forced with preference cookie_consent_disable
 	$feature_no_cookie = false;
 }
 

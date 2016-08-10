@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wiki.php 59344 2016-08-01 23:32:57Z fvtorres $
+// $Id: wiki.php 59407 2016-08-09 22:26:28Z fvtorres $
 
 function prefs_wiki_list($partial = false)
 {
@@ -85,6 +85,17 @@ function prefs_wiki_list($partial = false)
 			'description' => tra('Display page name above page instead of inside page.'),
 			'type' => 'flag',
 			'default' => 'n',
+		),
+		'wiki_page_name_position' => array(
+			'name' => tra('Display page name position'),
+			'description' => tra('Display page name position.'),
+			'type' => 'list',
+			'options' => array(
+				'default' => tra('Default'),
+				'above' => tra('Above page'),
+				'inside' => tra('Inside page'),
+			),
+			'default' => 'default',
 		),
 		'wiki_pagename_strip' => array(
 			'name' => tra('Page name display stripper'),

@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: function.trackerfields.php 57945 2016-03-17 19:27:36Z jyhem $
+// $Id: function.trackerfields.php 59372 2016-08-05 10:40:25Z jonnybradley $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
@@ -114,7 +114,8 @@ function smarty_function_trackerfields($params, $smarty)
 	// Compatibility attempt with the legacy $f_X format.
 	// Note: Here we set the the closures for the field, NOT the final values!
 	// The final values are set in trackerlib.php using field_render_value()
-	foreach ($fields as $field) {
+	// Using $params['fields'] as $fields is only the last "section" now
+	foreach ($params['fields'] as $field) {
 		$id = $field['fieldId'];
 		$permName = $field['permName'];
 		$smarty->assign('f_' . $id, $auto['default'][$permName]);

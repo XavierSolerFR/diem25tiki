@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: block.self_link.php 57946 2016-03-17 19:28:19Z jyhem $
+// $Id: block.self_link.php 59394 2016-08-09 00:41:53Z lindonb $
 
 /**
  * Smarty plugin
@@ -110,7 +110,8 @@ function smarty_block_self_link($params, $content, $smarty, &$repeat = false)
 			}
 
 			if ( isset($params['_icon']) || isset($params['_icon_name'])) {
-				if ( ! isset($params['_title']) && $content != '' ) $params['_title'] = $content;
+				if (! isset($params['_title']) && $content != '' && (!isset($params['_rel']) ||
+						strpos($params['_rel'], 'box') === false)) $params['_title'] = $content;
 				$smarty->loadPlugin('smarty_function_icon');
 				if (isset($params['_icon'])) {
 					$icon_params['_id'] = $params['_icon'];
@@ -146,8 +147,17 @@ function smarty_block_self_link($params, $content, $smarty, &$repeat = false)
 
 			$link = ( !empty($params['_class']) ? 'class="'.$params['_class'].'" ' : '' )
 				. ( !empty($params['_style']) ? 'style="' . $params['_style'] . '" ' : '' )
-				. ( !empty($params['_title']) ? 'title="' . str_replace('"', '\"', $params['_title']) . '" ' : '' )
-				. ( !empty($params['_rel']) ? 'rel="' . str_replace('"', '\"', $params['_rel']) . '" ' : '' );
+				. ( !empty($params['_title']) ? 'title="' . str_replace('"', '\"', $params['_title']) . '" ' : '' );
+			if (!empty($params['_rel'])) {
+				if (strpos($params['_rel'], 'box') !== false) {
+					$rel = 'data-box="box" ';
+				} else {
+					$rel = 'rel="' . str_replace('"', '\"', $params['_rel']) . '" ';
+				}
+			} else {
+				$rel = '';
+			}
+			$link .= $rel;
 			foreach ( $params as $k => $v ) {
 				if ( strlen($k) > 3 && substr($k, 0, 3) == '_on' && !empty($v) ) {
 					$link .= htmlentities(substr($k, 1)).'="'.$v.'" '; // $v should be already htmlentitized in the template
