@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: function.user_registration.php 59015 2016-06-29 15:59:05Z jonnybradley $
+// $Id: function.user_registration.php 59429 2016-08-12 01:00:45Z fvtorres $
 
 function smarty_function_user_registration($params, $smarty)
 {
@@ -129,7 +129,7 @@ function smarty_function_user_registration($params, $smarty)
 							'trackerId' => $re['usersTrackerId'],
 							'fields' => $re['registrationUsersFieldIds'],
 							'showdesc' => 'y',
-							'showmandatory' => 'y',
+							'showmandatory' => (!empty($prefs["user_register_prettytracker_hide_mandatory"])) ? (($prefs["user_register_prettytracker_hide_mandatory"] == 'y') ? 'n' : 'y') : 'n' ,
 							'embedded' => 'n',
 							'action' => tra('Register'),
 							'registration' => 'y',
@@ -145,7 +145,7 @@ function smarty_function_user_registration($params, $smarty)
 							'trackerId' => $re['usersTrackerId'],
 							'fields' => $re['registrationUsersFieldIds'],
 							'showdesc' => 'y',
-							'showmandatory' => 'y',
+							'showmandatory' => (!empty($prefs["user_register_prettytracker_hide_mandatory"])) ? (($prefs["user_register_prettytracker_hide_mandatory"] == 'y') ? 'n' : 'y') : 'n',
 							'embedded' => 'n',
 							'action' => tra('Register'),
 							'registration' => 'y',

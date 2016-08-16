@@ -1,4 +1,4 @@
-{* $Id: include_wiki.tpl 59407 2016-08-09 22:26:28Z fvtorres $ *}
+{* $Id: include_wiki.tpl 59420 2016-08-11 17:03:55Z fvtorres $ *}
 
 {if !empty($feedbacksWikiUp) || !empty($moveWikiUp)}
 	{remarksbox type="feedback" title="{tr}Feedback{/tr}"}
@@ -68,7 +68,7 @@
 				{preference name=feature_wiki_description label="{tr}Description{/tr}"}
 				{preference name=feature_page_title label="{tr}Display page name as page title{/tr}"}
 				{preference name=wiki_page_name_above label="{tr}Display page name above page{/tr}"}
-				{preference name=wiki_page_name_position label="{tr}Display page name position{/tr}"}
+				{preference name=wiki_page_name_inside label="{tr}Display page name inside page content{/tr}"}
 				{preference name=feature_wiki_pageid label="{tr}Page ID{/tr}"}
 				{preference name=wiki_show_version label="{tr}Page version{/tr}"}
 				{preference name=wiki_authors_style label="{tr}List authors{/tr}"}

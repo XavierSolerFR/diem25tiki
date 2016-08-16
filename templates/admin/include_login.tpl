@@ -1,4 +1,4 @@
-{* $Id: include_login.tpl 59409 2016-08-10 00:42:44Z jyhem $ *}
+{* $Id: include_login.tpl 59425 2016-08-11 22:39:16Z fvtorres $ *}
 {jq}
 	$("#genPass").click(function () {
 		var passcodeId = $("input[name=registerPasscode]").attr('id');
@@ -100,6 +100,7 @@
 					{preference name=user_register_prettytracker}
 					<div class="adminoptionboxchild" id="user_register_prettytracker_childcontainer">
 						{preference name=user_register_prettytracker_tpl}
+						{preference name=user_register_prettytracker_hide_mandatory}
 					</div>
 					{preference name=user_register_prettytracker_output}
 					<div class="adminoptionboxchild" id="user_register_prettytracker_output_childcontainer">

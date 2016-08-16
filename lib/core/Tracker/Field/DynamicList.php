@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: DynamicList.php 58819 2016-06-07 17:08:42Z jonnybradley $
+// $Id: DynamicList.php 59448 2016-08-16 14:29:27Z kroky6 $
 
 /**
  * Handler class for DynamicList
@@ -103,6 +103,11 @@ class Tracker_Field_DynamicList extends Tracker_Field_Abstract
 		$insertId = $this->getInsertId();
 		$originalValue = $this->getConfiguration('value');
 		
+		if( $filterFieldIdHere == $this->getConfiguration('fieldId') )
+			return tr('*** ERROR: Field ID (This tracker) cannot be the same: %0 ***', $filterFieldIdHere);
+
+		if( !TikiLib::lib('trk')->get_tracker_field($listFieldIdThere) )
+			return tr('*** ERROR: Field %0 not found ***', $listFieldIdThere);
 		
 		TikiLib::lib('header')->add_jq_onready(
 			'
@@ -189,6 +194,8 @@ $("input[name=ins_' . $filterFieldIdHere . '], select[name=ins_' . $filterFieldI
 			$listFieldThere = $trklib->get_tracker_field($listFieldIdThere);
 		}
 		
+		if( empty($listFieldThere) )
+			return tr('*** ERROR: Field %0 not found ***', $listFieldIdThere);
 		
 		$remoteItemId = $this->getValue();
 		$itemInfo = $trklib->get_tracker_item($remoteItemId);

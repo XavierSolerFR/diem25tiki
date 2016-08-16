@@ -1,4 +1,4 @@
-{* $Id: tiki-listpages_content.tpl 59277 2016-07-26 13:44:23Z giograf $ *}
+{* $Id: tiki-listpages_content.tpl 59436 2016-08-12 15:02:20Z jyhem $ *}
 
 {* Use css menus as fallback for item dropdown action menu if javascript is not being used *}
 {if $prefs.javascript_enabled != 'y'}
@@ -420,6 +420,17 @@
 		</tbody>
 	</table>
 </div>
+{if isset($tsOn) }
+	<script>
+		// Otherwise, All pages are displayed, whatever was searched for
+		var myfilter='{$find|escape:javascript}';
+	</script>
+	{jq}
+		(function(window,undefined){
+			window.setTimeout( function(){ $('input[data-column=2]').val(myfilter).trigger('change'); } , 1000 );
+		})(window)
+	{/jq}
+{/if}
 {if !$tsAjax}
 	{if $checkboxes_on eq 'y' && count($listpages) > 0} {* what happens to the checked items? *}
 		<p align="left"> {*on the left to have it close to the checkboxes*}

@@ -6,7 +6,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-tracker_http_request.php 58818 2016-06-07 16:19:11Z jonnybradley $
+// $Id: tiki-tracker_http_request.php 59438 2016-08-15 11:01:12Z kroky6 $
 
 // TODO - refactor to ajax-services then KILME
 
@@ -35,6 +35,7 @@ $filterFieldValueHere =  isset($_GET["filterFieldValueHere"]) ? $_GET["filterFie
 $filterFieldIdThere = isset($_GET["filterFieldIdThere"]) ? $_GET["filterFieldIdThere"] : null;
 $listFieldIdThere = isset($_GET["listFieldIdThere"]) ? $_GET["listFieldIdThere"] : null;
 $statusThere = isset($_GET["statusThere"]) ? $_GET["statusThere"] : null;
+$mandatory = isset($_GET["mandatory"]) ? $_GET["mandatory"] == 'y' : false;
 // needed when multiple fields are bound to the same selection i.e $filterFieldValueHere
 $insertId = isset($_GET["insertId"]) ? $_GET["insertId"] : null;
 // needed when the default should be passed back to the frontend
@@ -52,6 +53,9 @@ $json_return['request'] = array(
 	'originalValue' => $originalValue
 );
 $json_return['response'] = array();
+
+// blank value is the default first option here
+$json_return['response'][] = array('', '');
 
 // if we do not have something to compare with we return empty result
 if (empty($filterFieldValueHere)) {

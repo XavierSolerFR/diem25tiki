@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: modlib.php 58869 2016-06-09 15:15:27Z jyhem $
+// $Id: modlib.php 59414 2016-08-10 16:05:33Z jyhem $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
@@ -600,7 +600,7 @@ class ModLib extends TikiLib
 			}
 		}
 
-		if ( $prefs['cookie_consent_feature'] == 'y' ) {		// check if consent required to show
+		if ( $prefs['cookie_consent_feature'] == 'y' && $prefs['cookie_consent_disable'] !=='y' ) {		// check if consent required to show
 			if (!empty($params['cookie_consent']) && $params['cookie_consent'] === 'y') {
 				global $feature_no_cookie;
 				if ($feature_no_cookie) {
@@ -959,7 +959,7 @@ class ModLib extends TikiLib
 			)
 		);
 
-		if ($prefs['cookie_consent_feature'] === 'y') {
+		if ($prefs['cookie_consent_feature'] === 'y' && $prefs['cookie_consent_disable'] !=='y') {
 			$info['params']['cookie_consent'] = array(
 				'name' => tra('Cookie Consent'),
 				'description' => 'n|y '.tra('Show only if consent to accept cookies has been granted.'),

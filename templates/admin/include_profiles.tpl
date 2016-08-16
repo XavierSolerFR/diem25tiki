@@ -1,4 +1,4 @@
-{* $Id: include_profiles.tpl 58347 2016-04-17 15:56:43Z chibaguy $ *}
+{* $Id: include_profiles.tpl 59416 2016-08-10 16:57:59Z yonixxx $ *}
 {jq notonready=true}
 	var baseURI = '{$smarty.server.REQUEST_URI}';
 	{literal}
@@ -192,6 +192,9 @@
 						body.style.borderWidth = '2px';
 						body.style.borderColor = 'black';
 						body.style.padding = '8px';
+						body.style.resize = 'both';
+						body.style.overflow = 'auto';
+
 
 						cell.appendChild( body );
 

@@ -6,7 +6,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-listpages.php 59277 2016-07-26 13:44:23Z giograf $
+// $Id: tiki-listpages.php 59426 2016-08-11 23:14:24Z jyhem $
 
 $section = 'wiki page';
 $section_class = 'tiki_wiki_page manage';	// This will be body class instead of $section
@@ -357,7 +357,8 @@ if (!empty($multiprint_pages)) {
 	}
 
 	$smarty->assign('initial', $initial);
-	if (isset($_REQUEST['exact_match']) && $_REQUEST['exact_match'] == 'y' ) {
+	// What a checked checkbox returns is browser dependant. Don't test on the value, just presence
+	if (isset($_REQUEST['exact_match']) ) {
 		$exact_match = true;
 		$smarty->assign('exact_match', 'y');
 	} else {

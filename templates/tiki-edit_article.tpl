@@ -1,4 +1,4 @@
-{* $Id: tiki-edit_article.tpl 58026 2016-03-20 19:32:52Z gezzzan $ *}
+{* $Id: tiki-edit_article.tpl 59446 2016-08-15 13:48:47Z yonixxx $ *}
 {* Note: if you edit this file, make sure to make corresponding edits on tiki-edit_submission.tpl*}
 {include file='tiki-articles-js.tpl'}
 {title help="Articles" admpage="articles"}
@@ -290,7 +290,7 @@
 						{tr}Attach existing article ID as translation{/tr}
 					</label>
 					<div class="col-md-2">
-						<input name="translationOf" type="text" class="form-control">
+						<input name="translationOf" type="text" class="form-control"{if !empty($translations[1].objId)}value="{$translations[1].objId|escape}"{/if}>
 					</div>
 				</div>
 			{/if}

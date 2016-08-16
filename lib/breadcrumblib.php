@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: breadcrumblib.php 59399 2016-08-09 04:29:17Z fvtorres $
+// $Id: breadcrumblib.php 59420 2016-08-11 17:03:55Z fvtorres $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
@@ -91,7 +91,7 @@ function breadcrumb_buildTrail($crumbs, $loc, $showLinks = true)
 {
 	global $prefs, $info;
 	if ($prefs['feature_breadcrumbs'] == 'y') {
-		if ($loc == 'page' && ($prefs['feature_siteloc'] == 'page' || ($prefs['feature_page_title'] == 'y' && $info) ) ) {
+		if ($loc == 'page' && ($prefs['feature_siteloc'] == 'page' || ($prefs['feature_page_title'] == 'y' || $prefs['wiki_page_name_inside'] == 'y' && $info) ) ) {
 			return _breadcrumb_buildTrail($crumbs, -1, -1, $showLinks);
 		} else if (($loc == 'site' || $loc == 'location') && $prefs['feature_siteloc'] == 'y') {
 			return _breadcrumb_buildTrail($crumbs, -1, -1, $showLinks);
@@ -293,14 +293,14 @@ function breadcrumb_getTitle($crumbs, $loc)
 	} else if ($prefs['feature_breadcrumbs'] == 'n' && $loc == "admin") {
 		return _breadcrumb_getTitle($crumbs, $loc);
 	} else if ($prefs['feature_breadcrumbs'] == 'y') {
-		if ($loc == 'page' && ($prefs['feature_siteloc'] == 'page' || ($prefs['feature_page_title'] == 'y' && $info) ) ) {
+		if ($loc == 'page' && ($prefs['feature_siteloc'] == 'page' || ($prefs['feature_page_title'] == 'y' || $prefs['wiki_page_name_inside'] == 'y' && $info) ) ) {
 			return _breadcrumb_getTitle($crumbs, $loc);
 		} else if (($loc == 'site' || $loc == 'location') && $prefs['feature_siteloc'] == 'y') {
 			return _breadcrumb_getTitle($crumbs, $loc);
 		}
 	} else if ($loc == "admin") {
 		return _breadcrumb_getTitle($crumbs, 'page');
-	} else if ($prefs['feature_breadcrumbs'] != 'y' && $loc == "page" && $prefs['feature_page_title'] == 'y') {// for previous compatibility
+	} else if ($prefs['feature_breadcrumbs'] != 'y' && $loc == "page" && $prefs['feature_page_title'] == 'y' || $prefs['wiki_page_name_inside'] == 'y') {// for previous compatibility
 		return _breadcrumb_getTitle($crumbs, 'page');
 	}
 	return;

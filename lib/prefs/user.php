@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: user.php 59147 2016-07-09 22:12:46Z yonixxx $
+// $Id: user.php 59424 2016-08-11 22:37:42Z fvtorres $
 
 function prefs_user_list($partial = false)
 {
@@ -154,6 +154,15 @@ function prefs_user_list($partial = false)
 				'user_register_pretty_tracker',
 			),
 			'default' => ''
+		),
+		'user_register_prettytracker_hide_mandatory' => array(
+			'name' => tra('Hide Mandatory'),
+			'description' => tra('Hide mandatory fields indication with an asterisk (shown by default).'),
+			'type' => 'flag',
+			'default' => 'n',
+			'dependencies' => array(
+				'user_register_pretty_tracker',
+			),
 		),
 		'user_register_prettytracker_output' => array(
 			'name' => tra('Output the registration results'),

@@ -1,7 +1,7 @@
-{* $Id: register-email.tpl 58178 2016-04-05 14:46:15Z jyhem $ *}
+{* $Id: register-email.tpl 59425 2016-08-11 22:39:16Z fvtorres $ *}
 {if $prefs.user_register_prettytracker eq 'y' and $prefs.user_register_prettytracker_tpl and $prefs.socialnetworks_user_firstlogin != 'y'}
 	<input type="text" id="email" name="email" class="form-control" >
-	&nbsp;<strong class='mandatory_star'>*</strong>
+	{if $prefs.user_register_prettytracker_hide_mandatory neq 'y'}&nbsp;<strong class='mandatory_star'>*</strong>{/if}
 {else}
 	{if $prefs.login_is_email ne 'y'}
 		<div class="form-group">

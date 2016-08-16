@@ -1,4 +1,4 @@
-{* $Id: tiki-show_page.tpl 59407 2016-08-09 22:26:28Z fvtorres $ *}
+{* $Id: tiki-show_page.tpl 59420 2016-08-11 17:03:55Z fvtorres $ *}
 {extends 'layout_view.tpl'}
 
 {* Separate the content display from the display of the whole page.
@@ -21,7 +21,7 @@ Note: The show content block must be defined at root level to use the include. A
 			{/if}
 		{/if}
 
-		{if $prefs.feature_page_title eq 'y' and ($prefs.wiki_page_name_position eq 'default' or !$prefs.wiki_page_name_position) and $prefs.wiki_page_name_above neq 'y'}
+		{if $prefs.feature_page_title eq 'y'}
 			<h1 class="pagetitle">{breadcrumbs type="pagetitle" loc="page" crumbs=$crumbs machine_translate=$machine_translate_to_lang source_lang=$pageLang target_lang=$machine_translate_to_lang}</h1>
 		{/if}
 
@@ -130,7 +130,7 @@ Note: The show content block must be defined at root level to use the include. A
 		{/if}
 
 		<div id="page-data" class="clearfix">
-			{if $prefs.feature_page_title eq 'y' and $prefs.wiki_page_name_position eq 'inside'}
+			{if $prefs.wiki_page_name_inside eq 'y'}
 				<h1 class="pagetitle">{breadcrumbs type="pagetitle" loc="page" crumbs=$crumbs machine_translate=$machine_translate_to_lang source_lang=$pageLang target_lang=$machine_translate_to_lang}</h1>
 			{/if}
 			{if isset($pageLang) and ($pageLang eq 'ar' or $pageLang eq 'he')}
