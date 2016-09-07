@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: function.object_link.php 59392 2016-08-08 23:24:18Z pom2ter $
+// $Id: function.object_link.php 59450 2016-08-16 16:40:41Z jonnybradley $
 
 //this script may only be included - so its better to die if called directly.
 if (strpos($_SERVER["SCRIPT_NAME"], basename(__FILE__)) !== false) {
@@ -203,10 +203,12 @@ function smarty_function_object_link_trackeritem( $smarty, $object, $title = nul
 	}
 
 	if (($show_status == 'y') && $item && $status = $item->getDisplayedStatus()) {
-		$alt = tr($status);
-//		$pre = "<img src=\"img/icons/status_$status.gif\" alt=\"$status\"/>&nbsp;";
-		$pre = smarty_function_icon(array('name' => 'status-' . $status, 'iclass' => 'tips', 'ititle' => ':'
-				. ucfirst($status)), $smarty);
+		$smarty->loadPlugin('smarty_function_icon');
+		$pre = smarty_function_icon(array(
+			'name' => 'status-' . $status,
+			'iclass' => 'tips',
+			'ititle' =>  ':' . tr($status),
+		), $smarty);
 	}
 
 	return $pre . smarty_function_object_link_default($smarty, $object, $title, $type, $url);

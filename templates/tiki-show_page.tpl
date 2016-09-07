@@ -1,4 +1,4 @@
-{* $Id: tiki-show_page.tpl 59420 2016-08-11 17:03:55Z fvtorres $ *}
+{* $Id: tiki-show_page.tpl 59542 2016-08-29 11:52:38Z yonixxx $ *}
 {extends 'layout_view.tpl'}
 
 {* Separate the content display from the display of the whole page.
@@ -114,7 +114,7 @@ Note: The show content block must be defined at root level to use the include. A
 				</div>
 			{/if}
 
-			{if $structure eq 'y' and ($prefs.wiki_structure_bar_position ne 'bottom')}
+			{if $structure eq 'y' and (($prefs.wiki_structure_bar_position ne 'bottom') && ($prefs.wiki_structure_bar_position ne 'none'))}
 				{include file='tiki-wiki_structure_bar.tpl'}
 			{/if}
 

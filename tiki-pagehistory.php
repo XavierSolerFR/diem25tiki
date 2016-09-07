@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-pagehistory.php 58512 2016-05-02 18:34:34Z jonnybradley $
+// $Id: tiki-pagehistory.php 59608 2016-09-06 16:01:59Z jonnybradley $
 
 $section = 'wiki page';
 $section_class = "tiki_wiki_page manage";	// This will be body class instead of $section
@@ -431,7 +431,7 @@ if (\$("input[name=newver][checked=checked]").length) {
 JS
 );
 if ($comparing) {
-	histlib_helper_setup_diff($page, $oldver, $newver);
+	histlib_helper_setup_diff($page, $oldver, $newver, $_REQUEST['diff_style']);
 
 	if (isset($approved_versions)) {
 		$smarty->assign('flaggedrev_compare_approve', ! in_array($newver, $approved_versions));

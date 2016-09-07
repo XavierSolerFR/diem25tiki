@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_trackerstat.php 57942 2016-03-17 19:25:28Z jyhem $
+// $Id: wikiplugin_trackerstat.php 59536 2016-08-28 13:23:42Z jonnybradley $
 
 function wikiplugin_trackerstat_info()
 {
@@ -268,7 +268,7 @@ function wikiplugin_trackerstat($data, $params)
 				$userValues = $trklib->get_filtered_item_values($allFields['data'][$iIp]['fieldId'], $tikilib->get_ip_address(), $allFields['data'][$i]['fieldId']);
 			}
 			
-			$allValues = $trklib->get_all_items($trackerId, $fieldId, $status, $allFields);
+			$allValues = $trklib->get_all_items($trackerId, $fieldId, $status);
 			$j = -1;
 			foreach ($allValues as $value) {
 				$value = trim($value);

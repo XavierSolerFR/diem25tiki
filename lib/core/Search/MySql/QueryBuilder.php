@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: QueryBuilder.php 57951 2016-03-17 19:32:04Z jyhem $
+// $Id: QueryBuilder.php 59566 2016-08-31 16:10:01Z kroky6 $
 
 use Search_Expr_Token as Token;
 use Search_Expr_And as AndX;
@@ -50,6 +50,12 @@ class Search_MySql_QueryBuilder
 		}
 
 		$fields = $this->getFields($node);
+
+		if ($node instanceof Token && count($fields) == 1 && $this->getQuoted($node) === $this->db->qstr('')) {
+			$value = $this->getQuoted($node);
+			$this->requireIndex($node->getField(), 'index', $node->getWeight());
+			return "(`{$node->getField()}` = $value OR `{$node->getField()}` IS NULL)";
+		}
 
 		try {
 			if (! $node instanceof NotX && count($fields) == 1 && $this->isFullText($node)) {
@@ -139,4 +145,3 @@ class Search_MySql_QueryBuilder
 		return $this->db->qstr($string . $suffix);
 	}
 }
-

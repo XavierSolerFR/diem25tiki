@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: FacetTest.php 57944 2016-03-17 19:26:53Z jyhem $
+// $Id: FacetTest.php 59596 2016-09-05 10:41:16Z jonnybradley $
 
 class Search_Elastic_FacetTest extends PHPUnit_Framework_TestCase
 {
@@ -46,8 +46,8 @@ class Search_Elastic_FacetTest extends PHPUnit_Framework_TestCase
 				array(
 					array('value' => 1, 'count' => 3),
 					array('value' => 2, 'count' => 2),
-					array('value' => 'orphan', 'count' => 1),
 					array('value' => 3, 'count' => 1),
+					array('value' => 'orphan', 'count' => 1),
 				)
 			),
 			$values

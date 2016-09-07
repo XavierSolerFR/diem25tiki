@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Index.php 57951 2016-03-17 19:32:04Z jyhem $
+// $Id: Index.php 59566 2016-08-31 16:10:01Z kroky6 $
 
 class Search_MySql_Index implements Search_Index_Interface
 {
@@ -127,6 +127,7 @@ class Search_MySql_Index implements Search_Index_Interface
 
 			return $resultSet;
 		} catch (Search_MySql_QueryException $e) {
+			Feedback::error($e->getMessage());
 			$resultSet = new Search_ResultSet(array(), 0, $resultStart, $resultCount);
 			return $resultSet;
 		}

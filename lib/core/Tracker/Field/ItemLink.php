@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: ItemLink.php 58729 2016-05-28 17:00:14Z jonnybradley $
+// $Id: ItemLink.php 59536 2016-08-28 13:23:42Z jonnybradley $
 
 /**
  * Handler class for ItemLink
@@ -558,8 +558,7 @@ class Tracker_Field_ItemLink extends Tracker_Field_Abstract implements Tracker_F
 			$list = TikiLib::lib('trk')->get_all_items(
 				$this->getOption('trackerId'),
 				$this->getOption('fieldId'),
-				$this->getOption('status', 'opc'),
-				false
+				$this->getOption('status', 'opc')
 			);
 		}
 

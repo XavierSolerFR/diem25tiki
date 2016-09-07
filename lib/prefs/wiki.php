@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wiki.php 59420 2016-08-11 17:03:55Z fvtorres $
+// $Id: wiki.php 59542 2016-08-29 11:52:38Z yonixxx $
 
 function prefs_wiki_list($partial = false)
 {
@@ -564,6 +564,7 @@ function prefs_wiki_list($partial = false)
 				'top' => tra('Top'),
 				'bottom' => tra('Bottom'),
 				'both' => tra('Both'),
+                'none' => tra('Neither'),
 			),
 			'default' => 'top',
 		),

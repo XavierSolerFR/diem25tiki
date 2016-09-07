@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: elFinderVolumeTikiFiles.class.php 57948 2016-03-17 19:29:43Z jyhem $
+// $Id: elFinderVolumeTikiFiles.class.php 59558 2016-08-30 13:56:45Z amnabilal $
 
 /**
  * Started life as copy of elFinderVolumeMySQL.class.php
@@ -938,16 +938,27 @@ class elFinderVolumeTikiFiles extends elFinderVolumeDriver
 		//fclose($fp);
 
 		$galleryId = $this->pathToId($dir);
+		//$image_x=640;
+		//$image_y=480;
 		$fileId = 0;
 
 		// elFinder assigns standard mime types like application/vnd.ms-word to ms doc, we use application/msword etc in tiki for some obscure reason :(
 		if (strpos($stat['mime'], 'application/vnd.ms-') !== false) {
 			$stat['mime'] = str_replace('application/vnd.ms-', 'application/ms', $stat['mime']);
 		}
-
-		$perms = TikiLib::lib('tiki')->get_perm_object($galleryId, 'file gallery', TikiLib::lib('filegal')->get_file_gallery_info($galleryId));
+        $gal_info=TikiLib::lib('filegal')->get_file_gallery_info($galleryId);
+		
+		$perms = TikiLib::lib('tiki')->get_perm_object($galleryId, 'file gallery', $gal_info);
 		if ($perms['tiki_p_upload_files'] === 'y') {
-
+               //checking if gallery has dimensions restrictions
+			$image_x=$gal_info["image_max_size_x"];
+			$image_y=$gal_info["image_max_size_y"];
+			
+			if(!$image_x)
+			   $image_x=NULL;
+			if(!$image_y) 
+			   $image_y=NULL;  
+			
 			$fileId = $this->filegallib->upload_single_file(
 				array(
 					'galleryId' => $galleryId,
@@ -956,7 +967,10 @@ class elFinderVolumeTikiFiles extends elFinderVolumeDriver
 				$name,
 				$size,
 				$stat['mime'],
-				$data
+				$data,
+				'',
+				$image_x,
+				$image_y
 			);
 		}
 

@@ -1,4 +1,4 @@
-{* $Id: tiki-listpages_content.tpl 59436 2016-08-12 15:02:20Z jyhem $ *}
+{* $Id: tiki-listpages_content.tpl 59590 2016-09-04 08:20:48Z giograf $ *}
 
 {* Use css menus as fallback for item dropdown action menu if javascript is not being used *}
 {if $prefs.javascript_enabled != 'y'}
@@ -487,6 +487,11 @@
 	{/if}
 
 	{if !isset($tsOn) or !$tsOn}
-		{pagination_links cant=$cant step=$maxRecords offset=$offset clean=$clean}{/pagination_links}
+		{if $pluginlistpages eq 'y' and $pagination eq 'y'}
+			{pagination_links cant=$cant step=$maxRecords offset=$offset offset_arg=$offset_arg clean=$clean}{/pagination_links}
+		{elseif $pluginlistpages eq 'y' and $pagination neq 'y'}
+		{else}
+			{pagination_links cant=$cant step=$maxRecords offset=$offset clean=$clean}{/pagination_links}
+		{/if}
 	{/if}
 {/if}

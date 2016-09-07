@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Controller.php 59372 2016-08-05 10:40:25Z jonnybradley $
+// $Id: Controller.php 59515 2016-08-25 11:19:40Z jonnybradley $
 
 class Services_Tracker_Controller
 {
@@ -788,6 +788,17 @@ class Services_Tracker_Controller
 			}
 		}
 
+		if ($input->format->word()) {
+			$format = $input->format->word();
+		} else {
+			$format = $definition->getConfiguration('sectionFormat');
+		}
+
+		$editItemPretty = '';
+		if ($format === 'config') {
+			$editItemPretty = $definition->getConfiguration('editItemPretty');
+		}
+
 		return array(
 			'title' => tr('Create Item'),
 			'trackerId' => $trackerId,
@@ -798,7 +809,8 @@ class Services_Tracker_Controller
 			'trackerLogo' => $definition->getConfiguration('logo'),
 			'modal' => $input->modal->int(),
 			'status' => $itemObject->getDisplayedStatus(),
-			'format' => $input->format->word(),
+			'format' => $format,
+			'editItemPretty' => $editItemPretty,
 		);
 	}
 

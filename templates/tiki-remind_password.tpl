@@ -1,4 +1,4 @@
-{* $Id: tiki-remind_password.tpl 55724 2015-06-19 11:25:33Z jonnybradley $ *}
+{* $Id: tiki-remind_password.tpl 59581 2016-09-01 15:07:59Z kroky6 $ *}
 {title admpage='login'}{tr}I forgot my password{/tr}{/title}
 
 {if $showmsg ne 'n'}
@@ -18,6 +18,7 @@
 	<br><br>
 {/if}
 {if $showfrm eq 'y'}
+<div class="row">
 	<form class="form-horizontal col-md-10" action="tiki-remind_password.php" method="post">
 		{if $prefs.login_is_email ne 'y'}
 			<div class="form-group">
@@ -47,4 +48,5 @@
 			</div>
 		</div>
 	</form>
+</div>
 {/if}

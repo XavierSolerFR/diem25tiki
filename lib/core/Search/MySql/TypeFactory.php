@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: TypeFactory.php 58695 2016-05-25 12:56:34Z jonnybradley $
+// $Id: TypeFactory.php 59566 2016-08-31 16:10:01Z kroky6 $
 
 class Search_MySql_TypeFactory implements Search_Type_Factory_Interface
 {
@@ -23,7 +23,7 @@ class Search_MySql_TypeFactory implements Search_Type_Factory_Interface
 			return new Search_Type_Timestamp(gmdate('Y-m-d H:i:s', $value));
 		} else {
 			// if mysql sql_mode is set to NO_ZERO_IN_DATE or NO_ZERO_DATE then'0000-00-00 00:00:00' produces errors
-			return null;
+			return new Search_Type_Timestamp(null);
 		}
 
 	}

@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Parser.php 57952 2016-03-17 19:32:46Z jyhem $
+// $Id: Parser.php 59456 2016-08-17 13:34:35Z xavidp $
 
 class Search_Expr_Parser
 {
@@ -161,7 +161,7 @@ class Search_Expr_Parser
 			$tokens[$key] = new Search_Expr_Not($tokens[$key + 1]);
 			$tokens[$key + 1] = null;
 		} else {
-			$tokens[$key] = null;
+			$tokens[$key] = new Search_Expr_Not(new Search_Expr_Token(''));
 		}
 	}
 

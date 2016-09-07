@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: WikiSource.php 58279 2016-04-10 17:17:57Z jonnybradley $
+// $Id: WikiSource.php 59608 2016-09-06 16:01:59Z jonnybradley $
 
 class Search_ContentSource_WikiSource implements Search_ContentSource_Interface
 {
@@ -96,6 +96,8 @@ class Search_ContentSource_WikiSource implements Search_ContentSource_Interface
 						'view_permission' => $typeFactory->identifier('tiki_p_wiki_view_latest'),
 						'wiki_approval_state' => $typeFactory->identifier('pending'),
 						'url' => $typeFactory->identifier(str_replace('&amp;', '&', $wikilib->sefurl($info['pageName'], true)) . 'latest'),
+						'approved_version' => $typeFactory->numeric((int) $versionInfo['version']),
+						'approved_user' => $typeFactory->identifier($versionInfo['user']),
 					)
 				);
 			}

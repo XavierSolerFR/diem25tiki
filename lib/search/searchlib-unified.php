@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: searchlib-unified.php 58656 2016-05-20 14:17:42Z patrick-proulx $
+// $Id: searchlib-unified.php 59556 2016-08-30 13:22:59Z jonnybradley $
 
 /**
  *
@@ -860,7 +860,7 @@ class UnifiedSearchLib
 		$query->setIdentifierFields($prefs['unified_identifier_fields']);
 
 		$categlib = TikiLib::lib('categ');
-		if ($applyJail && $jail = $categlib->get_jail()) {
+		if ($applyJail && $jail = $categlib->get_jail(false)) {
 			$query->filterCategory(implode(' or ', $jail), true);
 		}
 	}

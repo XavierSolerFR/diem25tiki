@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Connection.php 57952 2016-03-17 19:32:46Z jyhem $
+// $Id: Connection.php 59596 2016-09-05 10:41:16Z jonnybradley $
 
 class Search_Elastic_Connection
 {
@@ -38,7 +38,12 @@ class Search_Elastic_Connection
 	{
 		try {
 			$result = $this->get('/');
-			if (! isset($result->ok)) {
+
+			if (isset($result->version)) {	// elastic v2
+				$result->ok = true;
+				$result->status = 200;
+
+			} else if (! isset($result->ok)) {
 				$result->ok = $result->status === 200;
 			}
 
@@ -49,6 +54,17 @@ class Search_Elastic_Connection
 				'status' => 0,
 			);
 		}
+	}
+
+	/**
+	 * gets the elasticsearch version string, e.g. 2.2.0
+	 *
+	 * @return float
+	 */
+	function getVersion() {
+		$status = $this->getStatus();
+
+		return (float) $status->version->number;
 	}
 
 	function getIndexStatus($index = '')

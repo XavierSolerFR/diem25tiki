@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: CategorySource.php 57951 2016-03-17 19:32:04Z jyhem $
+// $Id: CategorySource.php 59557 2016-08-30 13:25:07Z jonnybradley $
 
 class Search_GlobalSource_CategorySource implements Search_GlobalSource_Interface, Tiki_Profile_Writer_ReferenceProvider, Search_FacetProvider_Interface
 {
@@ -69,7 +69,7 @@ class Search_GlobalSource_CategorySource implements Search_GlobalSource_Interfac
 
 	function getData($objectType, $objectId, Search_Type_Factory_Interface $typeFactory, array $data = array())
 	{
-		if (isset($data['categories']) || isset($data['deep_categories']) || $objectType === 'category') {
+		if (isset($data['categories']) || isset($data['deep_categories'])) {
 			return array();
 		}
 
@@ -84,7 +84,18 @@ class Search_GlobalSource_CategorySource implements Search_GlobalSource_Interfac
 			$categories = array_unique(array_merge($categories, $parentCategories));
 		}
 
-		if (empty($categories)) {
+
+		if ($objectType === 'category') {
+			$parentId = $objectId;
+			$deepcategories = [];
+			while ($parentId = $this->categlib->get_category_parent($parentId)) {
+				$deepcategories[] = $parentId;
+			}
+			if ($deepcategories) {
+				$categories[] = $deepcategories[0];
+			}
+
+		} else if (empty($categories)) {
 			$categories[] = 'orphan';
 			$deepcategories = $categories;
 		} else {

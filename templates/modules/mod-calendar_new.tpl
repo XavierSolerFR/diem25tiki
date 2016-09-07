@@ -1,4 +1,4 @@
-{* $Id: mod-calendar_new.tpl 57306 2016-01-25 04:23:58Z lindonb $ *}
+{* $Id: mod-calendar_new.tpl 59499 2016-08-23 07:32:08Z giograf $ *}
 {if isset($show_calendar_module) and $show_calendar_module eq 'y'}
 	{tikimodule error=$module_params.error title=$tpl_module_title name=$name flip=$module_params.flip decorations=$module_params.decorations nobox=$module_params.nobox notitle=$module_params.notitle}
 		{if $viewlist eq 'list'}
@@ -82,10 +82,11 @@
 			</table>
 		{/if}
 		{if $tiki_p_add_events eq 'y' && (empty($module_params.showaction) || $module_params.showaction ne 'n')}
+			<br>
 			<p>
-				<a href="tiki-calendar_edit_item.php">
+				<a href="tiki-calendar_edit_item.php" style="display: block; margin: auto auto; width: 98px;">
 					{icon name="add"}
-					 {tr}Add event{/tr}
+					 {tr}Add Event{/tr}
 				</a>
 			</p>
 		{/if}

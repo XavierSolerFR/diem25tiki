@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_toc.php 57942 2016-03-17 19:25:28Z jyhem $
+// $Id: wikiplugin_toc.php 59543 2016-08-29 12:06:39Z yonixxx $
 
 function wikiplugin_toc_info()
 {
@@ -21,6 +21,14 @@ function wikiplugin_toc_info()
 				'description' => tr('Maximum number of levels to display. On very large structures, this should be
 					limited. %0 means no limit (and is the default).', '<code>0</code>'),
 				'since' => '3.0',
+				'required' => false,
+				'filter' => 'digits',
+				'default' => 0,
+			),
+			'mindepth' => array(
+				'name' => tra('Minimum Depth'),
+				'description' => tr('Hide number of levels below this number to display. %0 means no limit (and is the default).', '<code>0</code>'),
+				'since' => '15.3.',
 				'required' => false,
 				'filter' => 'digits',
 				'default' => 0,
@@ -111,6 +119,7 @@ function wikiplugin_toc( $data, $params )
 		'type' => 'plain',
 		'structId' => '',
 		'maxdepth' => 0,
+		'mindepth' => 0,
 		'numberPrefix' => '',
 		'pagename' => '',
 	);
@@ -154,14 +163,14 @@ function wikiplugin_toc( $data, $params )
 			$page_info = $structlib->s_get_page_info($pageName_ref_id);
 			$structure_info = $structlib->s_get_structure_info($pageName_ref_id);
 			if (isset($page_info)) {
-				$html = $structlib->get_toc($pageName_ref_id, $order, $showdesc, $shownum, $numberPrefix, $type, '', $maxdepth, $structure_info['pageName']);
+				$html = $structlib->get_toc($pageName_ref_id, $order, $showdesc, $shownum, $numberPrefix, $type, '', $maxdepth, $mindepth, $structure_info['pageName']);
 				return "~np~$button $html $button~/np~";
 			}
 		}
 		return '';
 	} else {
 		$structure_info = $structlib->s_get_structure_info($structId);
-		$html = $structlib->get_toc($structId, $order, $showdesc, $shownum, $numberPrefix, $type, '', $maxdepth, $structure_info['pageName']);
+		$html = $structlib->get_toc($structId, $order, $showdesc, $shownum, $numberPrefix, $type, '', $maxdepth, $mindepth, $structure_info['pageName']);
 
 		return "~np~$button $html $button~/np~";
 	}

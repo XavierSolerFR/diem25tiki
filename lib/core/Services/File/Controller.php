@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Controller.php 59363 2016-08-03 09:14:03Z kroky6 $
+// $Id: Controller.php 59558 2016-08-30 13:56:45Z amnabilal $
 
 class Services_File_Controller
 {
@@ -32,6 +32,8 @@ class Services_File_Controller
 			'typeFilter' => $input->type->text(),
 			'uploadInModal' => $input->uploadInModal->int(),
 			'files' => $this->getFilesInfo((array) $input->file->int()),
+			'image_max_size_x'=>$input->image_max_size_x->text(),
+			'image_max_size_y'=>$input->image_max_size_y->text()
 		);
 	}
 
@@ -45,7 +47,15 @@ class Services_File_Controller
 
 		$fileId = $input->fileId->int();
 		$asuser = $input->user->text();
-
+        if(!$input->imagesize->word())		
+          {		
+		   $image_x=$input->image_max_size_x->text();		
+		   $image_y=$input->image_max_size_y->text();		
+		  }		
+		else		
+		{  $image_x=$gal_info["image_max_size_x"];		
+		   $image_y=$gal_info["image_max_size_y"];		
+		} 
 		if (isset($_FILES['data'])) {
 			// used by $this->action_upload_multiple and file gallery Files fields (possibly others)
 			if (is_uploaded_file($_FILES['data']['tmp_name'])) {
@@ -77,7 +87,7 @@ class Services_File_Controller
 		if ($fileId) {
 			$this->utilities->updateFile($gal_info, $name, $size, $type, $data, $fileId, $asuser);
 		} else {
-			$fileId = $this->utilities->uploadFile($gal_info, $name, $size, $type, $data, $asuser);
+			$fileId = $this->utilities->uploadFile($gal_info, $name, $size, $type, $data, $asuser,$image_x,$image_y);
 		}
 
 		if ($fileId === false) {

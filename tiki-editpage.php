@@ -6,7 +6,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-editpage.php 57938 2016-03-17 19:22:32Z jyhem $
+// $Id: tiki-editpage.php 59608 2016-09-06 16:01:59Z jonnybradley $
 
 // If you put some traces in this script, and can't see them
 // because the script automatically forwards to another URL
@@ -1421,7 +1421,12 @@ if ($prefs['feature_multilingual'] === 'y') {
 
 	if ( $editlib->isTranslationMode() ) {
 		$histlib = TikiLib::lib('hist');
-		histlib_helper_setup_diff($editlib->sourcePageName, $editlib->oldSourceVersion, $editlib->newSourceVersion);
+		histlib_helper_setup_diff(
+			$editlib->sourcePageName,
+			$editlib->oldSourceVersion,
+			$editlib->newSourceVersion,
+			$_REQUEST['diff_style']
+		);
 		$smarty->assign('diff_oldver', (int) $editlib->oldSourceVersion);
 		$smarty->assign('diff_newver', (int) $editlib->newSourceVersion);
 		$smarty->assign('update_translation', 'y');

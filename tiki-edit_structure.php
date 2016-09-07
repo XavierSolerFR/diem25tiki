@@ -6,7 +6,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-edit_structure.php 58429 2016-04-23 15:42:31Z jonnybradley $
+// $Id: tiki-edit_structure.php 59543 2016-08-29 12:06:39Z yonixxx $
 
 $section = 'wiki page';
 $auto_query_args = array('page_ref_id');
@@ -337,8 +337,8 @@ if ($prefs['feature_jquery_ui'] === 'y') {
 	if (!$structure_id) {
 		$structure_id = $structure_info['page_ref_id'];
 	}
-	$smarty->assign('nodelist', $structlib->get_toc($structure_id, 'asc', false, false, '', 'admin', $page_info['page_ref_id'], 0, ''));
-				// $page_ref_id,$order='asc',$showdesc=false,$numbering=true,$numberPrefix='',$type='plain',$page='',$maxdepth=0, $structurePageName=''
+	$smarty->assign('nodelist', $structlib->get_toc($structure_id, 'asc', false, false, '', 'admin', $page_info['page_ref_id'], 0, 0, ''));
+				// $page_ref_id,$order='asc',$showdesc=false,$numbering=true,$numberPrefix='',$type='plain',$page='',$maxdepth=0,$mindepth=0, $structurePageName=''
 	$smarty->assign('structure_id', $structure_id);
 }
 // disallow robots to index page:

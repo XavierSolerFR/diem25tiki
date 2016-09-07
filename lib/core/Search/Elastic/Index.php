@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Index.php 58198 2016-04-06 14:30:24Z jonnybradley $
+// $Id: Index.php 59596 2016-09-05 10:41:16Z jonnybradley $
 
 class Search_Elastic_Index implements Search_Index_Interface, Search_Index_QueryRepository
 {
@@ -234,7 +234,7 @@ class Search_Elastic_Index implements Search_Index_Interface, Search_Index_Query
 		$builder = new Search_Elastic_OrderBuilder;
 		$orderPart = $builder->build($query->getSortOrder());
 
-		$builder = new Search_Elastic_FacetBuilder($this->facetCount);
+		$builder = new Search_Elastic_FacetBuilder($this->facetCount, $this->connection->getVersion() >= 2.0);
 		$facetPart = $builder->build($query->getFacets());
 
 		$builder = new Search_Elastic_RescoreQueryBuilder;

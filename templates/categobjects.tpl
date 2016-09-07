@@ -1,9 +1,9 @@
-{* $Id: categobjects.tpl 53166 2014-11-20 18:31:27Z jyhem $ *}
+{* $Id: categobjects.tpl 59495 2016-08-23 06:57:57Z chibaguy $ *}
 
 <div class="catblock clearfix">
 	{if !isset($params.showTitle) or $params.showTitle eq 'y'}
 		<div class="cattitle">
-			<span class="label">{tr}Category:{/tr} </span>
+			<span class="label label-info">{tr}Category:{/tr} </span>
 			{foreach name=for key=id item=cattitle from=$titles}
 				{if $params.categoryshowlink ne 'n'}<a href="tiki-browse_categories.php?parentId={$id}">{/if}
 				{$cattitle|tr_if|escape}

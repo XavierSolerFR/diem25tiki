@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_trackerlist.php 58797 2016-06-06 08:09:41Z rjsmelo $
+// $Id: wikiplugin_trackerlist.php 59579 2016-09-01 13:59:16Z kroky6 $
 
 function wikiplugin_trackerlist_info()
 {
@@ -1672,7 +1672,7 @@ function wikiplugin_trackerlist($data, $params)
 									}
 								}
 								$exactvalue[] = array($conv[$matches[1]]=>$matches[2]);
-							} elseif (preg_match('/not\((.+)\)/', $evs[$i], $matches)) {
+							} elseif (preg_match('/not\((.*)\)/', $evs[$i], $matches)) {
 								$exactvalue[] = array('not' => $matches[1]);
 							} else {
 								$exactvalue[] = $evs[$i];

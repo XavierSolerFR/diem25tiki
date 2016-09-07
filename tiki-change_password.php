@@ -6,7 +6,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tiki-change_password.php 58803 2016-06-06 13:21:34Z jonnybradley $
+// $Id: tiki-change_password.php 59565 2016-08-31 16:02:18Z jonnybradley $
 
 $inputConfiguration = array(
 	array( 'staticKeyFilters' => array(
@@ -102,7 +102,7 @@ if (isset($_REQUEST["change"])) {
 		$cryptlib->onChangeUserPassword($_REQUEST["oldpass"], $_REQUEST["pass"]);
 	}
 
-	$homePageUrl = $userlib->get_user_default_homepage2($_REQUEST['user']);
+	$homePageUrl = $prefs['tikiIndex'];	// set up in lib/setup/default_homepage.php
 
 	// Check if a wizard should be run.
 	// If a wizard is run, it will return to the $url location when it has completed. Thus no code after $wizardlib->onLogin will be executed

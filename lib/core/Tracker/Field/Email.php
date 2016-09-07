@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Email.php 57949 2016-03-17 19:30:36Z jyhem $
+// $Id: Email.php 59456 2016-08-17 13:34:35Z xavidp $
 
 /**
  * Handler class for simple fields:
@@ -83,6 +83,27 @@ class Tracker_Field_Email extends Tracker_Field_Abstract implements Tracker_Fiel
 	{
 		$this->type = $type;
 		parent::__construct($fieldInfo, $itemData, $trackerDefinition);
+	}
+
+	function getDocumentPart(Search_Type_Factory_Interface $typeFactory)
+	{
+		$baseKey = $this->getBaseKey();
+		return array(
+			$baseKey => $typeFactory->sortable($this->getValue()),
+			"{$baseKey}_text" => $typeFactory->identifier($this->getValue()),
+		);
+	}
+
+	function getProvidedFields()
+	{
+		$baseKey = $this->getBaseKey();
+		return array($baseKey, "{$baseKey}_text");
+	}
+
+	function getGlobalFields()
+	{
+		$baseKey = $this->getBaseKey();
+		return array($baseKey => true, "{$baseKey}_text" => true);
 	}
 	
 	function getFieldData(array $requestData = array())

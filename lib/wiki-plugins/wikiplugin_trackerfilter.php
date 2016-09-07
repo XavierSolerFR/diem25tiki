@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: wikiplugin_trackerfilter.php 59318 2016-07-29 23:29:55Z pom2ter $
+// $Id: wikiplugin_trackerfilter.php 59469 2016-08-18 20:34:21Z jyhem $
 
 function wikiplugin_trackerfilter_info()
 {
@@ -250,6 +250,9 @@ function wikiplugin_trackerfilter($data, $params)
 				}
 			}
 		}
+	}
+	if ( !empty($_REQUEST['filter']) || !empty($_REQUEST['reset_filter'])) {  // If we set a new filter, reset pagination for this plugin
+		unset($GLOBALS['_REQUEST']["tr_offset$iTrackerFilter"]);
 	}
 
 	if (!isset($filters)) {

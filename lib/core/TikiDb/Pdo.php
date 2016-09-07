@@ -3,7 +3,7 @@
 // 
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Pdo.php 57949 2016-03-17 19:30:36Z jyhem $
+// $Id: Pdo.php 59566 2016-08-31 16:10:01Z kroky6 $
 
 class TikiDb_Pdo_Result
 {
@@ -43,6 +43,8 @@ class TikiDb_Pdo extends TikiDb
 
 	function qstr( $str ) // {{{
 	{
+		if( is_null($str) )
+			return 'NULL';
 		return $this->db->quote($str);
 	} // }}}
 

@@ -1,9 +1,8 @@
-{* $Id: user_validation_mail.tpl 58607 2016-05-17 10:34:28Z eromneg $ *}{tr}Hi{/tr} {$mail_user},
+{* $Id: user_validation_mail.tpl 59512 2016-08-24 13:48:35Z yonixxx $ *}{tr}Hi{/tr} {$mail_user},
 
 {tr}You or someone registered this email address at{/tr} {$mail_site}
-{tr}If you want to be a registered user in this {$prefs.mail_template_custom_text}site you will have to use the following link to login for the first time:{/tr}
+{tr _0=$prefs.mail_template_custom_text}If you want to be a registered user in this %0site you will have to use the following link to login for the first time:{/tr}
 
 {$validation_url}
 
 {tr}Enjoy the site!{/tr}
-

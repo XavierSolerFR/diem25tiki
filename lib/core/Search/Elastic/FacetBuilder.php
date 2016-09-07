@@ -3,15 +3,17 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: FacetBuilder.php 57952 2016-03-17 19:32:46Z jyhem $
+// $Id: FacetBuilder.php 59596 2016-09-05 10:41:16Z jonnybradley $
 
 class Search_Elastic_FacetBuilder
 {
 	private $count;
+	private $mainKey;
 
-	function __construct($count = 10)
+	function __construct($count = 10, $useAggregations = false)
 	{
 		$this->count = $count;
+		$this->mainKey = $useAggregations ? 'aggregations' : 'facets';
 	}
 
 	function build(array $facets)
@@ -26,7 +28,7 @@ class Search_Elastic_FacetBuilder
 		}
 
 		return array(
-			'facets' => $out,
+			$this->mainKey => $out,
 		);
 	}
 

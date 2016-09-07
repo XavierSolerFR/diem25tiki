@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: Utilities.php 57951 2016-03-17 19:32:04Z jyhem $
+// $Id: Utilities.php 59558 2016-08-30 13:56:45Z amnabilal $
 
 class Services_File_Utilities
 {
@@ -36,10 +36,10 @@ class Services_File_Utilities
 		return $filegallib->get_file_gallery_info($galleryId);
 	}
 
-	function uploadFile($gal_info, $name, $size, $type, $data, $asuser = null)
+	function uploadFile($gal_info, $name, $size, $type, $data, $asuser = null,$image_x=null,$image_y=null)
 	{
 		$filegallib = TikiLib::lib('filegal');
-		return $filegallib->upload_single_file($gal_info, $name, $size, $type, $data, $asuser);
+		return $filegallib->upload_single_file($gal_info, $name, $size, $type, $data, $asuser,$image_x,$image_y);
 	}
 
 	function updateFile($gal_info, $name, $size, $type, $data, $fileId, $asuser = null)

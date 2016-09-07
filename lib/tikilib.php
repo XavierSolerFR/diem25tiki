@@ -3,7 +3,7 @@
 //
 // All Rights Reserved. See copyright.txt for details and a complete list of authors.
 // Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
-// $Id: tikilib.php 59389 2016-08-08 17:45:11Z nkoth $
+// $Id: tikilib.php 59579 2016-09-01 13:59:16Z kroky6 $
 
 require_once('lib/debug/Tracer.php');
 
@@ -5990,17 +5990,23 @@ JS;
 	}
 
 	/**
+	 * @param bool $descendants The default is to get all descendents of the jailed categories, but for unified search
+	 *                          we only need the "root" jailed categories as the search does a deep_categories search on them
 	 * @return array
 	 */
-	function get_jail()
+	function get_jail($descendants = true)
 	{
 		global $prefs;
 		// if jail is zero, we should allow non-categorized objects to be seen as well, i.e. consider as no jail
 		if ( $prefs['feature_categories'] == 'y' && ! empty( $prefs['category_jail'] ) && $prefs['category_jail'] != array(0 => 0) ) {
-			$categlib = TikiLib::lib('categ');
 			$expanded = array();
-			foreach ( $prefs['category_jail'] as $categId ) {
-				$expanded = array_merge($expanded, $categlib->get_category_descendants($categId));
+			if ($descendants) {
+				$categlib = TikiLib::lib('categ');
+				foreach ($prefs['category_jail'] as $categId) {
+					$expanded = array_merge($expanded, $categlib->get_category_descendants($categId));
+				}
+			} else {
+				$expanded = $prefs['category_jail'];
 			}
 			return $expanded;
 		} else {
@@ -6071,6 +6077,7 @@ JS;
 
 		$delimiter = array_shift($delimiters);
 		$temp = explode($delimiter, $string);
+				
 		$array = array();
 		$keep = false;
 
@@ -6078,7 +6085,7 @@ JS;
 
 		foreach ($temp as $v) {
 			$filtered = str_replace($ignore_chars, '', $v);
-			if ($filtered == '') {
+			if ($filtered == '' && $v != '') {
 				if (! $keep) {
 					$array[count($array) - 1] .= $delimiter;
 				}
